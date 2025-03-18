@@ -206,12 +206,14 @@ extern "C"
    {
 #endif
 
+/*
 #ifndef min
 #define min(a,b)  (((a) < (b)) ? (a) : (b))
 #endif
 #ifndef max
 #define max(a,b)  (((a) > (b)) ? (a) : (b))
 #endif
+*/
 
 #define bound(a,minval,maxval)  ( ((a) > (minval)) ? ( ((a) < (maxval)) ? (a) : (maxval) ) : (minval) )
 
