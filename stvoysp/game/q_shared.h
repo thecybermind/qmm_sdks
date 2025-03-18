@@ -568,7 +568,7 @@ inline float randomf() {
 
 //returns a float between -1 and 1.0
 inline float crandom() {
-	return (2.0F * (random() - 0.5F));
+	return (2.0F * (randomf() - 0.5F));
 }
 
 float erandom( float mean );
