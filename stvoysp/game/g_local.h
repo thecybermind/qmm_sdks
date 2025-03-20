@@ -6,7 +6,7 @@
 // short, server-visible gclient_t and gentity_t structures,
 // because we define the full size ones in this file
 #define	GAME_INCLUDE
-#include "../ui/gameinfo.h"
+//#include "../ui/gameinfo.h"
 #include "g_shared.h"
 
 //NOTENOTE: Only change this to re-point ICARUS to a new script directory
@@ -427,7 +427,7 @@ void OBJ_LoadTactical (void);
 
 //ICARUS includes
 
-extern	interface_export_t	interface_export;
+extern	struct interface_export_t	interface_export;
 
 extern	void Interface_Init( interface_export_t *pe );
 extern	int ICARUS_RunScript( gentity_t *ent, const char *name );
@@ -470,12 +470,12 @@ typedef struct pscript_s
 	long	length;
 } pscript_t;
 
-typedef	map < string, int, less<string>, allocator<int> >		entlist_t;
-typedef map < string, pscript_t*, less<string>, allocator<pscript_t*> >	bufferlist_t;
+//typedef	map < string, int, less<string>, allocator<int> >		entlist_t;
+//typedef map < string, pscript_t*, less<string>, allocator<pscript_t*> >	bufferlist_t;
 
-extern ICARUS_Instance	*iICARUS;
-extern bufferlist_t		ICARUS_BufferList;
-extern entlist_t		ICARUS_EntList;
+//extern ICARUS_Instance	*iICARUS;
+//extern bufferlist_t		ICARUS_BufferList;
+//extern entlist_t		ICARUS_EntList;
 
 //
 //	g_ICARUS.cpp

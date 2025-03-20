@@ -26,14 +26,16 @@
 
 #endif
 
+#if 0
 #include <assert.h>
 #include <math.h>
+#include <time.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
-#include <time.h>
 #include <ctype.h>
+#endif
 
 #ifdef _WIN32
 
@@ -489,6 +491,7 @@ inline int VectorCompare( const vec3_t v1, const vec3_t v2 ) {
 	return 1;
 }
 
+#if 0
 inline vec_t VectorLength( const vec3_t v ) {
 	return (vec_t)sqrt (v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
 }
@@ -503,6 +506,7 @@ inline vec_t Distance( const vec3_t p1, const vec3_t p2 ) {
 	VectorSubtract (p2, p1, v);
 	return VectorLength( v );
 }
+#endif
 
 inline vec_t DistanceSquared( const vec3_t p1, const vec3_t p2 ) {
 	vec3_t	v;
@@ -550,6 +554,7 @@ inline float Q_crandom( int *seed ) {
 	return 2.0F * ( Q_random( seed ) - 0.5f );
 }
 
+#if 0
 //  Returns a float min <= x < max (exclusive; will get max - 0.00001; but never max
 inline float Q_flrand(float min, float max) {
 	return ((rand() * (max - min)) / 32768.0F) + min;
@@ -570,6 +575,7 @@ inline float randomf() {
 inline float crandom() {
 	return (2.0F * (randomf() - 0.5F));
 }
+#endif
 
 float erandom( float mean );
 

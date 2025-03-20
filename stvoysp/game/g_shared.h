@@ -4,7 +4,7 @@
 #include "bg_public.h"
 #include "g_public.h"
 #include "b_public.h"
-#include "../ICARUS/ICARUS.h"
+// #include "../ICARUS/ICARUS.h"
 #include "../renderer/tr_types.h"
 #include "../cgame/cg_public.h"
 #include "bset.h"
@@ -582,8 +582,8 @@ struct gentity_s {
 	int		endFrame;
 
 //Script/ICARUS-related fields
-	CSequencer		*sequencer;
-	CTaskManager	*taskManager;
+	struct CSequencer		*sequencer;
+	struct CTaskManager	*taskManager;
 	int				taskID[NUM_TIDS];
 	parms_t			*parms;
 	char		*behaviorSet[NUM_BSETS];

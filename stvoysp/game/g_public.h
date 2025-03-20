@@ -114,7 +114,7 @@ typedef struct {
 	int		(*Milliseconds)( void );
 
 	// console variable interaction
-	cvar_t	*(*cvar)( const char *var_name, const char *value, int flags );
+	struct cvar_t	*(*cvar)( const char *var_name, const char *value, int flags );
 	void	(*cvar_set)( const char *var_name, const char *value );
 	int		(*Cvar_VariableIntegerValue)( const char *var_name );
 	void	(*Cvar_VariableStringBuffer)( const char *var_name, char *buffer, int bufsize );

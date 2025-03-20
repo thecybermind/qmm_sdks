@@ -644,10 +644,10 @@ void	EvaluateTrajectory( const trajectory_t *tr, int atTime, vec3_t result );
 void	EvaluateTrajectoryDelta( const trajectory_t *tr, int atTime, vec3_t result );
 
 void AddEventToPlayerstate( int newEvent, int eventParm, playerState_t *ps );
-int	CurrentPlayerstateEvent( playerState_t *ps );
+int	CurrentPlayerstateEvent(struct structplayerState_t *ps );
 
-void PlayerStateToEntityState( playerState_t *ps, entityState_t *s );
+void PlayerStateToEntityState( playerState_t *ps, struct structentityState_t *s );
 
-qboolean	BG_PlayerTouchesItem( playerState_t *ps, entityState_t *item, int atTime );
+qboolean	BG_PlayerTouchesItem( playerState_t *ps, struct structentityState_t *item, int atTime );
 
 #endif//#ifndef __BG_PUBLIC_H__
