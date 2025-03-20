@@ -203,7 +203,7 @@ Takes an index to an entity and returns pointer to it.
 =================
 */
 
-inline Entity *G_GetEntity(int entnum)
+/*inline Entity *G_GetEntity(int entnum)
 
 {
     if ((entnum < 0) || (entnum >= globals.max_entities)) {
@@ -211,7 +211,7 @@ inline Entity *G_GetEntity(int entnum)
     }
 
     return (Entity *)g_entities[entnum].entity;
-}
+}*/
 
 /*
 =================
