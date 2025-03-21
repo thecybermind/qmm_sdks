@@ -27,8 +27,8 @@
 #define	GAME_INCLUDE
 #include "g_public.h"
 #include "bg_public.h"
-#include "container.h"
-#include "str.h"
+// #include "container.h"
+//#include "str.h"
 
 // times for posting events
 // Even though negative times technically don't make sense, the effect is to
@@ -176,15 +176,15 @@ typedef enum
 	MP_ITEM_TYPE_ARMOR
 } MultiplayerItemType;
 
-#include "vector.h"
-#include "Linklist.h"
-#include "class.h"
-#include "game.h"
-#include "g_main.h"
-#include "listener.h"
-#include "g_utils.h"
-#include "g_spawn.h"
-#include "g_phys.h"
-#include "debuglines.h"
+//#include "vector.h"
+//#include "Linklist.h"
+//#include "class.h"
+//#include "game.h"
+//#include "g_main.h"
+//#include "listener.h"
+//#include "g_utils.h"
+//#include "g_spawn.h"
+//#include "g_phys.h"
+//#include "debuglines.h"
 
 #endif // __G_LOCAL_H__

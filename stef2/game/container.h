@@ -27,7 +27,7 @@
 #ifndef __CONTAINER_H__
 #define __CONTAINER_H__
 
-#include <qcommon/platform.h>
+#include "../qcommon/platform.h"
 
 #if defined( GAME_DLL )
 //

@@ -22,7 +22,7 @@
 #ifndef __STR_H__
 #define __STR_H__
 
-#include <qcommon/platform.h>
+#include "../qcommon/platform.h"
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>

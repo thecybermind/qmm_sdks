@@ -60,7 +60,7 @@ class Archiver;
 //
 // client specific defines
 //
-#include "../../DLLs/game/q_shared.h"
+#include "q_shared.h"
 #include "Linklist.h"
 
 #define CLASS_DPrintf Com_DPrintf
