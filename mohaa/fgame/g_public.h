@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // Version 11 is >= 0.05 and <= 1.00
 // Version 12 is >= 1.10
 // Version 15 is >= 2.0
-#define GAME_API_VERSION 15
+#define GAME_API_VERSION 12
 
 // entity->svFlags
 // the server does not know how to interpret most of the values
@@ -240,7 +240,7 @@ typedef struct gameImport_s {
     const char *(*LV_ConvertString)(const char *string);
 
     // Added in 2.0
-    const char *(*CL_LV_ConvertString)(const char *string);
+    //const char *(*CL_LV_ConvertString)(const char *string);
 
     void *(*Malloc)(size_t size);
     void (*Free)(void *ptr);
@@ -274,7 +274,7 @@ typedef struct gameImport_s {
     void (*SendConsoleCommand)(const char *text);
 
     // Added in 2.0
-    void (*ExecuteConsoleCommand)(int exec_when, const char *text);
+    //void (*ExecuteConsoleCommand)(int exec_when, const char *text);
 
     void (*DebugGraph)(float value);
     void (*SendServerCommand)(int client, const char *format, ...);
@@ -335,7 +335,7 @@ typedef struct gameImport_s {
     );
 
     // Added in 2.0
-    float (*CM_VisualObfuscation)(const vec3_t start, const vec3_t end);
+    //float (*CM_VisualObfuscation)(const vec3_t start, const vec3_t end);
 
     baseshader_t *(*GetShader)(int shaderNum);
     int (*pointcontents)(const vec3_t p, int passEntityNum);
@@ -358,7 +358,7 @@ typedef struct gameImport_s {
     );
 
     // Added in 2.0
-    qboolean (*HitEntity)(gentity_t *pEnt, gentity_t *pOther);
+    //qboolean (*HitEntity)(gentity_t *pEnt, gentity_t *pOther);
 
     int (*imageindex)(const char *name);
     int (*itemindex)(const char *name);
@@ -385,13 +385,13 @@ typedef struct gameImport_s {
     void (*Anim_Delta)(dtiki_t *tiki, int animNum, float *delta);
 
     // Added in 2.0
-    void (*Anim_AngularDelta)(dtiki_t *tiki, int animNum, float *delta);
+    //void (*Anim_AngularDelta)(dtiki_t *tiki, int animNum, float *delta);
 
     qboolean (*Anim_HasDelta)(dtiki_t *tiki, int animNum);
     void (*Anim_DeltaOverTime)(dtiki_t *tiki, int animNum, float time1, float time2, float *delta);
 
     // Added in 2.0
-    void (*Anim_AngularDeltaOverTime)(dtiki_t *tiki, int animNum, float time1, float time2, float *delta);
+    //void (*Anim_AngularDeltaOverTime)(dtiki_t *tiki, int animNum, float time1, float time2, float *delta);
 
     int (*Anim_Flags)(dtiki_t *tiki, int animNum);
     int (*Anim_FlagsSkel)(dtiki_t *tiki, int animNum);
