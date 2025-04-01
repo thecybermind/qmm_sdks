@@ -248,7 +248,7 @@ typedef struct gameImport_s {
     void (*cvar_set)(const char *varName, const char *varValue);
     cvar_t *(*cvar_set2)(const char *varName, const char *varValue, qboolean force);
     cvar_t *(*NextCvar)(cvar_t *var);
-	void (*Cvar_CheckRange)(cvar_t* var, float min, float max, qboolean integral);
+	// void (*Cvar_CheckRange)(cvar_t* var, float min, float max, qboolean integral);
     int (*Argc)();
     char *(*Argv)(int arg);
     char *(*Args)();
@@ -258,7 +258,7 @@ typedef struct gameImport_s {
     int (*FS_WriteFile)(const char *qpath, const void *buffer, int size);
     fileHandle_t (*FS_FOpenFileWrite)(const char *fileName);
     fileHandle_t (*FS_FOpenFileAppend)(const char *fileName);
-	long (*FS_FOpenFile)(const char* qpath, fileHandle_t *file, qboolean uniqueFILE, qboolean quiet);
+	// long (*FS_FOpenFile)(const char* qpath, fileHandle_t *file, qboolean uniqueFILE, qboolean quiet);
     const char *(*FS_PrepFileWrite)(const char *fileName);
     size_t (*FS_Write)(const void *buffer, size_t size, fileHandle_t fileHandle);
     size_t (*FS_Read)(void *buffer, size_t len, fileHandle_t fileHandle);
@@ -396,13 +396,13 @@ typedef struct gameImport_s {
     int (*Anim_Flags)(dtiki_t *tiki, int animNum);
     int (*Anim_FlagsSkel)(dtiki_t *tiki, int animNum);
     qboolean (*Anim_HasCommands)(dtiki_t *tiki, int animNum);
-    qboolean (*Anim_HasCommands_Client)(dtiki_t *tiki, int animNum);
+    //qboolean (*Anim_HasCommands_Client)(dtiki_t *tiki, int animNum);
     int (*NumHeadModels)(const char *model);
     void (*GetHeadModel)(const char *model, int num, char *name);
     int (*NumHeadSkins)(const char *model);
     void (*GetHeadSkin)(const char *model, int num, char *name);
     qboolean (*Frame_Commands)(dtiki_t *tiki, int animNum, int frameNum, tiki_cmd_t *tikiCmds);
-    qboolean (*Frame_Commands_Client)(dtiki_t *tiki, int animNum, int frameNum, tiki_cmd_t *tikiCmds);
+    // qboolean (*Frame_Commands_Client)(dtiki_t *tiki, int animNum, int frameNum, tiki_cmd_t *tikiCmds);
     int (*Surface_NameToNum)(dtiki_t *tiki, const char *name);
     const char *(*Surface_NumToName)(dtiki_t *tiki, int surfacenum);
     int (*Tag_NumForName)(dtiki_t *pmdl, const char *name);
@@ -486,7 +486,7 @@ typedef struct gameImport_s {
     // Added in OPM
     //
 
-    int (*pvssoundindex)(const char* name, int streamed);
+    // int (*pvssoundindex)(const char* name, int streamed);
 
     cvar_t *fsDebug;
 
