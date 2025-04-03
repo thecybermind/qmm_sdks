@@ -228,10 +228,12 @@ typedef int		clipHandle_t;
 #define	MIN_QINT			(-MAX_QINT-1)
 
 
+/*
 #ifndef max
 #define max( x, y ) ( ( ( x ) > ( y ) ) ? ( x ) : ( y ) )
 #define min( x, y ) ( ( ( x ) < ( y ) ) ? ( x ) : ( y ) )
 #endif
+*/
 
 // angle indexes
 #define	PITCH				0		// up / down
