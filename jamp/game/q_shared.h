@@ -1403,6 +1403,7 @@ typedef struct {
 #ifdef __linux__
 #define	SnapVector(v) {v[0]=((int)(v[0]));v[1]=((int)(v[1]));v[2]=((int)(v[2]));}
 #else 
+/*
 #ifndef __LCC__
 //pitiful attempt to reduce _ftol2 calls -rww
 static ID_INLINE void SnapVector( float *v )
@@ -1426,8 +1427,9 @@ static ID_INLINE void SnapVector( float *v )
 	*v = i;
 }
 #else
+*/
 #define	SnapVector(v) {v[0]=((int)(v[0]));v[1]=((int)(v[1]));v[2]=((int)(v[2]));}
-#endif // __LCC__
+//#endif // __LCC__
 #endif // __linux__
 
 // just in case you do't want to use the macros
