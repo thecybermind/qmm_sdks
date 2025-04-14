@@ -531,6 +531,7 @@ constexpr float STOP_EPSILON = 0.1f;
     return from * aFactor + to * bFactor;
 }
 
+/*
 // Fmt support
 template<>
 struct fmt::formatter<vec3_t> : fmt::formatter<float>
@@ -547,3 +548,4 @@ struct fmt::formatter<vec3_t> : fmt::formatter<float>
 		return fmt::formatter<float>::format(p.z, ctx);
     }
 };
+*/

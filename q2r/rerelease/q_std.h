@@ -33,7 +33,7 @@
 namespace fmt = std;
 #define FMT_STRING(s) s
 #else
-#include <fmt/format.h>
+// #include <fmt/format.h>
 #endif
 
 struct g_fmt_data_t {
@@ -44,6 +44,7 @@ struct g_fmt_data_t {
 // static data for fmt; internal, do not touch
 extern g_fmt_data_t g_fmt_data;
 
+/*
 // like fmt::format_to_n, but automatically null terminates the output;
 // returns the length of the string written (up to N)
 #ifdef USE_CPP20_FORMAT
@@ -65,6 +66,7 @@ inline size_t G_FmtTo_(char (&buffer)[N], const S &format_str, Args &&... args)
 
 	return end.out - buffer;
 }
+*/
 
 // format to temp buffers; doesn't use heap allocation
 // unlike `fmt::format` does directly
@@ -86,7 +88,7 @@ template<typename S, typename... Args>
 
 	return std::string_view(g_fmt_data.string[g_fmt_data.istr], len);
 }
-
+/*
 // fmt::join replacement
 template<typename T>
 std::string join_strings(const T &cont, const char *separator)
@@ -101,6 +103,7 @@ std::string join_strings(const T &cont, const char *separator)
 			return a;
 		});
 }
+*/
 
 using byte = uint8_t;
 

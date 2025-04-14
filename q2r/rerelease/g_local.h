@@ -3528,7 +3528,7 @@ inline bool M_CheckGib(edict_t *self, const mod_t &mod)
 
 	return self->health <= self->gib_health;
 }
-
+/*
 // Fmt support for entities
 template<>
 struct fmt::formatter<edict_t>
@@ -3547,6 +3547,7 @@ struct fmt::formatter<edict_t>
 		return fmt::format_to(ctx.out(), FMT_STRING("{} @ {}"), p.classname, p.s.origin);
     }
 };
+*/
 
 // POI tags used by this mod
 enum pois_t : uint16_t
