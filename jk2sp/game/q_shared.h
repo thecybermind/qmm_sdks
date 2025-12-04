@@ -29,6 +29,11 @@
 
 #endif
 
+#ifdef _HAS_STD_BYTE
+#undef _HAS_STD_BYTE
+#endif
+#define _HAS_STD_BYTE 0
+
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
@@ -38,7 +43,6 @@
 #include <time.h>
 #include <ctype.h>
 #include <stdint.h>
-
 
 // this is the define for determining if we have an asm version of a C function
 #if (defined _M_IX86 || defined __i386__) && !defined __sun__  && !defined __LCC__
