@@ -5,8 +5,8 @@
 #include "g_public.h"
 #include "b_public.h"
 #include "../icarus/StdAfx.h"	//need stl
-#include "../renderer/tr_types.h"
-#include "../cgame/cg_public.h"
+//#include "../renderer/tr_types.h"
+//#include "../cgame/cg_public.h"
 #include "g_vehicles.h"
 #include "hitlocs.h"
 #include "bset.h"

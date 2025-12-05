@@ -77,7 +77,7 @@ typedef struct
 class lessstr
 {
 public:
-	bool operator()(LPCTSTR str1, LPCTSTR str2) const {return (strcmp(str1, str2) < 0);};
+	bool operator()(LPCTSTR str1, LPCTSTR str2) const { return (strcmp((const char*)str1, (const char*)str2) < 0); };
 };
 
 class CParseStream

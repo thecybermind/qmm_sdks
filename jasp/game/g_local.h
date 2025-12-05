@@ -6,7 +6,7 @@
 // short, server-visible gclient_t and gentity_t structures,
 // because we define the full size ones in this file
 #define	GAME_INCLUDE
-#include "../ui/gameinfo.h"
+//#include "../ui/gameinfo.h"
 #include "g_shared.h"
 #include "anims.h"
 #include "dmstates.h"
