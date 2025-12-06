@@ -562,13 +562,13 @@ inline int Q_irand(int min, int max) {
 }
 
 //returns a float between 0 and 1.0
-inline float random() {
+inline float _random() {
 	return (rand() / ((float)0x7fff));
 }
 
 //returns a float between -1 and 1.0
 inline float crandom() {
-	return (2.0F * (random() - 0.5F));
+	return (2.0F * (_random() - 0.5F));
 }
 
 float erandom( float mean );
