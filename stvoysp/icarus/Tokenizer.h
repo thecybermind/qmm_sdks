@@ -18,6 +18,7 @@ using namespace std;
 typedef uint32_t	UINT;
 typedef int		HANDLE;
 typedef int32_t		COLORREF;
+typedef uint32_t		DWORD;
 typedef const char	*LPCTSTR;
 #endif
 
