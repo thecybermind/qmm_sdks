@@ -28,7 +28,7 @@ typedef const char	*LPCTSTR;
 
 #include "Interface.h" // for DWORD...
 
-typedef unsigned char byte;
+//typedef unsigned char byte;
 typedef unsigned short word;
 
 #define MAX_STRING_LENGTH		256
@@ -102,7 +102,7 @@ public:
 	~CParseStream();
 	static CParseStream* Create();
 	virtual void Delete();
-	virtual bool NextChar(byte& theByte);
+	virtual bool NextChar(unsigned char/*byte*/& theByte);
 	virtual int GetCurLine();
 	virtual void GetCurFilename(char** theBuff);
 	virtual long GetRemainingSize();
@@ -145,13 +145,13 @@ class CCharToken : public CToken
 public:
 	CCharToken();
 	~CCharToken();
-	static CCharToken* Create(byte theByte);
+	static CCharToken* Create(unsigned char/*byte*/ theByte);
 	virtual void Delete();
 
 	virtual int GetType();
 
 protected:
-	virtual void Init(byte theByte);
+	virtual void Init(unsigned char/*byte*/ theByte);
 };
 
 class CStringToken : public CToken
@@ -337,7 +337,7 @@ class CSymbolLookup
 public:
 	CSymbolLookup();
 	~CSymbolLookup();
-	static CSymbolLookup* Create(byte theByte);
+	static CSymbolLookup* Create(unsigned char/*byte*/ theByte);
 	virtual void Delete();
 	CSymbolLookup* GetNext();
 	void SetNext(CSymbolLookup* next);
@@ -347,16 +347,16 @@ public:
 	CSymbolLookup* GetChild();
 	void SetValue(int value);
 	int GetValue();
-	byte GetByte();
+	unsigned char/*byte*/ GetByte();
 
 protected:
-	void Init(byte theByte);
+	void Init(unsigned char/*byte*/ theByte);
 
 	CSymbolLookup*		m_child;
 	CSymbolLookup*		m_sibling;
 	CSymbolLookup*		m_parent;
 	int					m_value;
-	byte				m_byte;
+	unsigned char/*byte*/				m_byte;
 };
 
 class CTokenizerState
@@ -421,7 +421,7 @@ public:
 	void SetSymbols(keywordArray_t* theSymbols);
 	void SetAdditionalErrors(keywordArray_t* theErrors);
 	void SetErrorProc(LPTokenizerErrorProc errorProc);
-	void AddParseStream(byte* data, long datasize);
+	void AddParseStream(unsigned char/*byte*/* data, long datasize);
 	bool AddParseFile(LPCTSTR filename);
 	COLORREF ParseRGB();
 	long GetRemainingSize();
@@ -439,20 +439,20 @@ protected:
 	virtual void Init(UINT dwFlags = 0);
 	CToken* FetchToken();
 	bool AddDefineSymbol(CDirectiveSymbol* definesymbol);
-	bool NextChar(byte& theByte);
-	byte Escapement();
+	bool NextChar(unsigned char/*byte*/& theByte);
+	unsigned char/*byte*/ Escapement();
 	void InsertSymbol(LPCTSTR theSymbol, int theValue);
-	void PutBackChar(byte theByte, int curLine = 0, LPCTSTR filename = NULL);
+	void PutBackChar(unsigned char/*byte*/ theByte, int curLine = 0, LPCTSTR filename = NULL);
 	CToken* TokenFromName(LPCTSTR name);
 	CToken* HandleDirective();
 	CToken* HandleSlash();
 	CToken* HandleString();
 	CToken* HandleQuote();
-	CToken* HandleIdentifier(byte theByte);
-	CToken* HandleNumeric(byte theByte);
+	CToken* HandleIdentifier(unsigned char/*byte*/ theByte);
+	CToken* HandleNumeric(unsigned char/*byte*/ theByte);
 	CToken* HandleFloat(bool thesign = false, long value = 0);
 	CToken* HandleDecimal(bool thesign = false);
-	CToken* HandleSymbol(byte theByte);
+	CToken* HandleSymbol(unsigned char/*byte*/ theByte);
 	CToken* HandleHex(bool thesize);
 	CToken* HandleOctal(bool thesize);
 	int DirectiveFromName(LPCTSTR name);
@@ -488,17 +488,17 @@ class CParsePutBack : public CParseStream
 public:
 	CParsePutBack();
 	~CParsePutBack();
-	static CParsePutBack* Create(byte theByte, int curLine, LPCTSTR filename);
+	static CParsePutBack* Create(unsigned char/*byte*/ theByte, int curLine, LPCTSTR filename);
 	virtual void Delete();
-	virtual bool NextChar(byte& theByte);
+	virtual bool NextChar(unsigned char/*byte*/& theByte);
 	virtual int GetCurLine();
 	virtual void GetCurFilename(char** theBuff);
 	virtual long GetRemainingSize();
 
 protected:
-	virtual void Init(byte theByte, int curLine, LPCTSTR filename);
+	virtual void Init(unsigned char/*byte*/ theByte, int curLine, LPCTSTR filename);
 
-	byte			m_byte;
+	unsigned char/*byte*/			m_byte;
 	bool			m_consumed;
 	int				m_curLine;
 	char*			m_curFile;
@@ -509,17 +509,17 @@ class CParseMemory : public CParseStream
 public:
 	CParseMemory();
 	~CParseMemory();
-	static CParseMemory* Create(byte* data, long datasize);
+	static CParseMemory* Create(unsigned char/*byte*/* data, long datasize);
 	virtual void Delete();
-	virtual bool NextChar(byte& theByte);
+	virtual bool NextChar(unsigned char/*byte*/& theByte);
 	virtual int GetCurLine();
 	virtual void GetCurFilename(char** theBuff);
 	virtual long GetRemainingSize();
 
 protected:
-	virtual void Init(byte* data, long datasize);
+	virtual void Init(unsigned char/*byte*/* data, long datasize);
 
-	byte*			m_data;
+	unsigned char/*byte*/*			m_data;
 	int				m_curLine;
 	long			m_curPos;
 	long			m_datasize;
@@ -531,11 +531,11 @@ class CParseBlock : public CParseMemory
 public:
 	CParseBlock();
 	~CParseBlock();
-	static CParseBlock* Create(byte* data, long datasize);
+	static CParseBlock* Create(unsigned char/*byte*/* data, long datasize);
 	virtual void Delete();
 
 protected:
-	virtual void Init(byte* data, long datasize);
+	virtual void Init(unsigned char/*byte*/* data, long datasize);
 };
 
 class CParseToken : public CParseStream
@@ -545,7 +545,7 @@ public:
 	~CParseToken();
 	static CParseToken* Create(CToken* token);
 	virtual void Delete();
-	virtual bool NextChar(byte& theByte);
+	virtual bool NextChar(unsigned char/*byte*/& theByte);
 	virtual int GetCurLine();
 	virtual void GetCurFilename(char** theBuff);
 	virtual long GetRemainingSize();
@@ -553,7 +553,7 @@ public:
 protected:
 	virtual void Init(CToken* token);
 
-	byte*			m_data;
+	unsigned char/*byte*/*			m_data;
 	int				m_curLine;
 	long			m_curPos;
 	long			m_datasize;
@@ -588,7 +588,7 @@ public:
 	virtual void GetCurFilename(char** theBuff);
 	virtual long GetRemainingSize();
 
-	virtual bool NextChar(byte& theByte);
+	virtual bool NextChar(unsigned char/*byte*/& theByte);
 
 protected:
 	virtual bool Init();
@@ -602,7 +602,7 @@ protected:
 	char*			m_fileName;
 	int				m_curLine;
 	int				m_curPos;
-	byte*			m_buff;
+	unsigned char/*byte*/*			m_buff;
 	DWORD			m_curByte;
 	DWORD			m_filesize;
 	bool			m_ownsFile;
