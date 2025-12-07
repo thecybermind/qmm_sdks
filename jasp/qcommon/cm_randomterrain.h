@@ -22,7 +22,7 @@ private:
 	float		mInc;
 	float		mDepth, mBreadth;
 	float		mDeviation;
-	byte		mCircleStamp[CIRCLE_STAMP_SIZE][CIRCLE_STAMP_SIZE];
+	unsigned char		mCircleStamp[CIRCLE_STAMP_SIZE][CIRCLE_STAMP_SIZE];
 
 	void		CreateCircle(void);
 	void		Stamp(int x, int y, int size, int depth, unsigned char *Data, int DataWidth, int DataHeight);
@@ -58,7 +58,7 @@ private:
 	int					mHeight;
 	int					mArea;
 	int					mBorder;
-	byte				*mGrid;
+	unsigned char				*mGrid;
 	CPathInfo			*mPaths[MAX_RANDOM_PATHS];
 
 public:
@@ -72,7 +72,7 @@ public:
 	float				flrand(float min, float max) { return mLandScape->flrand(min, max); }
 	int					irand(int min, int max) { return mLandScape->irand(min, max); }
 
-	void	Init(class CCMLandScape *landscape, byte *data, int width, int height);
+	void	Init(class CCMLandScape *landscape, unsigned char *data, int width, int height);
 	void	Shutdown(void);
 	bool	CreatePath(int PathID, int ConnectedID, unsigned CreationFlags, int numPoints, 
 						float bx, float by, float ex, float ey, 

@@ -92,8 +92,8 @@ class CCMPatch
 protected:
 	class CCMLandScape		*owner;										// Owning landscape
 	int						mHx, mHy;									// Terxel coords of patch
-	byte					*mHeightMap;				 				// Pointer to height map to use
-	byte					mCornerHeights[4]; 							// Heights at the corners of the patch
+	unsigned char					*mHeightMap;				 				// Pointer to height map to use
+	unsigned char					mCornerHeights[4]; 							// Heights at the corners of the patch
 	vec3_t					mWorldCoords;				 				// World coordinate offset of this patch.
 	vec3pair_t 				mBounds;									// mins and maxs of the patch for culling
 	int						mNumBrushes;								// number of brushes to collide with in the patch
@@ -122,7 +122,7 @@ public:
 	const int GetContents(void) const { return(mContentFlags); }
 
 	// Prototypes
-	void Init(CCMLandScape *ls, int heightX, int heightY, vec3_t world, byte *hMap, byte *patchBrushData);
+	void Init(CCMLandScape *ls, int heightX, int heightY, vec3_t world, unsigned char *hMap, unsigned char *patchBrushData);
 	void InitPlane(struct cbrushside_s *side, cplane_t *plane, vec3_t p0, vec3_t p1, vec3_t p2);
 	void CreatePatchPlaneData(void);
 	
@@ -137,8 +137,8 @@ class CCMLandScape
 private:
 	int						mRefCount;									// Number of times this class is referenced
 	thandle_t				mTerrainHandle;
-	byte					*mHeightMap;								// Pointer to byte array of height samples
-	byte					*mFlattenMap;								// Pointer to byte array of flatten samples
+	unsigned char					*mHeightMap;								// Pointer to byte array of height samples
+	unsigned char					*mFlattenMap;								// Pointer to byte array of flatten samples
 	int						mWidth, mHeight;							// Width and height of heightMap excluding the 1 pixel edge
 	int						mTerxels;									// Number of terxels per patch side
 	vec3_t					mTerxelSize;								// Vector to scale heightMap samples to real world coords
@@ -148,7 +148,7 @@ private:
 	float					mPatchScalarSize;							// Horizontal size of the patch
 	int						mBlockWidth, mBlockHeight;					// Width and height of heightfield on blocks
 	CCMPatch 				*mPatches;
-	byte					*mPatchBrushData;							// Base memory from which the patch brush data is taken
+	unsigned char					*mPatchBrushData;							// Base memory from which the patch brush data is taken
 	bool					mHasPhysics;								// Set to true unless disabled
 	CRandomTerrain			*mRandomTerrain;
 							
@@ -215,8 +215,8 @@ public:
 	const int GetBlockWidth(void) const { return(mBlockWidth); }
 	const int GetBlockHeight(void) const { return(mBlockHeight); }
 	const int GetBlockCount(void) const { return(mBlockWidth * mBlockHeight); }
-	byte *GetHeightMap(void) const { return(mHeightMap); }
-	byte *GetFlattenMap(void) const { return(mFlattenMap); }
+	unsigned char *GetHeightMap(void) const { return(mHeightMap); }
+	unsigned char *GetFlattenMap(void) const { return(mFlattenMap); }
 	const thandle_t GetTerrainId(void) const { return(mTerrainHandle); }
 	void SetTerrainId(const thandle_t terrainId) { mTerrainHandle = terrainId; }
 	const float CalcWorldHeight(int height) const { return((height * mTerxelSize[2]) + mBounds[0][2]); }
@@ -255,12 +255,12 @@ CArea *CM_GetFirstObjectiveArea(CCMLandScape *landscape);
 CArea *CM_GetPlayerArea(class CCMLandScape *common);
 CArea *CM_GetNextArea(CCMLandScape *landscape);
 CArea *CM_GetNextObjectiveArea(CCMLandScape *landscape);
-void CM_CircularIterate(byte *data, int width, int height, int xo, int yo, int insideRadius, int outsideRadius, int *user, void (*callback)(byte *, float, int *));
+void CM_CircularIterate(unsigned char *data, int width, int height, int xo, int yo, int insideRadius, int outsideRadius, int *user, void (*callback)(unsigned char *, float, int *));
 
-CRandomTerrain *CreateRandomTerrain(const char *config, CCMLandScape *landscape, byte *heightmap, int width, int height);
+CRandomTerrain *CreateRandomTerrain(const char *config, CCMLandScape *landscape, unsigned char *heightmap, int width, int height);
 
 void SV_LoadMissionDef(const char *configstring, class CCMLandScape *landscape);
-void CL_CreateRandomTerrain(const char *config, class CCMLandScape *landscape, byte *image, int width, int height);
+void CL_CreateRandomTerrain(const char *config, class CCMLandScape *landscape, unsigned char *image, int width, int height);
 void CL_LoadInstanceDef(const char *configstring, class CCMLandScape *landscape);
 void CL_LoadMissionDef(const char *configstring, class CCMLandScape *landscape);
 

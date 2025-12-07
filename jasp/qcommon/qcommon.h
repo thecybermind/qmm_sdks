@@ -26,14 +26,14 @@
 typedef struct {
 	qboolean	allowoverflow;	// if false, do a Com_Error
 	qboolean	overflowed;		// set to true if the buffer size failed (with allowoverflow set)
-	byte	*data;
+	unsigned char	*data;
 	int		maxsize;
 	int		cursize;
 	int		readcount;
 	int		bit;				// for bitwise reads and writes
 } msg_t;
 
-void MSG_Init (msg_t *buf, byte *data, int length);
+void MSG_Init (msg_t *buf, unsigned char *data, int length);
 void MSG_Clear (msg_t *buf);
 void *MSG_GetSpace (msg_t *buf, int length);
 void MSG_WriteData (msg_t *buf, const void *data, int length);
@@ -178,13 +178,13 @@ typedef struct {
 	// incoming fragment assembly buffer
 	int			fragmentSequence;
 	int			fragmentLength;	
-	byte		fragmentBuffer[MAX_MSGLEN];
+	unsigned char		fragmentBuffer[MAX_MSGLEN];
 } netchan_t;
 
 void Netchan_Init( int qport );
 void Netchan_Setup( netsrc_t sock, netchan_t *chan, netadr_t adr, int qport );
 
-void Netchan_Transmit( netchan_t *chan, int length, const byte *data );
+void Netchan_Transmit( netchan_t *chan, int length, const unsigned char *data );
 qboolean Netchan_Process( netchan_t *chan, msg_t *msg );
 
 
@@ -801,9 +801,9 @@ qboolean Sys_FileOutOfDate( LPCSTR psFinalFileName /* dest */, LPCSTR psDataFile
 qboolean Sys_CopyFile(LPCSTR lpExistingFileName, LPCSTR lpNewFileName, qboolean bOverwrite);
 
 
-//byte*	SCR_GetScreenshot(qboolean *qValid);
-//void	SCR_SetScreenshot(const byte *pbData, int w, int h);
-//byte*	SCR_TempRawImage_ReadFromFile(const char *psLocalFilename, int *piWidth, int *piHeight, byte *pbReSampleBuffer, qboolean qbVertFlip);
+//unsigned char*	SCR_GetScreenshot(qboolean *qValid);
+//void	SCR_SetScreenshot(const unsigned char *pbData, int w, int h);
+//unsigned char*	SCR_TempRawImage_ReadFromFile(const char *psLocalFilename, int *piWidth, int *piHeight, unsigned char *pbReSampleBuffer, qboolean qbVertFlip);
 //void	SCR_TempRawImage_CleanUp();
 
 inline int Round(float value)

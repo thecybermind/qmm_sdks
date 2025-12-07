@@ -804,9 +804,9 @@ COLLISION DETECTION
 typedef struct cplane_s {
 	vec3_t	normal;
 	float	dist;
-	unsigned char/*byte*/	type;			// for fast side tests: 0,1,2 = axial, 3 = nonaxial
-	unsigned char/*byte*/	signbits;		// signx + (signy<<1) + (signz<<2), used as lookup during collision
-	unsigned char/*byte*/	pad[2];
+	unsigned char	type;			// for fast side tests: 0,1,2 = axial, 3 = nonaxial
+	unsigned char	signbits;		// signx + (signy<<1) + (signz<<2), used as lookup during collision
+	unsigned char	pad[2];
 } cplane_t;
 
 
@@ -995,7 +995,7 @@ typedef struct playerState_s {
 	vec3_t		pushVec;
 	// not communicated over the net at all
 	int			ping;			// server to game info for scoreboard
-	unsigned char/*byte*/		leanStopDebounceTime;
+	unsigned char		leanStopDebounceTime;
 } playerState_t;
 
 
@@ -1028,7 +1028,7 @@ typedef struct playerState_s {
 typedef struct usercmd_s {
 	int		serverTime;
 	int		buttons;
-	unsigned char/*byte*/	weapon;
+	unsigned char	weapon;
 	int		angles[3];
 	signed char	forwardmove, rightmove, upmove;
 } usercmd_t;

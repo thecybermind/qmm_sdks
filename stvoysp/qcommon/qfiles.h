@@ -452,7 +452,7 @@ typedef struct {
 	float		st[2];
 	float		lightmap[2];
 	vec3_t		normal;
-	byte		color[4];
+	unsigned char		color[4];
 } drawVert_t;
 
 typedef enum {

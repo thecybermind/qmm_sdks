@@ -48,7 +48,7 @@ typedef struct
 	char	*script;
 	char	*targetname;
 	char	*ownername;
-	byte	numNeighbors;
+	unsigned char	numNeighbors;
 } waypoint_t;
 
 typedef struct
@@ -71,7 +71,7 @@ typedef struct
 
 typedef struct {
 	int		waypoint[MAX_WP_DEPTH];
-	byte	stepCost[MAX_WP_DEPTH];
+	unsigned char	stepCost[MAX_WP_DEPTH];
 } path_t;
 
 #define		ROUTE_BAD		-1

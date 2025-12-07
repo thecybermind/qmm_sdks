@@ -458,7 +458,7 @@ typedef struct {
 	float		st[2];
 	float		lightmap[MAXLIGHTMAPS][2];
 	vec3_t		normal;
-	byte		color[MAXLIGHTMAPS][4];
+	unsigned char		color[MAXLIGHTMAPS][4];
 } mapVert_t;
 
 typedef struct {
@@ -466,15 +466,15 @@ typedef struct {
 	float		st[2];
 	float		lightmap[MAXLIGHTMAPS][2];
 	vec3_t		normal;
-	byte		color[MAXLIGHTMAPS][4];
+	unsigned char		color[MAXLIGHTMAPS][4];
 } drawVert_t;
 
 typedef struct
 {
-	byte		ambientLight[MAXLIGHTMAPS][3];
-	byte		directLight[MAXLIGHTMAPS][3];
-	byte		styles[MAXLIGHTMAPS];
-	byte		latLong[2];
+	unsigned char		ambientLight[MAXLIGHTMAPS][3];
+	unsigned char		directLight[MAXLIGHTMAPS][3];
+	unsigned char		styles[MAXLIGHTMAPS];
+	unsigned char		latLong[2];
 }  dgrid_t;
 
 typedef enum {
@@ -496,7 +496,7 @@ typedef struct {
 	int			firstIndex;
 	int			numIndexes;
 
-	byte		lightmapStyles[MAXLIGHTMAPS], vertexStyles[MAXLIGHTMAPS];
+	unsigned char		lightmapStyles[MAXLIGHTMAPS], vertexStyles[MAXLIGHTMAPS];
 	int			lightmapNum[MAXLIGHTMAPS];
 	int			lightmapX[MAXLIGHTMAPS], lightmapY[MAXLIGHTMAPS];
 	int			lightmapWidth, lightmapHeight;

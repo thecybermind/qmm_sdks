@@ -28,7 +28,7 @@ void		CM_TransformedBoxTrace( trace_t *results, const vec3_t start, const vec3_t
 						  clipHandle_t model, int brushmask,
 						  const vec3_t origin, const vec3_t angles);
 
-byte		*CM_ClusterPVS (int cluster);
+unsigned char		*CM_ClusterPVS (int cluster);
 
 int			CM_PointLeafnum( const vec3_t p );
 
@@ -43,7 +43,7 @@ int			CM_LeafArea (int leafnum);
 void		CM_AdjustAreaPortalState( int area1, int area2, qboolean open );
 qboolean	CM_AreasConnected( int area1, int area2 );
 
-int			CM_WriteAreaBits( byte *buffer, int area );
+int			CM_WriteAreaBits( unsigned char *buffer, int area );
 
 //for savegames
 void		CM_WritePortalState ();

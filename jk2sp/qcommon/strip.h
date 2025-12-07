@@ -63,11 +63,11 @@ class cStringPackageID
 {
 private:
 	string	name;
-	byte	reg;
+	unsigned char	reg;
 public:
-	cStringPackageID(const char *in_name, byte in_reg) { name = in_name; reg = in_reg; }
+	cStringPackageID(const char *in_name, unsigned char in_reg) { name = in_name; reg = in_reg; }
 	const char *GetName(void) const { return(name.c_str()); }
-	byte GetReg(void) const { return(reg); }
+	unsigned char GetReg(void) const { return(reg); }
 };
 
 
@@ -86,7 +86,7 @@ public:
 	void			Register(unsigned char newRegistration) { Registration |= newRegistration; }
 	bool			UnRegister(unsigned char oldRegistration) { Registration &= ~oldRegistration; return (Registration == 0); }
 	bool			RegisteredOnServer(void) const { return(!!(Registration & SP_REGISTER_SERVER)); }
-	byte			GetRegistration(void) const { return(Registration); }
+	unsigned char			GetRegistration(void) const { return(Registration); }
 
 	void			SetID(unsigned char newID) { ID = newID; }
 	void			SetReference(char *newReference);

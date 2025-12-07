@@ -291,12 +291,12 @@ typedef struct {
 
 typedef struct {
 	int				planeNum;		// positive plane side faces out of the leaf
-	byte			shaderNum;
+	unsigned char			shaderNum;
 } dbrushside_t;
 
 typedef struct {
 	int				firstSide;
-	byte			numSides;
+	unsigned char			numSides;
 	unsigned short	shaderNum;		// the shader that determines the contents flags
 } dbrush_t;
 
@@ -318,7 +318,7 @@ typedef struct {
 	float			st[2];
 	short			xyz[3];
 	short			normal[3];
-	byte			color[MAXLIGHTMAPS][4];
+	unsigned char			color[MAXLIGHTMAPS][4];
 } mapVert_t;
 
 #define DRAWVERT_LIGHTMAP_SCALE 32768.0f
@@ -351,66 +351,66 @@ typedef struct {
 	vec3_t		tangent;
 #endif
 #ifdef COMPRESS_VERTEX_COLORS
-	byte		dvcolor[MAXLIGHTMAPS][1];
+	unsigned char		dvcolor[MAXLIGHTMAPS][1];
 #else
-	byte		dvcolor[MAXLIGHTMAPS][4];
+	unsigned char		dvcolor[MAXLIGHTMAPS][4];
 #endif
 } drawVert_t;
 
 typedef struct {
-	byte	flags;
-	byte	latLong[2];
+	unsigned char	flags;
+	unsigned char	latLong[2];
 } dgrid_t;
 
 typedef struct {
 	int			code;
-	byte		shaderNum;
+	unsigned char		shaderNum;
 	signed char	fogNum;
 
 	unsigned int	verts;				// high 20 bits are first vert, low 12 are num verts
 	unsigned int	indexes;			// high 20 bits are first index, low 12 are num indices
 
-	byte		lightmapStyles[MAXLIGHTMAPS];
-	byte		lightmapNum[MAXLIGHTMAPS];
+	unsigned char		lightmapStyles[MAXLIGHTMAPS];
+	unsigned char		lightmapNum[MAXLIGHTMAPS];
 
 	short		lightmapVecs[3];
 } dface_t;
 
 typedef struct {
 	int			code;
-	byte		shaderNum;
+	unsigned char		shaderNum;
 	signed char	fogNum;
 
 	unsigned int	verts;				// high 20 bits are first vert, low 12 are num verts
 
-	byte		lightmapStyles[MAXLIGHTMAPS];
-	byte		lightmapNum[MAXLIGHTMAPS];
+	unsigned char		lightmapStyles[MAXLIGHTMAPS];
+	unsigned char		lightmapNum[MAXLIGHTMAPS];
 
 	short		lightmapVecs[2][3];		// for patches, [0] and [1] are lodbounds
 
-	byte		patchWidth;
-	byte		patchHeight;
+	unsigned char		patchWidth;
+	unsigned char		patchHeight;
 } dpatch_t;
 
 typedef struct {
 	int			code;
-	byte		shaderNum;
+	unsigned char		shaderNum;
 	signed char	fogNum;
 
 	unsigned int	verts;				// high 20 bits are first vert, low 12 are num verts
 	unsigned int	indexes;			// high 20 bits are first index, low 12 are num indices
 
-	byte		lightmapStyles[MAXLIGHTMAPS];
+	unsigned char		lightmapStyles[MAXLIGHTMAPS];
 } dtrisurf_t;
 
 typedef struct {
 	int				code;
-	byte			shaderNum;
+	unsigned char			shaderNum;
 	signed char     fogNum;
 
 	short			origin[3];
 	short			normal[3];
-	byte			color[3];
+	unsigned char			color[3];
 } dflare_t;
 
 #pragma pack(pop)
@@ -518,7 +518,7 @@ typedef struct {
 	float		st[2];
 	float		lightmap[MAXLIGHTMAPS][2];
 	vec3_t		normal;
-	byte		color[MAXLIGHTMAPS][4];
+	unsigned char		color[MAXLIGHTMAPS][4];
 } mapVert_t;
 
 typedef struct {
@@ -526,15 +526,15 @@ typedef struct {
 	float		st[2];
 	float		lightmap[MAXLIGHTMAPS][2];
 	vec3_t		normal;
-	byte		color[MAXLIGHTMAPS][4];
+	unsigned char		color[MAXLIGHTMAPS][4];
 } drawVert_t;
 
 typedef struct
 {
-	byte		ambientLight[MAXLIGHTMAPS][3];
-	byte		directLight[MAXLIGHTMAPS][3];
-	byte		styles[MAXLIGHTMAPS];
-	byte		latLong[2];
+	unsigned char		ambientLight[MAXLIGHTMAPS][3];
+	unsigned char		directLight[MAXLIGHTMAPS][3];
+	unsigned char		styles[MAXLIGHTMAPS];
+	unsigned char		latLong[2];
 }  dgrid_t;
 
 typedef enum {
@@ -556,7 +556,7 @@ typedef struct {
 	int			firstIndex;
 	int			numIndexes;
 
-	byte		lightmapStyles[MAXLIGHTMAPS], vertexStyles[MAXLIGHTMAPS];
+	unsigned char		lightmapStyles[MAXLIGHTMAPS], vertexStyles[MAXLIGHTMAPS];
 	int			lightmapNum[MAXLIGHTMAPS];
 	int			lightmapX[MAXLIGHTMAPS], lightmapY[MAXLIGHTMAPS];
 	int			lightmapWidth, lightmapHeight;

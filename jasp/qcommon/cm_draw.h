@@ -44,12 +44,12 @@ typedef struct {
 class CPixel32
 {
 public:
-	byte r;
-	byte g;
-	byte b;
-	byte a;
+	unsigned char r;
+	unsigned char g;
+	unsigned char b;
+	unsigned char a;
 
-	CPixel32(byte R = 0, byte G = 0, byte B = 0, byte A = 255) : r(R), g(G), b(B), a(A) {}
+	CPixel32(unsigned char R = 0, unsigned char G = 0, unsigned char B = 0, unsigned char A = 255) : r(R), g(G), b(B), a(A) {}
 	CPixel32(long l) {r = (l >> 24) & 0xff; g = (l >> 16) & 0xff; b = (l >> 8) & 0xff; a = l & 0xff;};
 
 	~CPixel32()
@@ -63,23 +63,23 @@ public:
 
 
 inline CPixel32 AVE_PIX (CPixel32 x, CPixel32 y) 
-	{ CPixel32 t; t.r = (byte)(((int)x.r + (int)y.r)>>1); 
-				  t.g = (byte)(((int)x.g + (int)y.g)>>1); 
-				  t.b = (byte)(((int)x.b + (int)y.b)>>1); 
-				  t.a = (byte)(((int)x.a + (int)y.a)>>1); return t;}
+	{ CPixel32 t; t.r = (unsigned char)(((int)x.r + (int)y.r)>>1); 
+				  t.g = (unsigned char)(((int)x.g + (int)y.g)>>1); 
+				  t.b = (unsigned char)(((int)x.b + (int)y.b)>>1); 
+				  t.a = (unsigned char)(((int)x.a + (int)y.a)>>1); return t;}
 
 inline CPixel32 ALPHA_PIX (CPixel32 x, CPixel32 y, long alpha, long inv_alpha) 
-	{ CPixel32 t; t.r = (byte)((x.r*alpha + y.r*inv_alpha)>>8); 
-				  t.g = (byte)((x.g*alpha + y.g*inv_alpha)>>8); 
-				  t.b = (byte)((x.b*alpha + y.b*inv_alpha)>>8); 
-//				  t.a = (byte)((x.a*alpha + y.a*inv_alpha)>>8);  return t;}
+	{ CPixel32 t; t.r = (unsigned char)((x.r*alpha + y.r*inv_alpha)>>8); 
+				  t.g = (unsigned char)((x.g*alpha + y.g*inv_alpha)>>8); 
+				  t.b = (unsigned char)((x.b*alpha + y.b*inv_alpha)>>8); 
+//				  t.a = (unsigned char)((x.a*alpha + y.a*inv_alpha)>>8);  return t;}
 				  t.a = y.a;  return t;}
 
 inline CPixel32 LIGHT_PIX (CPixel32 p, long light) 
 { CPixel32 t; 
-  t.r = (byte)CLAMP(((p.r * light)>>10) + p.r, 0, 255); 
-  t.g = (byte)CLAMP(((p.g * light)>>10) + p.g, 0, 255); 
-  t.b = (byte)CLAMP(((p.b * light)>>10) + p.b, 0, 255); 
+  t.r = (unsigned char)CLAMP(((p.r * light)>>10) + p.r, 0, 255); 
+  t.g = (unsigned char)CLAMP(((p.g * light)>>10) + p.g, 0, 255); 
+  t.b = (unsigned char)CLAMP(((p.b * light)>>10) + p.b, 0, 255); 
   t.a = p.a;  return t;}
 
 // Colors are 32-bit RGBA
@@ -177,10 +177,10 @@ public:
 		{ClearLines(color,0,buf_height-1);};
 
 	// fill buffer alpha from start to end line
-	void				SetAlphaLines(byte alpha,long start,long end);
+	void				SetAlphaLines(unsigned char alpha,long start,long end);
 
 	// clear screen buffer to color provided
-	void				SetAlphaBuffer(byte alpha)
+	void				SetAlphaBuffer(unsigned char alpha)
 		{SetAlphaLines(alpha,0,buf_height-1);};
 
 	// clip a line segment to the clip rect

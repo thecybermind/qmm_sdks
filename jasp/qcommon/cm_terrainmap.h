@@ -11,22 +11,22 @@
 class CTerrainMap
 {
 private:
-	byte			mImage[TM_HEIGHT][TM_WIDTH][4];	// image to output
-	byte			mBufImage[TM_HEIGHT][TM_WIDTH][4];	// src data for image, color and bump
+	unsigned char			mImage[TM_HEIGHT][TM_WIDTH][4];	// image to output
+	unsigned char			mBufImage[TM_HEIGHT][TM_WIDTH][4];	// src data for image, color and bump
 
-	byte*			mSymBld;
+	unsigned char*			mSymBld;
 	int				mSymBldWidth;
 	int				mSymBldHeight;
 
-	byte*			mSymStart;
+	unsigned char*			mSymStart;
 	int				mSymStartWidth;
 	int				mSymStartHeight;
 
-	byte*			mSymEnd;
+	unsigned char*			mSymEnd;
 	int				mSymEndWidth;
 	int				mSymEndHeight;
 
-	byte*			mSymObjective;
+	unsigned char*			mSymObjective;
 	int				mSymObjectiveWidth;
 	int				mSymObjectiveHeight;
 

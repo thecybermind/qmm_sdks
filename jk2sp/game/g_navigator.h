@@ -199,8 +199,8 @@ public:
 	int	GetNodeRadius( int nodeID );
 	void CheckBlockedEdges( void );
 	void ClearCheckedNodes( void );
-	byte CheckedNode(int wayPoint,int ent);
-	void SetCheckedNode(int wayPoint,int ent,byte value);
+	unsigned char CheckedNode(int wayPoint,int ent);
+	void SetCheckedNode(int wayPoint,int ent,unsigned char value);
 
 	void FlagAllNodes( int newFlag );
 
