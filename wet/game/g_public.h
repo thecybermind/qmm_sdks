@@ -424,8 +424,12 @@ typedef enum {
 	BOTLIB_PC_SOURCE_FILE_AND_LINE,
 	BOTLIB_PC_UNREAD_TOKEN,
 
-	PB_STAT_REPORT
+	PB_STAT_REPORT,
 
+	// zinx
+	G_SENDMESSAGE,
+	G_MESSAGESTATUS,
+	// -zinx
 } gameImport_t;
 
 
@@ -470,5 +474,8 @@ typedef enum {
 	,BOT_VISIBLEFROMPOS
 	,BOT_CHECKATTACKATPOS
 	// done.
+	// zinx
+	,GAME_MESSAGERECEIVED,           // ( int cno, const char *buf, int buflen, int commandTime );
+	// -zinx
 } gameExport_t;
 
