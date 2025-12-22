@@ -6,6 +6,8 @@
 
 //#define PRE_RELEASE_DEMO
 
+#define COM_TRAP_GETVALUE 700
+
 #ifndef PRE_RELEASE_DEMO
 #define	Q3_VERSION		"ET 2.56"
 #else

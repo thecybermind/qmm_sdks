@@ -430,6 +430,15 @@ typedef enum {
 	G_SENDMESSAGE,
 	G_MESSAGESTATUS,
 	// -zinx
+
+	TVG_GET_PLAYERSTATE = 600,
+
+	///< engine extensions padding
+	G_TRAP_GETVALUE = COM_TRAP_GETVALUE,
+
+	G_DEMOSUPPORT,
+	G_SNAPSHOT_CALLBACK_EXT,
+	G_SNAPSHOT_SETCLIENTMASK,
 } gameImport_t;
 
 
@@ -468,14 +477,18 @@ typedef enum {
 
 	GAME_SNAPSHOT_CALLBACK,			// ( int entityNum, int clientNum ); // return qfalse if you don't want it to be added
 
-	BOTAI_START_FRAME				// ( int time );
+	BOTAI_START_FRAME,				// ( int time );
 
 	// Ridah, Cast AI
-	,BOT_VISIBLEFROMPOS
-	,BOT_CHECKATTACKATPOS
+	BOT_VISIBLEFROMPOS,
+	BOT_CHECKATTACKATPOS,
 	// done.
 	// zinx
-	,GAME_MESSAGERECEIVED,           // ( int cno, const char *buf, int buflen, int commandTime );
+	GAME_MESSAGERECEIVED,           // ( int cno, const char *buf, int buflen, int commandTime );
 	// -zinx
+
+	GAME_DEMOSTATECHANGED,          ///< (demoState_t demoState, int demoClientsNum) // server demo playback
+	GAME_SNAPSHOT_CALLBACK_EXT,     ///< ( int entityNum, int clientNum, int clientNumReal ); // return qfalse if you don't want it to be added
+
 } gameExport_t;
 
