@@ -339,6 +339,10 @@
 #ifndef __G_LOCAL_H__
 #define __G_LOCAL_H__
 
+#ifndef SIN
+#define SIN
+#endif
+
 #if 0
 
 #define EXPORT_FROM_DLL __declspec( dllexport )
