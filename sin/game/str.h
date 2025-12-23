@@ -39,7 +39,7 @@
 #include <assert.h>
 #include <string.h>
 
-#if 1
+#if _WIN32
 class __declspec( dllexport ) str
 #else
 class str

@@ -629,6 +629,8 @@
 #pragma warning(disable : 4018)     // signed/unsigned mismatch
 #pragma warning(disable : 4305)		// truncation from const double to float
 
+#else
+#define __cdecl /**/
 #endif
 
 #ifndef _H2INC
