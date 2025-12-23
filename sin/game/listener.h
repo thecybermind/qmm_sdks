@@ -174,10 +174,10 @@ class EXPORT_FROM_DLL Event : public Class
       friend void EXPORT_FROM_DLL G_ArchiveEvents( Archiver &arc );
       friend void EXPORT_FROM_DLL G_UnarchiveEvents( Archiver &arc );
 
-		static Container<str *>	*Event::commandList;
-		static Container<int>	*Event::flagList;
-		static Container<int>	*Event::sortedList;
-		static qboolean			Event::dirtylist;
+		static Container<str *>	*/*Event::*/commandList;
+		static Container<int>	*/*Event::*/flagList;
+		static Container<int>	*/*Event::*/sortedList;
+		static qboolean			/*Event::*/dirtylist;
 
 		static int			compareEvents( const void *arg1, const void *arg2 );
 		static void			SortEventList( void );
