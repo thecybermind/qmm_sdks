@@ -855,7 +855,7 @@ class EXPORT_FROM_DLL StandardMovement
 		)
 
 		{
-		minwidth = max( size.x, size.y );
+		minwidth = q_max( size.x, size.y );
 		minheight = size.z;
 		}
 
@@ -876,8 +876,8 @@ class EXPORT_FROM_DLL StandardMovement
 		d1		= abs( ( int )delta[ 0 ] );
 		d2		= abs( ( int )delta[ 1 ] );
 		d3		= abs( ( int )delta[ 2 ] );
-		h		= max( d1, d2 );
-		h		= max( d3, h );
+		h		= q_max( d1, d2 );
+		h		= q_max( d3, h );
 
 		return h;
 		}

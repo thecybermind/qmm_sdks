@@ -643,11 +643,11 @@
 
 #endif
 
-#ifndef min
-#define min(a,b)  (((a) < (b)) ? (a) : (b))
+#ifndef q_min
+#define q_min(a,b)  (((a) < (b)) ? (a) : (b))
 #endif
-#ifndef max
-#define max(a,b)  (((a) > (b)) ? (a) : (b))
+#ifndef q_max
+#define q_max(a,b)  (((a) > (b)) ? (a) : (b))
 #endif
 
 #ifndef _H2INC
