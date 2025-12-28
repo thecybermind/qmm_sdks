@@ -25,7 +25,7 @@ struct cmd_function_s
     const char *name;
     const char *autoCompleteDir;
     const char *autoCompleteExt;
-    void(__cdecl *function)();
+    void( *function)();
 };
 
 struct CmdText // sizeof=0xC

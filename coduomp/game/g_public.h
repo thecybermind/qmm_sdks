@@ -19,14 +19,14 @@ static const char *g_dedicatedEnumNames[4] = { "listen server", "dedicated LAN s
 struct BuiltinFunctionDef // sizeof=0xC
 {
     const char *actionString;
-    void(__cdecl *actionFunc)();
+    void( *actionFunc)();
     int32_t type;
 };
 
 struct BuiltinMethodDef // sizeof=0xC
 {                                       // ...
     const char *actionString;           // ...
-    void(__cdecl *actionFunc)(scr_entref_t); // ...
+    void( *actionFunc)(scr_entref_t); // ...
     int32_t type;                           // ...
 };
 
@@ -101,7 +101,7 @@ enum meansOfDeath_t
 struct SpawnFuncEntry // sizeof=0x8
 {                                       // ...
     const char *classname;
-    void(__cdecl *callback)(gentity_s *);
+    void( *callback)(gentity_s *);
 };
 
 

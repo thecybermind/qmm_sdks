@@ -34,7 +34,7 @@
 #define	MAC_STATIC
 
 #undef QDECL
-#define	QDECL	__cdecl
+#define	QDECL	
 
 // buildstring will be incorporated into the version string
 #ifdef NDEBUG
@@ -53,8 +53,8 @@
 
 #define ID_INLINE __inline 
 
-int __cdecl ShortSwap(short l);
-int __cdecl LongSwap(int l);
+int  ShortSwap(short l);
+int  LongSwap(int l);
 
 static ID_INLINE short BigShort(short l) { return ShortSwap(l); }
 #define LittleShort
@@ -492,7 +492,7 @@ struct cvar_s {
 	CvarValue latched;
 	CvarValue reset;
 	CvarLimits domain;
-	bool (__cdecl *domainFunc)(cvar_s*, CvarValue);
+	bool ( *domainFunc)(cvar_s*, CvarValue);
 	cvar_s* hashNext;
 };
 

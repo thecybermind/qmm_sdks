@@ -9,14 +9,14 @@ struct gentity_s;
 
 struct entityHandler_t // sizeof=0x28
 {
-    void(__cdecl *think)(gentity_s *);
-    void(__cdecl *reached)(gentity_s *);
-    void(__cdecl *blocked)(gentity_s *, gentity_s *);
-    void(__cdecl *touch)(gentity_s *, gentity_s *, int32_t);
-    void(__cdecl *use)(gentity_s *, gentity_s *, gentity_s *);
-    void(__cdecl *pain)(gentity_s *, gentity_s *, int32_t, const float *, const int32_t, const float *, const hitLocation_t, const int32_t);
-    void(__cdecl *die)(gentity_s *, gentity_s *, gentity_s *, int32_t, int32_t, const int, const float *, const hitLocation_t, int32_t);
-    void(__cdecl *controller)(const gentity_s *, int32_t *);
+    void( *think)(gentity_s *);
+    void( *reached)(gentity_s *);
+    void( *blocked)(gentity_s *, gentity_s *);
+    void( *touch)(gentity_s *, gentity_s *, int32_t);
+    void( *use)(gentity_s *, gentity_s *, gentity_s *);
+    void( *pain)(gentity_s *, gentity_s *, int32_t, const float *, const int32_t, const float *, const hitLocation_t, const int32_t);
+    void( *die)(gentity_s *, gentity_s *, gentity_s *, int32_t, int32_t, const int, const float *, const hitLocation_t, int32_t);
+    void( *controller)(const gentity_s *, int32_t *);
     int32_t methodOfDeath;
     int32_t splashMethodOfDeath;
 };

@@ -285,8 +285,8 @@ struct pmove_t // sizeof=0x110
 
 struct pmoveHandler_t // sizeof=0x8
 {
-    void(__cdecl *trace)(trace_t *, const float *, const float *, const float *, const float *, int, int);
-    void(__cdecl *playerEvent)(int, int);
+    void( *trace)(trace_t *, const float *, const float *, const float *, const float *, int, int);
+    void( *playerEvent)(int, int);
 };
 
 struct tagInfo_s // sizeof=0x70  (SP/MP same)
