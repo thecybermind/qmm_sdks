@@ -368,7 +368,7 @@ enum MissileFlightMode
     MISSILEFLIGHTMODE_DIRECT = 0x1,
 };
 
-enum team_t;
+
 
 struct corpse_ent_t // sizeof=0x4
 {                                       // ...

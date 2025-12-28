@@ -281,7 +281,7 @@ struct shellshock_parms_t_movement // sizeof=0x1
     bool affect;
 };
 
-const struct shellshock_parms_t // sizeof=0x268
+struct shellshock_parms_t // sizeof=0x268
 {                                       // ...
     shellshock_parms_t_screenblend screenBlend;
     shellshock_parms_t_view view;
@@ -304,7 +304,7 @@ struct shellshock_t // sizeof=0x20
     int32_t hasSavedScreen;
 };
 
-struct __declspec(align(8)) animation_s // sizeof=0x68
+struct  animation_s // sizeof=0x68
 {                                       // ...
     char name[64];
     int32_t initialLerp;
@@ -372,7 +372,7 @@ struct scr_animtree_t // sizeof=0x4
     void/*XAnim_s*/* anims;                     // ...
 };
 
-struct __declspec(align(8)) animScriptData_t // sizeof=0x9A9D0
+struct  animScriptData_t // sizeof=0x9A9D0
 {                                       // ...
     animation_s animations[512];
     uint32_t numAnimations;
