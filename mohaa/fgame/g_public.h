@@ -577,7 +577,3 @@ typedef struct gameExport_s {
 
     const char *errorMessage;
 } game_export_t;
-
-#ifdef __cplusplus
-extern "C"
-#endif
