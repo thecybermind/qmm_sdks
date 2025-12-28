@@ -1,10 +1,9 @@
 #pragma once
-//#include <xanim/xanim.h>
+
 #include "../qcommon/msg.h"
 #include "../bgame/bg_public.h"
 #include "../script/scr_variable.h"
 #include "g_main.h"
-#include "../game/game_public.h"
 #include "../script/scr_const.h"
 #include "../bgame/bg_local.h"
 
@@ -27,26 +26,6 @@ struct BuiltinMethodDef // sizeof=0xC
     const char *actionString;           // ...
     void(__cdecl *actionFunc)(scr_entref_t); // ...
     int32_t type;                           // ...
-};
-
-static uint16_t *modNames[16] =
-{
-    &scr_const.mod_unknown,
-    &scr_const.mod_pistol_bullet,
-    &scr_const.mod_rifle_bullet,
-    &scr_const.mod_grenade,
-    &scr_const.mod_grenade_splash,
-    &scr_const.mod_projectile,
-    &scr_const.mod_projectile_splash,
-    &scr_const.mod_melee,
-    &scr_const.mod_head_shot,
-    &scr_const.mod_crush,
-    &scr_const.mod_telefrag,
-    &scr_const.mod_falling,
-    &scr_const.mod_suicide,
-    &scr_const.mod_trigger_hurt,
-    &scr_const.mod_explosive,
-    &scr_const.mod_impact
 };
 
 struct gameTypeScript_t // sizeof=0x84
@@ -131,120 +110,3 @@ struct useList_t // sizeof=0x8
     float score;
 };
 
-
-const entityHandler_t entityHandlers[] =
-{
-  { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0 },
-  { NULL, NULL, NULL, &Touch_Multi, NULL, NULL, NULL, NULL, 0, 0 },
-  { NULL, NULL, NULL, NULL, &hurt_use, NULL, NULL, NULL, 0, 0 },
-  { NULL, NULL, NULL, &hurt_touch, &hurt_use, NULL, NULL, NULL, 0, 0 },
-  {
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    &Use_trigger_damage,
-    &Pain_trigger_damage,
-    &Die_trigger_damage,
-    NULL,
-    0,
-    0
-  },
-  { NULL, &Reached_ScriptMover, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0 },
-  { NULL, &Reached_ScriptMover, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0 },
-  {
-    &G_ExplodeMissile,
-    NULL,
-    NULL,
-    &Touch_Item_Auto,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    3,
-    4
-  },
-  { &G_TimedObjectThink, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0 },
-  { &G_ExplodeMissile, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 6 },
-  { NULL, NULL, NULL, NULL, NULL, NULL, &player_die, &G_PlayerController, 0, 0 },
-  { NULL, NULL, NULL, NULL, NULL, NULL, &player_die, NULL, 0, 0 },
-  { NULL, NULL, NULL, NULL, NULL, NULL, NULL, &G_PlayerController, 0, 0 },
-  { &BodyEnd, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0 },
-  {
-    &turret_think_init,
-    NULL,
-    NULL,
-    NULL,
-    &turret_use,
-    NULL,
-    NULL,
-    &turret_controller,
-    0,
-    0
-  },
-  {
-    &turret_think,
-    NULL,
-    NULL,
-    NULL,
-    &turret_use,
-    NULL,
-    NULL,
-    &turret_controller,
-    0,
-    0
-  },
-  {
-    &DroppedItemClearOwner,
-    NULL,
-    NULL,
-    &Touch_Item_Auto,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    0,
-    0
-  },
-  {
-    &FinishSpawningItem,
-    NULL,
-    NULL,
-    &Touch_Item_Auto,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    0,
-    0
-  },
-  { NULL, NULL, NULL, &Touch_Item_Auto, NULL, NULL, NULL, NULL, 0, 0 },
-    //{ NULL, NULL, NULL, NULL, &KISAK_NULLSUB, NULL, NULL, NULL, 0, 0 },
-    { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0 },
-    { NULL, &Reached_ScriptMover, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0 },
-    { &G_FreeEntity, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0 },
-    {
-      &G_VehEntHandler_Think,
-      NULL,
-      NULL,
-      &G_VehEntHandler_Touch,
-      &G_VehEntHandler_Use,
-      &Helicopter_Pain,
-      &G_VehEntHandler_Die,
-      &G_VehEntHandler_Controller,
-      0,
-      0
-    },
-    {
-      &Helicopter_Think,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      &Helicopter_Pain,
-      &Helicopter_Die,
-      &Helicopter_Controller,
-      0,
-      0
-    }
-}; // idb
