@@ -13,7 +13,7 @@
 
 #include <cstdint>
 
-enum team_t;
+typedef int team_t;
 
 enum animBodyPart_t
 {                                       // ...
