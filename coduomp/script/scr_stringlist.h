@@ -46,9 +46,9 @@ struct __declspec(align(128)) scrStringGlob_t
      {
          struct
          {
-             unsigned __int32 refCount : 16;
-             unsigned __int32 user : 8;
-             unsigned __int32 byteLen : 8;
+             unsigned int refCount : 16;
+             unsigned int user : 8;
+             unsigned int byteLen : 8;
          };
          volatile unsigned int data;
      };

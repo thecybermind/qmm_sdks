@@ -79,10 +79,10 @@ enum var_stat_t
 struct VariableStackBuffer // sizeof=0xC
 {
     const char *pos;
-    unsigned __int16 size;
-    unsigned __int16 bufLen;
-    unsigned __int16 localId;
-    unsigned __int8 time;
+    unsigned short size;
+    unsigned short bufLen;
+    unsigned short localId;
+    unsigned char time;
     char buf[1];
 };
 union VariableUnion // sizeof=0x4
@@ -126,27 +126,27 @@ struct VariableValue // sizeof=0x8
 
 union ObjectInfo_u // sizeof=0x2
 {                                       // ...
-    unsigned __int16 size;
-    unsigned __int16 entnum;
-    unsigned __int16 nextEntId;
-    unsigned __int16 self;
+    unsigned short size;
+    unsigned short entnum;
+    unsigned short nextEntId;
+    unsigned short self;
 };
 
 struct ObjectInfo // sizeof=0x4
 {                                       // ...
-    unsigned __int16 refCount;
+    unsigned short refCount;
     ObjectInfo_u u;
 };
 
 union Variable_u // sizeof=0x2
 {                                       // ...
-    unsigned __int16 prev;
-    unsigned __int16 prevSibling;
+    unsigned short prev;
+    unsigned short prevSibling;
 };
 
 struct Variable // sizeof=0x4
 {                                       // ...
-    unsigned __int16 id;                // ...
+    unsigned short id;                // ...
     Variable_u u;                       // ...
 };
 
@@ -165,7 +165,7 @@ union VariableValueInternal_u // sizeof=0x4
         u.intValue = 0;
     }
 
-    unsigned __int16 next;
+    unsigned short next;
     VariableUnion u;
     ObjectInfo o;
 };
@@ -181,8 +181,8 @@ union VariableValueInternal_w // sizeof=0x4
 };
 union VariableValueInternal_v // sizeof=0x2
 {                                       // ...
-    unsigned __int16 next;
-    unsigned __int16 index;
+    unsigned short next;
+    unsigned short index;
 };
 struct VariableValueInternal // sizeof=0x10
 {                                       // ...
@@ -190,14 +190,14 @@ struct VariableValueInternal // sizeof=0x10
     VariableValueInternal_u u;          // ...
     VariableValueInternal_w w;          // ...
     VariableValueInternal_v v;          // ...
-    unsigned __int16 nextSibling;       // ...
+    unsigned short nextSibling;       // ...
 };
 
 struct scrVarDebugPub_t // sizeof=0xE0004
 {                                       // ...
     const char* varUsage[0x18000];
-    unsigned __int16 extRefCount[0x8000];
-    unsigned __int16 refCount[0x8000];
+    unsigned short extRefCount[0x8000];
+    unsigned short refCount[0x8000];
     int leakCount[0x18000];
     bool dummy;
     // padding byte
@@ -221,21 +221,21 @@ struct scr_entref_t // sizeof=0x4
         entnum = i;
         classnum = i;
     }
-    unsigned __int16 entnum;            // ...
-    unsigned __int16 classnum;          // ...
+    unsigned short entnum;            // ...
+    unsigned short classnum;          // ...
 };
 
 struct scr_classStruct_t // sizeof=0xC
 {
-    scr_classStruct_t(unsigned __int16 _id, unsigned __int16 _entArrayId, char _charID, const char* _name)
+    scr_classStruct_t(unsigned short _id, unsigned short _entArrayId, char _charID, const char* _name)
     {
         id = _id;
         entArrayId = _entArrayId;
         charId = _charID;
         name = _name;
     }
-    unsigned __int16 id;
-    unsigned __int16 entArrayId;
+    unsigned short id;
+    unsigned short entArrayId;
     char charId;
     // padding byte
     // padding byte

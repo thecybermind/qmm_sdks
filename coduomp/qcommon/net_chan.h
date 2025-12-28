@@ -93,12 +93,12 @@ struct netchan_t // sizeof=0x62C
     int qport;
     int fragmentSequence;
     int fragmentLength;
-    unsigned __int8* fragmentBuffer;
+    unsigned char* fragmentBuffer;
     int fragmentBufferSize;
     int unsentFragments;
     int unsentFragmentStart;
     int unsentLength;
-    unsigned __int8* unsentBuffer;
+    unsigned char* unsentBuffer;
     int unsentBufferSize;
     netProfileInfo_t prof;
 };
@@ -112,14 +112,14 @@ struct fakedLatencyPackets_t // sizeof=0x50
     netsrc_t sock;
     netadr_t addr;
     unsigned int length;
-    unsigned __int8 *data;
+    unsigned char *data;
     int startTime;
     msg_t msg;
 };
 
 struct loopmsg_t // sizeof=0x580
 {                                       // ...
-    unsigned __int8 data[1400];
+    unsigned char data[1400];
     int datalen;
     int port;
 };

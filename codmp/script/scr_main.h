@@ -34,7 +34,7 @@ static const char *var_typename[] =
 struct scrVarPub_t // sizeof=0x2007C
 {
     char* fieldBuffer;
-    unsigned __int16 canonicalStrCount;
+    unsigned short canonicalStrCount;
     bool developer;
     bool developer_script;
     bool evaluate;
@@ -49,15 +49,15 @@ struct scrVarPub_t // sizeof=0x2007C
     unsigned int freeEntList;
     unsigned int tempVariable;
     bool bInited;
-    unsigned __int16 savecount;
+    unsigned short savecount;
     unsigned int checksum;
     unsigned int entId;
     unsigned int entFieldName;
     HunkUser* programHunkUser;
     const char* programBuffer;
     const char* endScriptBuffer;
-    unsigned __int16 saveIdMap[32768];
-    unsigned __int16 saveIdMapRev[32768];
+    unsigned short saveIdMap[32768];
+    unsigned short saveIdMapRev[32768];
     bool bScriptProfile;
     float scriptProfileMinTime;
     bool bScriptProfileBuiltin;
@@ -73,7 +73,7 @@ struct scrVarPub_t // sizeof=0x2007C
 
 struct PrecacheEntry // sizeof=0x8
 {                                       // ...
-    unsigned __int16 filename;
+    unsigned short filename;
     bool include;
     // padding byte
     unsigned int sourcePos;

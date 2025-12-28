@@ -52,7 +52,7 @@
 
 #define ID_INLINE __inline 
 
-int __cdecl ShortSwap(__int16 l);
+int __cdecl ShortSwap(short l);
 int __cdecl LongSwap(int l);
 
 static ID_INLINE short BigShort(short l) { return ShortSwap(l); }
@@ -222,9 +222,9 @@ typedef enum {
 typedef          long long ll;
 typedef unsigned long long ull;
 #define __int64 long long
-#define __int32 int
-#define __int16 short
-#define __int8  char
+#define int int
+#define short short
+#define char  char
 #define MAKELL(num) num ## LL
 #define FMT_64 "ll"
 #elif defined(_MSC_VER)
@@ -251,8 +251,8 @@ typedef unsigned char   uint8;
 typedef          short  int16;
 typedef   signed short  sint16;
 typedef unsigned short  uint16;
-typedef __int32				int32;
-typedef unsigned __int32 uint32;
+typedef int				int32;
+typedef unsigned int uint32;
 typedef signed long			sint32;
 typedef ll              int64;
 typedef ll              sint64;
@@ -510,14 +510,14 @@ union FloatWriteSwap_union // sizeof=0x4
 {                                       // ...
 	float f;
 	int n;
-	unsigned __int8 b[4];
+	unsigned char b[4];
 };
 
 union FloatReadSwap_union // sizeof=0x4
 {                                       // ...
 	float f;
 	int n;
-	unsigned __int8 b[4];
+	unsigned char b[4];
 };
 
 static const float colorBlack[4] = { 0.0, 0.0, 0.0, 1.0 }; // idb
@@ -590,10 +590,10 @@ struct trace_t // sizeof=0x2C
 	int contents;                       // ...
 	const char *material;               // ...
 	TraceHitType hitType;               // ...
-	unsigned __int16 hitId;
-	unsigned __int16 modelIndex;        // ...
-	unsigned __int16 partName;          // ...
-	unsigned __int16 partGroup;         // ...
+	unsigned short hitId;
+	unsigned short modelIndex;        // ...
+	unsigned short partName;          // ...
+	unsigned short partGroup;         // ...
 	bool allsolid;                      // ...
 	bool startsolid;                    // ...
 	bool walkable;                      // ...

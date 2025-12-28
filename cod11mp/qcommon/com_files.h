@@ -37,12 +37,12 @@ struct iwd_t // sizeof=0x324
     char iwdFilename[256];
     char iwdBasename[256];
     char iwdGamename[256];
-    unsigned __int8* handle;
+    unsigned char* handle;
     int checksum;
     int pure_checksum;
     volatile unsigned int hasOpenFile;
     int numfiles;
-    unsigned __int8 referenced;
+    unsigned char referenced;
     // padding byte
     // padding byte
     // padding byte

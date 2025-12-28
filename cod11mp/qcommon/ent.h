@@ -36,7 +36,7 @@ struct LerpEntityStateLoopFx // sizeof=0x8
 
 struct LerpEntityStatePrimaryLight // sizeof=0x14
 {                                       // XREF: LerpEntityStateTypeUnion/r
-    unsigned __int8 colorAndExp[4];
+    unsigned char colorAndExp[4];
     float intensity;
     float radius;
     float cosHalfFovOuter;

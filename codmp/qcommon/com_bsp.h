@@ -6,9 +6,9 @@
 
 struct DiskPrimaryLight_Version16 // sizeof=0x60
 {
-    unsigned __int16 falloffStart;
-    unsigned __int8 falloffSizeLessOne;
-    unsigned __int8 type;
+    unsigned short falloffStart;
+    unsigned char falloffSizeLessOne;
+    unsigned char type;
     float color[3];
     float dir[3];
     float origin[3];
@@ -20,9 +20,9 @@ struct DiskPrimaryLight_Version16 // sizeof=0x60
 };
 struct DiskPrimaryLight // sizeof=0x80
 {
-    unsigned __int8 type;
-    unsigned __int8 canUseShadowMap;
-    unsigned __int8 unused[2];
+    unsigned char type;
+    unsigned char canUseShadowMap;
+    unsigned char unused[2];
     float color[3];
     float dir[3];
     float origin[3];
