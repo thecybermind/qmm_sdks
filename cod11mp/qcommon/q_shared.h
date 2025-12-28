@@ -14,6 +14,7 @@
 #include <ctype.h>
 #include <cfloat> // FLT_MAX
 #include <cstdint>
+#include <climits>
 
 #include "com_files.h"
 
