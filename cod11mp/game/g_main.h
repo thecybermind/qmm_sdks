@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../qcommon/q_shared.h"
+
 #include "../qcommon/qcommon.h"
 
 #include "../bgame/bg_public.h"
