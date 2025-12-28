@@ -11,26 +11,26 @@ typedef enum
 } sysEventType_t;
 
 enum SphereEdgeTraceResult 
-{                                       // ...
+{                                       
     SPHERE_HITS_EDGE = 0x0,
     SPHERE_MISSES_EDGE = 0x1,
     SPHERE_MAY_HIT_V0 = 0x2,
     SPHERE_MAY_HIT_V1 = 0x3,
 };
 
-struct field_t // sizeof=0x118
-{                                       // ...
-	int cursor;                         // ...
+struct field_t 
+{                                       
+	int cursor;                         
 	int scroll;
-	int drawWidth;                      // ...
-	int widthInPixels;                  // ...
-	float charHeight;                   // ...
-	int fixedSize;                      // ...
-	char buffer[256];                   // ...
+	int drawWidth;                      
+	int widthInPixels;                  
+	float charHeight;                   
+	int fixedSize;                      
+	char buffer[256];                   
 };
 
 enum hitLocation_t  // (MP/SP same)
-{                                       // ...
+{                                       
     HITLOC_NONE = 0x0,
     HITLOC_HELMET = 0x1,
     HITLOC_HEAD = 0x2,
@@ -54,7 +54,7 @@ enum hitLocation_t  // (MP/SP same)
 };
 
 enum DemoType 
-{                                       // ...
+{                                       
     DEMO_TYPE_NONE = 0x0,
     DEMO_TYPE_CLIENT = 0x1,
     DEMO_TYPE_SERVER = 0x2,
@@ -93,7 +93,7 @@ static const char *WeaponStateNames[27] =
 
 
 enum errorParm_t
-{                                       // ...
+{                                       
     ERR_FATAL = 0x0,
     ERR_DROP = 0x1,
     ERR_SERVERDISCONNECT = 0x2,
@@ -147,7 +147,7 @@ struct XModelPiece;
 
 
 enum CvarSetSource 
-{                                       // ...
+{                                       
     CVAR_SOURCE_INTERNAL = 0x0,
     CVAR_SOURCE_EXTERNAL = 0x1,
     CVAR_SOURCE_SCRIPT = 0x2,
@@ -191,7 +191,7 @@ TRACES
 // cm_trace
 #define CAPSULE_SIZE_EPSILON 0.01f
 
-struct TraceExtents // sizeof=0x24
+struct TraceExtents 
 {                                       
     TraceExtents()
     {
@@ -207,55 +207,55 @@ struct TraceExtents // sizeof=0x24
         invDelta[1] = 0.0f;
         invDelta[2] = 0.0f;
     }
-    float start[3];                     // ...
-    float end[3];                       // ...
+    float start[3];                     
+    float end[3];                       
     float invDelta[3];
 };
-struct locTraceWork_t // sizeof=0x28
-{                                       // ...
-    int contents;                       // ...
-    TraceExtents extents;               // ...
+struct locTraceWork_t 
+{                                       
+    int contents;                       
+    TraceExtents extents;               
 };
-struct traceWork_t // sizeof=0xB0
-{                                       // ...
-    TraceExtents extents;               // ...
-    float delta[3];                     // ...
-    float deltaLen;                     // ...
-    float deltaLenSq;                   // ...
-    float midpoint[3];                  // ...
-    float halfDelta[3];                 // ...
-    float halfDeltaAbs[3];              // ...
-    float size[3];                      // ...
-    float bounds[2][3];                 // ...
-    int contents;                       // ...
-    bool isPoint;                       // ...
+struct traceWork_t 
+{                                       
+    TraceExtents extents;               
+    float delta[3];                     
+    float deltaLen;                     
+    float deltaLenSq;                   
+    float midpoint[3];                  
+    float halfDelta[3];                 
+    float halfDeltaAbs[3];              
+    float size[3];                      
+    float bounds[2][3];                 
+    int contents;                       
+    bool isPoint;                       
     bool axialCullOnly;
-    // padding byte
-    // padding byte
-    float radius;                       // ...
-    float offsetZ;                      // ...
-    float radiusOffset[3];              // ...
-    float boundingRadius;               // ...
-    TraceThreadInfo threadInfo;         // ...
+    
+    
+    float radius;                       
+    float offsetZ;                      
+    float radiusOffset[3];              
+    float boundingRadius;               
+    TraceThreadInfo threadInfo;         
 };
-struct IgnoreEntParams // sizeof=0xC
-{                                       // ...
-    int baseEntity;                     // ...
-    int parentEntity;                   // ...
-    bool ignoreSelf;                    // ...
-    bool ignoreParent;                  // ...
-    bool ignoreSiblings;                // ...
-    bool ignoreChildren;                // ...
+struct IgnoreEntParams 
+{                                       
+    int baseEntity;                     
+    int parentEntity;                   
+    bool ignoreSelf;                    
+    bool ignoreParent;                  
+    bool ignoreSiblings;                
+    bool ignoreChildren;                
 };
-struct pointtrace_t // sizeof=0x34
-{                                       // ...
-    TraceExtents extents;               // ...
-    const IgnoreEntParams *ignoreEntParams; // ...
-    int contentmask;                    // ...
-    int bLocational;                    // ...
-    unsigned char *priorityMap;       // ...
+struct pointtrace_t 
+{                                       
+    TraceExtents extents;               
+    const IgnoreEntParams *ignoreEntParams; 
+    int contentmask;                    
+    int bLocational;                    
+    unsigned char *priorityMap;       
 };
-struct moveclip_t // sizeof=0x54
+struct moveclip_t 
 {
     float mins[3];
     float maxs[3];
@@ -272,7 +272,7 @@ struct cmodel_t;
 
 // KISAKTODO: move this the fuck outta here
 enum DynEntityDrawType 
-{                                       // ...
+{                                       
     DYNENT_DRAW_MODEL = 0x0,
     DYNENT_DRAW_BRUSH = 0x1,
     DYNENT_DRAW_COUNT = 0x2,
@@ -288,32 +288,32 @@ inline DynEntityDrawType& operator++(DynEntityDrawType &e, int i)
 }
 
 // cm_test
-struct leafList_s // sizeof=0x2C
-{                                       // ...
-    int count;                          // ...
-    int maxcount;                       // ...
-    int overflowed;                     // ...
-    unsigned short *list;             // ...
-    float bounds[2][3];                 // ...
-    int lastLeaf;                       // ...
+struct leafList_s 
+{                                       
+    int count;                          
+    int maxcount;                       
+    int overflowed;                     
+    unsigned short *list;             
+    float bounds[2][3];                 
+    int lastLeaf;                       
 };
 
 // cm_world
-struct areaParms_t // sizeof=0x18
-{                                       // ...
-    const float *mins;                  // ...
-    const float *maxs;                  // ...
-    int *list;                          // ...
-    int count;                          // ...
-    int maxcount;                       // ...
-    int contentmask;                    // ...
+struct areaParms_t 
+{                                       
+    const float *mins;                  
+    const float *maxs;                  
+    int *list;                          
+    int count;                          
+    int maxcount;                       
+    int contentmask;                    
 };
-struct staticmodeltrace_t // sizeof=0x28
-{                                       // ...
-    TraceExtents extents;               // ...
-    int contents;                       // ...
+struct staticmodeltrace_t 
+{                                       
+    TraceExtents extents;               
+    int contents;                       
 };
-struct sightclip_t // sizeof=0x48
+struct sightclip_t 
 {
     float mins[3];
     float maxs[3];
@@ -323,25 +323,25 @@ struct sightclip_t // sizeof=0x48
     int passEntityNum[2];
     int contentmask;
 };
-struct sightpointtrace_t // sizeof=0x2C
-{                                       // ...
-    float start[3];                     // ...
-    float end[3];                       // ...
-    int passEntityNum[2];               // ...
-    int contentmask;                    // ...
-    int locational;                     // ...
-    unsigned char *priorityMap;       // ...
+struct sightpointtrace_t 
+{                                       
+    float start[3];                     
+    float end[3];                       
+    int passEntityNum[2];               
+    int contentmask;                    
+    int locational;                     
+    unsigned char *priorityMap;       
 };
 
 // cm_load_obj
-struct SpawnVar // sizeof=0xA0C
-{                                       // ...
-    bool spawnVarsValid;                // ...
-    // padding byte
-    // padding byte
-    // padding byte
-    int32_t numSpawnVars;                   // ...
-    char *spawnVars[64][2];             // ...
+struct SpawnVar 
+{                                       
+    bool spawnVarsValid;                
+    
+    
+    
+    int32_t numSpawnVars;                   
+    char *spawnVars[64][2];             
     int32_t numSpawnVarChars;
     char spawnVarChars[2048];
 };
@@ -350,92 +350,92 @@ struct SpawnVar // sizeof=0xA0C
 #define BOXSIDE_FRONT 1
 #define BOXSIDE_BACK 2
 
-struct ShowCollisionBrushPt // sizeof=0x14
-{                                       // ...
+struct ShowCollisionBrushPt 
+{                                       
     float xyz[3];
     short sideIndex[3];
-    // padding byte
-    // padding byte
+    
+    
 };
-struct winding_t // sizeof=0x34
+struct winding_t 
 {
     int numpoints;
     float p[4][3];
 };
-struct cLeaf_t // sizeof=0x2C
-{                                       // ...
+struct cLeaf_t 
+{                                       
     unsigned short firstCollAabbIndex;
     unsigned short collAabbCount;
-    int brushContents;                  // ...
-    int terrainContents;                // ...
-    float mins[3];                      // ...
-    float maxs[3];                      // ...
-    int leafBrushNode;                  // ...
+    int brushContents;                  
+    int terrainContents;                
+    float mins[3];                      
+    float maxs[3];                      
+    int leafBrushNode;                  
     short cluster;
-    // padding byte
-    // padding byte
+    
+    
 };
-struct cmodel_t // sizeof=0x48
-{                                       // ...
+struct cmodel_t 
+{                                       
     float mins[3];
     float maxs[3];
     float radius;
-    cLeaf_t leaf;                       // ...
+    cLeaf_t leaf;                       
 };
-struct clipMap_t // sizeof=0x11C
-{                                       // ...
-    const char *name;                   // ...
-    int isInUse;                        // ...
-    int planeCount;                     // ...
-    struct cplane_s *planes;                   // ...
-    unsigned int numStaticModels;       // ...
-    struct cStaticModel_s *staticModelList;    // ...
-    unsigned int numMaterials;          // ...
-    struct dmaterial_t *materials;             // ...
-    unsigned int numBrushSides;         // ...
-    struct cbrushside_t *brushsides;           // ...
-    unsigned int numBrushEdges;         // ...
-    unsigned char *brushEdges;        // ...
-    unsigned int numNodes;              // ...
-    struct cNode_t *nodes;                     // ...
-    unsigned int numLeafs;              // ...
-    struct cLeaf_t *leafs;                     // ...
-    unsigned int leafbrushNodesCount;   // ...
-    struct cLeafBrushNode_s *leafbrushNodes;   // ...
-    unsigned int numLeafBrushes;        // ...
-    unsigned short *leafbrushes;      // ...
-    unsigned int numLeafSurfaces;       // ...
-    unsigned int *leafsurfaces;         // ...
-    unsigned int vertCount;             // ...
-    float (*verts)[3];                  // ...
-    int triCount;                       // ...
-    unsigned short *triIndices;       // ...
-    unsigned char *triEdgeIsWalkable; // ...
-    int borderCount;                    // ...
-    struct CollisionBorder *borders;           // ...
-    int partitionCount;                 // ...
-    struct CollisionPartition *partitions;     // ...
-    int aabbTreeCount;                  // ...
-    struct CollisionAabbTree *aabbTrees;       // ...
-    unsigned int numSubModels;          // ...
-    struct cmodel_t *cmodels;                  // ...
-    unsigned short numBrushes;        // ...
-    // padding byte
-    // padding byte
-    struct cbrush_t *brushes;                  // ...
-    int numClusters;                    // ...
-    int clusterBytes;                   // ...
-    unsigned char *visibility;        // ...
-    int vised;                          // ...
-    struct MapEnts *mapEnts;                   // ...
-    struct cbrush_t *box_brush;                // ...
-    cmodel_t box_model;                 // ...
-    unsigned short dynEntCount[2];    // ...
-    struct DynEntityDef *dynEntDefList[2];     // ...
-    struct DynEntityPose *dynEntPoseList[2];   // ...
-    struct DynEntityClient *dynEntClientList[2]; // ...
-    struct DynEntityColl *dynEntCollList[2];   // ...
-    unsigned int checksum;              // ...
+struct clipMap_t 
+{                                       
+    const char *name;                   
+    int isInUse;                        
+    int planeCount;                     
+    struct cplane_s *planes;                   
+    unsigned int numStaticModels;       
+    struct cStaticModel_s *staticModelList;    
+    unsigned int numMaterials;          
+    struct dmaterial_t *materials;             
+    unsigned int numBrushSides;         
+    struct cbrushside_t *brushsides;           
+    unsigned int numBrushEdges;         
+    unsigned char *brushEdges;        
+    unsigned int numNodes;              
+    struct cNode_t *nodes;                     
+    unsigned int numLeafs;              
+    struct cLeaf_t *leafs;                     
+    unsigned int leafbrushNodesCount;   
+    struct cLeafBrushNode_s *leafbrushNodes;   
+    unsigned int numLeafBrushes;        
+    unsigned short *leafbrushes;      
+    unsigned int numLeafSurfaces;       
+    unsigned int *leafsurfaces;         
+    unsigned int vertCount;             
+    float (*verts)[3];                  
+    int triCount;                       
+    unsigned short *triIndices;       
+    unsigned char *triEdgeIsWalkable; 
+    int borderCount;                    
+    struct CollisionBorder *borders;           
+    int partitionCount;                 
+    struct CollisionPartition *partitions;     
+    int aabbTreeCount;                  
+    struct CollisionAabbTree *aabbTrees;       
+    unsigned int numSubModels;          
+    struct cmodel_t *cmodels;                  
+    unsigned short numBrushes;        
+    
+    
+    struct cbrush_t *brushes;                  
+    int numClusters;                    
+    int clusterBytes;                   
+    unsigned char *visibility;        
+    int vised;                          
+    struct MapEnts *mapEnts;                   
+    struct cbrush_t *box_brush;                
+    cmodel_t box_model;                 
+    unsigned short dynEntCount[2];    
+    struct DynEntityDef *dynEntDefList[2];     
+    struct DynEntityPose *dynEntPoseList[2];   
+    struct DynEntityClient *dynEntClientList[2]; 
+    struct DynEntityColl *dynEntCollList[2];   
+    unsigned int checksum;              
 };
 
 
@@ -447,20 +447,20 @@ Profiler
 ==============================================================
 */
 enum MapProfileTrackedValue
-{                                       // ...
+{                                       
     MAP_PROFILE_FILE_OPEN = 0x0,
     MAP_PROFILE_FILE_SEEK = 0x1,
     MAP_PROFILE_FILE_READ = 0x2,
     MAP_PROFILE_VALUE_MAX = 0x3,
 };
-struct MapProfileElement // sizeof=0x18
-{                                       // ...
+struct MapProfileElement 
+{                                       
     unsigned __int64 ticksStart;
     unsigned __int64 ticksTotal;
     unsigned __int64 ticksSelf;
 };
-struct MapProfileEntry // sizeof=0x70
-{                                       // ...
+struct MapProfileEntry 
+{                                       
     const char *label;
     int accessCount;
     unsigned __int64 ticksStart;
@@ -470,42 +470,42 @@ struct MapProfileEntry // sizeof=0x70
     MapProfileEntry *parent;
     MapProfileElement elements[3];
 };
-struct MapProfileHotSpot // sizeof=0x18
-{                                       // ...
-    const char *label;                  // ...
-    int accessCount;                    // ...
-    __int64 ticksSelf;                  // ...
-    __int64 ticksFile;                  // ...
+struct MapProfileHotSpot 
+{                                       
+    const char *label;                  
+    int accessCount;                    
+    __int64 ticksSelf;                  
+    __int64 ticksFile;                  
 };
-struct mapLoadProfile_t // sizeof=0xA880
-{                                       // ...
-    bool isLoading;                     // ...
-    // padding byte
-    // padding byte
-    // padding byte
-    int profileEntryCount;              // ...
-    MapProfileEntry profileEntries[384]; // ...
-    MapProfileEntry *currentEntry;      // ...
-    // padding byte
-    // padding byte
-    // padding byte
-    // padding byte
-    unsigned __int64 ticksStart;        // ...
-    unsigned __int64 ticksFinish;       // ...
-    unsigned __int64 ticksProfiled;     // ...
-    int elementAccessCount[3];          // ...
-    // padding byte
-    // padding byte
-    // padding byte
-    // padding byte
-    MapProfileElement elements[3];      // ...
+struct mapLoadProfile_t 
+{                                       
+    bool isLoading;                     
+    
+    
+    
+    int profileEntryCount;              
+    MapProfileEntry profileEntries[384]; 
+    MapProfileEntry *currentEntry;      
+    
+    
+    
+    
+    unsigned __int64 ticksStart;        
+    unsigned __int64 ticksFinish;       
+    unsigned __int64 ticksProfiled;     
+    int elementAccessCount[3];          
+    
+    
+    
+    
+    MapProfileElement elements[3];      
 };
 
 // statmonitor
-struct statmonitor_s // sizeof=0x8
-{                                       // ...
-    int endtime;                        // ...
-    void *material;                 // ...
+struct statmonitor_s 
+{                                       
+    int endtime;                        
+    void *material;                 
 };
 
 

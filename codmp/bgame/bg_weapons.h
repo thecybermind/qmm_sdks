@@ -4,7 +4,7 @@
 #define WP_NONE 0
 
 enum weapType_t
-{                                       // ...
+{                                       
     WEAPTYPE_BULLET = 0x0,
     WEAPTYPE_GRENADE = 0x1,
     WEAPTYPE_PROJECTILE = 0x2,
@@ -13,7 +13,7 @@ enum weapType_t
 };
 
 enum weapClass_t
-{                                       // ...
+{                                       
     WEAPCLASS_RIFLE = 0x0,
     WEAPCLASS_MG = 0x1,
     WEAPCLASS_SMG = 0x2,
@@ -27,7 +27,7 @@ enum weapClass_t
     WEAPCLASS_NUM = 0xA,
 };
 enum PenetrateType 
-{                                       // ...
+{                                       
     PENETRATE_TYPE_NONE = 0x0,
     PENETRATE_TYPE_SMALL = 0x1,
     PENETRATE_TYPE_MEDIUM = 0x2,
@@ -35,7 +35,7 @@ enum PenetrateType
     PENETRATE_TYPE_COUNT = 0x4,
 };
 enum ImpactType 
-{                                       // ...
+{                                       
     IMPACT_TYPE_NONE = 0x0,
     IMPACT_TYPE_BULLET_SMALL = 0x1,
     IMPACT_TYPE_BULLET_LARGE = 0x2,
@@ -49,7 +49,7 @@ enum ImpactType
 };
 
 enum weapInventoryType_t
-{                                       // ...
+{                                       
     WEAPINVENTORY_PRIMARY = 0x0,
     WEAPINVENTORY_OFFHAND = 0x1,
     WEAPINVENTORY_ITEM = 0x2,
@@ -58,7 +58,7 @@ enum weapInventoryType_t
 };
 
 enum weapFireType_t 
-{                                       // ...
+{                                       
     WEAPON_FIRETYPE_FULLAUTO = 0x0,
     WEAPON_FIRETYPE_SINGLESHOT = 0x1,
     WEAPON_FIRETYPE_BURSTFIRE2 = 0x2,
@@ -68,28 +68,28 @@ enum weapFireType_t
 };
 
 enum weapStance_t 
-{                                       // ...
+{                                       
     WEAPSTANCE_STAND = 0x0,
     WEAPSTANCE_DUCK = 0x1,
     WEAPSTANCE_PRONE = 0x2,
     WEAPSTANCE_NUM = 0x3,
 };
 enum activeReticleType_t 
-{                                       // ...
+{                                       
     VEH_ACTIVE_RETICLE_NONE = 0x0,
     VEH_ACTIVE_RETICLE_PIP_ON_A_STICK = 0x1,
     VEH_ACTIVE_RETICLE_BOUNCING_DIAMOND = 0x2,
     VEH_ACTIVE_RETICLE_COUNT = 0x3,
 };
 enum weaponIconRatioType_t 
-{                                       // ...
+{                                       
     WEAPON_ICON_RATIO_1TO1 = 0x0,
     WEAPON_ICON_RATIO_2TO1 = 0x1,
     WEAPON_ICON_RATIO_4TO1 = 0x2,
     WEAPON_ICON_RATIO_COUNT = 0x3,
 };
 enum ammoCounterClipType_t 
-{                                       // ...
+{                                       
     AMMO_COUNTER_CLIP_NONE = 0x0,
     AMMO_COUNTER_CLIP_MAGAZINE = 0x1,
     AMMO_COUNTER_CLIP_SHORTMAGAZINE = 0x2,
@@ -100,20 +100,20 @@ enum ammoCounterClipType_t
     AMMO_COUNTER_CLIP_COUNT = 0x7,
 };
 enum weapOverlayReticle_t 
-{                                       // ...
+{                                       
     WEAPOVERLAYRETICLE_NONE = 0x0,
     WEAPOVERLAYRETICLE_CROSSHAIR = 0x1,
     WEAPOVERLAYRETICLE_NUM = 0x2,
 };
 enum WeapOverlayInteface_t 
-{                                       // ...
+{                                       
     WEAPOVERLAYINTERFACE_NONE = 0x0,
     WEAPOVERLAYINTERFACE_JAVELIN = 0x1,
     WEAPOVERLAYINTERFACE_TURRETSCOPE = 0x2,
     WEAPOVERLAYINTERFACECOUNT = 0x3,
 };
 enum weapProjExposion_t 
-{                                       // ...
+{                                       
     WEAPPROJEXP_GRENADE = 0x0,
     WEAPPROJEXP_ROCKET = 0x1,
     WEAPPROJEXP_FLASHBANG = 0x2,
@@ -124,7 +124,7 @@ enum weapProjExposion_t
     WEAPPROJEXP_NUM = 0x7,
 };
 enum WeapStickinessType 
-{                                       // ...
+{                                       
     WEAPSTICKINESS_NONE = 0x0,
     WEAPSTICKINESS_ALL = 0x1,
     WEAPSTICKINESS_GROUND = 0x2,
@@ -132,7 +132,7 @@ enum WeapStickinessType
     WEAPSTICKINESS_COUNT = 0x4,
 };
 enum guidedMissileType_t 
-{                                       // ...
+{                                       
     MISSILE_GUIDANCE_NONE = 0x0,
     MISSILE_GUIDANCE_SIDEWINDER = 0x1,
     MISSILE_GUIDANCE_HELLFIRE = 0x2,
@@ -148,7 +148,7 @@ enum OffhandSecondaryClass
 };
 
 enum weaponstate_t 
-{                                       // ...
+{                                       
     WEAPON_READY = 0x0,
     WEAPON_RAISING = 0x1,
     WEAPON_RAISING_ALTSWITCH = 0x2,
@@ -179,7 +179,7 @@ enum weaponstate_t
     WEAPONSTATES_NUM = 0x1B,
 };
 enum OffhandClass 
-{                                       // ...
+{                                       
     OFFHAND_CLASS_NONE = 0x0,
     OFFHAND_CLASS_FRAG_GRENADE = 0x1,
     OFFHAND_CLASS_SMOKE_GRENADE = 0x2,
@@ -188,7 +188,7 @@ enum OffhandClass
 };
 
 // bg_weapons_load_obj
-struct SurfaceTypeSoundList // sizeof=0x8
+struct SurfaceTypeSoundList 
 {
     char *surfaceSoundBase;
     struct snd_alias_list_t **soundAliasList;

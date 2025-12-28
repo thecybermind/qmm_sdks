@@ -3,7 +3,7 @@
 #include "q_shared.h"
 
 enum FsThread
-{                                       // ...
+{                                       
     FS_THREAD_MAIN = 0x0,
     FS_THREAD_STREAM = 0x1,
     FS_THREAD_DATABASE = 0x2,
@@ -14,25 +14,25 @@ enum FsThread
 };
 
 enum fsMode_t
-{                                       // ...
+{                                       
     FS_READ = 0x0,
     FS_WRITE = 0x1,
     FS_APPEND = 0x2,
     FS_APPEND_SYNC = 0x3,
 };
 
-struct directory_t // sizeof=0x200
+struct directory_t 
 {
     char path[256];
     char gamedir[256];
 };
-struct fileInIwd_s // sizeof=0xC
+struct fileInIwd_s 
 {
     unsigned int pos;
     char* name;
     fileInIwd_s* next;
 };
-struct iwd_t // sizeof=0x324
+struct iwd_t 
 {
     char iwdFilename[256];
     char iwdBasename[256];
@@ -43,14 +43,14 @@ struct iwd_t // sizeof=0x324
     volatile unsigned int hasOpenFile;
     int numfiles;
     unsigned char referenced;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
     unsigned int hashSize;
     fileInIwd_s** hashTable;
     fileInIwd_s* buildBuffer;
 };
-struct searchpath_s // sizeof=0x1C
+struct searchpath_s 
 {
     searchpath_s *next;
     iwd_t *iwd;
@@ -61,17 +61,17 @@ struct searchpath_s // sizeof=0x1C
     int language;
 };
 
-union qfile_gus // sizeof=0x4
-{                                       // ...
+union qfile_gus 
+{                                       
     FILE *o;
     unsigned char *z;
 };
-struct qfile_us // sizeof=0x8
-{                                       // ...
+struct qfile_us 
+{                                       
     qfile_gus file;
     int iwdIsClone;
 };
-struct fileHandleData_t // sizeof=0x11C
+struct fileHandleData_t 
 {
     qfile_us handleFiles;
     int handleSync;
@@ -83,7 +83,7 @@ struct fileHandleData_t // sizeof=0x11C
 };
 
 enum FsListBehavior_e 
-{                                       // ...
+{                                       
     FS_LIST_PURE_ONLY = 0x0,
     FS_LIST_ALL = 0x1,
 };

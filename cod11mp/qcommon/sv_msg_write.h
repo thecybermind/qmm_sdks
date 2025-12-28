@@ -41,7 +41,7 @@ static const unsigned int kbitmask[33] =
 };
 
 enum PacketEntityType 
-{                                       // ...
+{                                       
     ANALYZE_DATATYPE_ENTITYTYPE_GENERALENTITY = 0x0,
     ANALYZE_DATATYPE_ENTITYTYPE_PLAYERENTITY = 0x1,
     ANALYZE_DATATYPE_ENTITYTYPE_PLAYERCORPSEENTITY = 0x2,
@@ -68,31 +68,31 @@ enum PacketEntityType
     ANALYZE_DATATYPE_ENTITYTYPE_COUNT = 0x17,
 };
 
-struct netFieldOrderInfo_t // sizeof=0x6C0
-{                                       // ...
+struct netFieldOrderInfo_t 
+{                                       
     int entState[64];
-    int arcEntState[128];               // ...
-    int clientState[32];                // ...
-    int playerState[160];               // ...
-    int objective[8];                   // ...
-    int hudElem[40];                    // ...
+    int arcEntState[128];               
+    int clientState[32];                
+    int playerState[160];               
+    int objective[8];                   
+    int hudElem[40];                    
 };
 
-struct SnapshotInfo_s // sizeof=0x18
-{                                       // ...
-    int clientNum;                      // ...
-    const clientHeader_t* client;       // ...
-    int snapshotDeltaTime;              // ...
-    bool fromBaseline;                  // ...
-    bool archived;                      // ...
-    // padding byte
-    // padding byte
-    int* fieldChanges;                  // ...
-    PacketEntityType packetEntityType;  // ...
+struct SnapshotInfo_s 
+{                                       
+    int clientNum;                      
+    const clientHeader_t* client;       
+    int snapshotDeltaTime;              
+    bool fromBaseline;                  
+    bool archived;                      
+    
+    
+    int* fieldChanges;                  
+    PacketEntityType packetEntityType;  
 };
 
-struct NetFieldList // sizeof=0x8
-{                                       // ...
+struct NetFieldList 
+{                                       
     const NetField *array;
     unsigned int count;
 };

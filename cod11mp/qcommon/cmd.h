@@ -28,9 +28,9 @@ struct cmd_function_s
     void( *function)();
 };
 
-struct CmdText // sizeof=0xC
-{                                       // ...
-    unsigned char *data;              // ...
-    int maxsize;                        // ...
-    int cmdsize;                        // ...
+struct CmdText 
+{                                       
+    unsigned char *data;              
+    int maxsize;                        
+    int cmdsize;                        
 };

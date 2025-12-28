@@ -26,7 +26,7 @@ enum netadrtype_t {
 };
 
 enum netsrc_t 
-{                                       // ...
+{                                       
     NS_CLIENT1 = 0x0,
     NS_SERVER = 0x1,
     NS_MAXCLIENTS = 0x1,
@@ -50,22 +50,22 @@ struct netadr_t {
     unsigned char  ipx[10];
 };
 
-struct ClientSnapshotData // sizeof=0x44
+struct ClientSnapshotData 
 {
     int snapshotSize[8];
     int compressedSize[8];
     int index;
 };
 
-struct netProfilePacket_t // sizeof=0xC
-{                                       // ...
+struct netProfilePacket_t 
+{                                       
     int iTime;
     int iSize;
     int bFragment;
 };
 
-struct netProfileStream_t // sizeof=0x2F0
-{                                       // ...
+struct netProfileStream_t 
+{                                       
     netProfilePacket_t packets[60];
     int iCurrPacket;
     int iBytesPerSecond;
@@ -77,19 +77,19 @@ struct netProfileStream_t // sizeof=0x2F0
     int iSmallestPacket;
 };
 
-struct netProfileInfo_t // sizeof=0x5E0
-{                                       // ...
+struct netProfileInfo_t 
+{                                       
     netProfileStream_t send;
-    netProfileStream_t recieve;         // ...
+    netProfileStream_t recieve;         
 };
 
-struct netchan_t // sizeof=0x62C
-{                                       // ...
+struct netchan_t 
+{                                       
     int outgoingSequence;
     netsrc_t sock;
     int dropped;
     int incomingSequence;
-    netadr_t remoteAddress;             // ...
+    netadr_t remoteAddress;             
     int qport;
     int fragmentSequence;
     int fragmentLength;
@@ -103,12 +103,12 @@ struct netchan_t // sizeof=0x62C
     netProfileInfo_t prof;
 };
 
-struct fakedLatencyPackets_t // sizeof=0x50
+struct fakedLatencyPackets_t 
 {
     bool outbound;
     bool loopback;
-    // padding byte
-    // padding byte
+    
+    
     netsrc_t sock;
     netadr_t addr;
     unsigned int length;
@@ -117,27 +117,27 @@ struct fakedLatencyPackets_t // sizeof=0x50
     msg_t msg;
 };
 
-struct loopmsg_t // sizeof=0x580
-{                                       // ...
+struct loopmsg_t 
+{                                       
     unsigned char data[1400];
     int datalen;
     int port;
 };
 
-struct loopback_t // sizeof=0x5808
-{                                       // ...
+struct loopback_t 
+{                                       
     loopmsg_t msgs[16];
     volatile unsigned int get;
     volatile unsigned int send;
 };
 
-struct clientHeader_t // sizeof=0x64C
-{                                       // ...
-    int state;                          // ...
+struct clientHeader_t 
+{                                       
+    int state;                          
     int sendAsActive;
     int deltaMessage;
     int rateDelayed;
-    netchan_t netchan;                  // ...
+    netchan_t netchan;                  
     float predictedOrigin[3];
-    int predictedOriginServerTime;      // ...
+    int predictedOriginServerTime;      
 };

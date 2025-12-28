@@ -76,7 +76,7 @@ enum var_stat_t
 
 //#define VAR_NAME_LOW_MASK 0xFF000000
 
-struct VariableStackBuffer // sizeof=0xC
+struct VariableStackBuffer 
 {
     const char *pos;
     unsigned short size;
@@ -85,8 +85,8 @@ struct VariableStackBuffer // sizeof=0xC
     unsigned char time;
     char buf[1];
 };
-union VariableUnion // sizeof=0x4
-{                                       // ...
+union VariableUnion 
+{                                       
     VariableUnion(float f)
     {
         floatValue = f;
@@ -117,41 +117,41 @@ union VariableUnion // sizeof=0x4
     VariableStackBuffer *stackValue;
     unsigned int entityOffset;
 };
-struct VariableValue // sizeof=0x8
+struct VariableValue 
 {   
-    // ...
-    VariableUnion u;                    // ...
-    Vartype_t type;                           // ...
+    
+    VariableUnion u;                    
+    Vartype_t type;                           
 };
 
-union ObjectInfo_u // sizeof=0x2
-{                                       // ...
+union ObjectInfo_u 
+{                                       
     unsigned short size;
     unsigned short entnum;
     unsigned short nextEntId;
     unsigned short self;
 };
 
-struct ObjectInfo // sizeof=0x4
-{                                       // ...
+struct ObjectInfo 
+{                                       
     unsigned short refCount;
     ObjectInfo_u u;
 };
 
-union Variable_u // sizeof=0x2
-{                                       // ...
+union Variable_u 
+{                                       
     unsigned short prev;
     unsigned short prevSibling;
 };
 
-struct Variable // sizeof=0x4
-{                                       // ...
-    unsigned short id;                // ...
-    Variable_u u;                       // ...
+struct Variable 
+{                                       
+    unsigned short id;                
+    Variable_u u;                       
 };
 
-union VariableValueInternal_u // sizeof=0x4
-{                                       // ...
+union VariableValueInternal_u 
+{                                       
     operator int()
     {
         return u.intValue;
@@ -169,8 +169,8 @@ union VariableValueInternal_u // sizeof=0x4
     VariableUnion u;
     ObjectInfo o;
 };
-union VariableValueInternal_w // sizeof=0x4
-{                                       // ...
+union VariableValueInternal_w 
+{                                       
     unsigned int status;
     unsigned int type;
     unsigned int name;
@@ -179,38 +179,38 @@ union VariableValueInternal_w // sizeof=0x4
     unsigned int waitTime;
     unsigned int parentLocalId;
 };
-union VariableValueInternal_v // sizeof=0x2
-{                                       // ...
+union VariableValueInternal_v 
+{                                       
     unsigned short next;
     unsigned short index;
 };
-struct VariableValueInternal // sizeof=0x10
-{                                       // ...
-    Variable hash;                      // ...
-    VariableValueInternal_u u;          // ...
-    VariableValueInternal_w w;          // ...
-    VariableValueInternal_v v;          // ...
-    unsigned short nextSibling;       // ...
+struct VariableValueInternal 
+{                                       
+    Variable hash;                      
+    VariableValueInternal_u u;          
+    VariableValueInternal_w w;          
+    VariableValueInternal_v v;          
+    unsigned short nextSibling;       
 };
 
-struct scrVarDebugPub_t // sizeof=0xE0004
-{                                       // ...
+struct scrVarDebugPub_t 
+{                                       
     const char* varUsage[0x18000];
     unsigned short extRefCount[0x8000];
     unsigned short refCount[0x8000];
     int leakCount[0x18000];
     bool dummy;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
 };
-struct scrVarGlob_t // sizeof=0x180000
-{                                       // ...
-    VariableValueInternal variableList[0x18000]; // ...
+struct scrVarGlob_t 
+{                                       
+    VariableValueInternal variableList[0x18000]; 
 };
 
-struct scr_entref_t // sizeof=0x4
-{                                       // ...
+struct scr_entref_t 
+{                                       
     scr_entref_t()
     {
         entnum = 0;
@@ -221,11 +221,11 @@ struct scr_entref_t // sizeof=0x4
         entnum = i;
         classnum = i;
     }
-    unsigned short entnum;            // ...
-    unsigned short classnum;          // ...
+    unsigned short entnum;            
+    unsigned short classnum;          
 };
 
-struct scr_classStruct_t // sizeof=0xC
+struct scr_classStruct_t 
 {
     scr_classStruct_t(unsigned short _id, unsigned short _entArrayId, char _charID, const char* _name)
     {
@@ -237,13 +237,13 @@ struct scr_classStruct_t // sizeof=0xC
     unsigned short id;
     unsigned short entArrayId;
     char charId;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
     const char *name;
 };
 
-struct VariableDebugInfo // sizeof=0x10
+struct VariableDebugInfo 
 {
     const char *pos;
     const char *fileName;
@@ -251,10 +251,10 @@ struct VariableDebugInfo // sizeof=0x10
     int varUsage;
 };
 
-struct ThreadDebugInfo // sizeof=0x8C
-{                                       // ...
-    const char *pos[32];                // ...
-    int posSize;                        // ...
-    float varUsage;                     // ...
-    float endonUsage;                   // ...
+struct ThreadDebugInfo 
+{                                       
+    const char *pos[32];                
+    int posSize;                        
+    float varUsage;                     
+    float endonUsage;                   
 };

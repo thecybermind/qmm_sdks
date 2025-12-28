@@ -31,7 +31,7 @@ static const char *var_typename[] =
     "removed thread",
 };
 
-struct scrVarPub_t // sizeof=0x2007C
+struct scrVarPub_t 
 {
     char* fieldBuffer;
     unsigned short canonicalStrCount;
@@ -71,10 +71,10 @@ struct scrVarPub_t // sizeof=0x2007C
     volatile unsigned int totalVectorRefCount;
 };
 
-struct PrecacheEntry // sizeof=0x8
-{                                       // ...
+struct PrecacheEntry 
+{                                       
     unsigned short filename;
     bool include;
-    // padding byte
+    
     unsigned int sourcePos;
 };

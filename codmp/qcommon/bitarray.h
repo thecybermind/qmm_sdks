@@ -3,8 +3,8 @@
 //#include <universal/assertive.h>
 
 template <int BIT_COUNT>
-struct bitarray // sizeof=0x10
-{                                       // ...
+struct bitarray 
+{                                       
     void setBit(unsigned int pos)
     {
         iassert(pos < BIT_COUNT);
@@ -36,7 +36,7 @@ struct bitarray // sizeof=0x10
         return array[i];
     }
 //private:
-    int array[BIT_COUNT / 32];                       // ...
+    int array[BIT_COUNT / 32];                       
     static_assert((BIT_COUNT % 32) == 0, "BIT_COUNT is not mul of 32!");
 };
 

@@ -16,68 +16,68 @@ struct weaponParms;
 
 static const char *g_dedicatedEnumNames[4] = { "listen server", "dedicated LAN server", "dedicated internet server", NULL }; // idb
 
-struct BuiltinFunctionDef // sizeof=0xC
+struct BuiltinFunctionDef 
 {
     const char *actionString;
     void( *actionFunc)();
     int32_t type;
 };
 
-struct BuiltinMethodDef // sizeof=0xC
-{                                       // ...
-    const char *actionString;           // ...
-    void( *actionFunc)(scr_entref_t); // ...
-    int32_t type;                           // ...
+struct BuiltinMethodDef 
+{                                       
+    const char *actionString;           
+    void( *actionFunc)(scr_entref_t); 
+    int32_t type;                           
 };
 
-struct gameTypeScript_t // sizeof=0x84
-{                                       // ...
+struct gameTypeScript_t 
+{                                       
     char pszScript[64];
-    char pszName[64];                   // ...
+    char pszName[64];                   
     int32_t bTeamBased;
 };
 
-struct scr_data_t_s // sizeof=0x10A8
-{                                       // ...
-    int32_t main;                           // ...
-    int32_t startupgametype;                // ...
-    int32_t playerconnect;                  // ...
-    int32_t playerdisconnect;               // ...
-    int32_t playerdamage;                   // ...
-    int32_t playerkilled;                   // ...
+struct scr_data_t_s 
+{                                       
+    int32_t main;                           
+    int32_t startupgametype;                
+    int32_t playerconnect;                  
+    int32_t playerdisconnect;               
+    int32_t playerdamage;                   
+    int32_t playerkilled;                   
     int32_t votecalled;
     int32_t playervote;
-    int32_t playerlaststand;                // ...
-    int32_t iNumGameTypes;                  // ...
-    gameTypeScript_t list[32];          // ...
+    int32_t playerlaststand;                
+    int32_t iNumGameTypes;                  
+    gameTypeScript_t list[32];          
 };
 
-struct corpseInfo_t // sizeof=0x4DC
-{                                       // ...
-    XAnimTree_s *tree;                  // ...
-    int32_t entnum;                         // ...
+struct corpseInfo_t 
+{                                       
+    XAnimTree_s *tree;                  
+    int32_t entnum;                         
     int32_t time;
     clientInfo_t ci;
     bool falling;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
 };
 
-struct scr_data_t // sizeof=0x379C
-{                                       // ...
-    int32_t levelscript;                    // ...
+struct scr_data_t 
+{                                       
+    int32_t levelscript;                    
     int32_t gametypescript;
-    scr_data_t_s gametype; // ...
-    int32_t delete_;                        // ...
-    int32_t initstructs;                    // ...
-    int32_t createstruct;                   // ...
-    corpseInfo_t playerCorpseInfo[8];   // ...
+    scr_data_t_s gametype; 
+    int32_t delete_;                        
+    int32_t initstructs;                    
+    int32_t createstruct;                   
+    corpseInfo_t playerCorpseInfo[8];   
 };
 
 
 enum meansOfDeath_t
-{                                       // ...
+{                                       
     MOD_UNKNOWN = 0x0,
     MOD_PISTOL_BULLET = 0x1,
     MOD_RIFLE_BULLET = 0x2,
@@ -98,17 +98,17 @@ enum meansOfDeath_t
 };
 
 // g_spawn_mp
-struct SpawnFuncEntry // sizeof=0x8
-{                                       // ...
+struct SpawnFuncEntry 
+{                                       
     const char *classname;
     void( *callback)(gentity_s *);
 };
 
 
 // player_use_mp
-struct useList_t // sizeof=0x8
-{                                       // ...
-    gentity_s *ent;                     // ...
+struct useList_t 
+{                                       
+    gentity_s *ent;                     
     float score;
 };
 

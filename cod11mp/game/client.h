@@ -13,13 +13,13 @@ struct GfxConfiguration;
 static_assert(((MAX_PARSE_ENTITIES) & (MAX_PARSE_ENTITIES - 1)) == 0, "MAX_PARSE_ENTITIES must be power of 2");
 static_assert(((MAX_PARSE_CLIENTS) & (MAX_PARSE_CLIENTS - 1)) == 0, "MAX_PARSE_CLIENTS must be power of 2");
 
-struct serverAddress_t // sizeof=0x6
-{                                       // ...
-    uint8_t ip[4];              // ...
-    uint16_t port;              // ...
+struct serverAddress_t 
+{                                       
+    uint8_t ip[4];              
+    uint16_t port;              
 };
 
-struct trDebugString_t // sizeof=0x80
+struct trDebugString_t 
 {
     float xyz[3];
     float color[4];
@@ -27,15 +27,15 @@ struct trDebugString_t // sizeof=0x80
     char text[96];
 };
 
-struct clientDebugStringInfo_t // sizeof=0x10
-{                                       // ...
-    int max;                            // ...
-    int num;                            // ...
-    trDebugString_t* strings;           // ...
-    int* durations;                     // ...
+struct clientDebugStringInfo_t 
+{                                       
+    int max;                            
+    int num;                            
+    trDebugString_t* strings;           
+    int* durations;                     
 };
 
-struct trDebugLine_t // sizeof=0x2C
+struct trDebugLine_t 
 {
     float start[3];
     float end[3];
@@ -43,34 +43,34 @@ struct trDebugLine_t // sizeof=0x2C
     int depthTest;
 };
 
-struct clientDebugLineInfo_t // sizeof=0x10
-{                                       // ...
-    int max;                            // ...
-    int num;                            // ...
-    trDebugLine_t* lines;               // ...
-    int* durations;                     // ...
+struct clientDebugLineInfo_t 
+{                                       
+    int max;                            
+    int num;                            
+    trDebugLine_t* lines;               
+    int* durations;                     
 };
 
-struct clientDebug_t // sizeof=0x68
-{                                       // ...
+struct clientDebug_t 
+{                                       
     int prevFromServer;
-    int fromServer;                     // ...
-    clientDebugStringInfo_t clStrings;  // ...
-    clientDebugStringInfo_t svStringsBuffer; // ...
-    clientDebugStringInfo_t svStrings;  // ...
-    clientDebugLineInfo_t clLines;      // ...
-    clientDebugLineInfo_t svLinesBuffer; // ...
-    clientDebugLineInfo_t svLines;      // ...
+    int fromServer;                     
+    clientDebugStringInfo_t clStrings;  
+    clientDebugStringInfo_t svStringsBuffer; 
+    clientDebugStringInfo_t svStrings;  
+    clientDebugLineInfo_t clLines;      
+    clientDebugLineInfo_t svLinesBuffer; 
+    clientDebugLineInfo_t svLines;      
 };
 
-struct GfxDebugPoly // sizeof=0x18
+struct GfxDebugPoly 
 {
     float color[4];
     int firstVert;
     int vertCount;
 };
 
-struct GfxDebugPlume // sizeof=0x28
+struct GfxDebugPlume 
 {
     float origin[3];
     float color[4];
@@ -79,8 +79,8 @@ struct GfxDebugPlume // sizeof=0x28
     int duration;
 };
 
-struct DebugGlobals // sizeof=0x54
-{                                       // ...
+struct DebugGlobals 
+{                                       
     float (*verts)[3];
     int vertCount;
     int vertLimit;
@@ -99,13 +99,13 @@ struct DebugGlobals // sizeof=0x54
     trDebugLine_t* externLines;
     int externLineCount;
     int externMaxLineCount;
-    GfxDebugPlume* plumes;              // ...
-    int plumeCount;                     // ...
-    int plumeLimit;                     // ...
+    GfxDebugPlume* plumes;              
+    int plumeCount;                     
+    int plumeLimit;                     
 };
 
 enum GfxWarningType
-{                                       // ...
+{                                       
     R_WARN_FRONTEND_ENT_LIMIT = 0x0,
     R_WARN_KNOWN_MODELS = 0x1,
     R_WARN_KNOWN_SPECIAL_MODELS = 0x2,
@@ -195,45 +195,45 @@ const char * const s_warnFormat[41] =
     "Fogable material %s used for 2D glyph",
 };
 
-struct clSnapshot_t // sizeof=0x2F94
-{                                       // XREF: .data:newSnap/r
+struct clSnapshot_t 
+{                                       
                                         // clientActive_t/r ...
-    int32_t valid;                          // XREF: CL_ParseSnapshot+AF/w
+    int32_t valid;                          
                                         // CL_ParseSnapshot:loc_4A5715/w ...
-    int32_t snapFlags;                      // XREF: CL_ParseSnapshot+A1/w
-    int32_t serverTime;                     // XREF: CL_ParseSnapshot+52/w
+    int32_t snapFlags;                      
+    int32_t serverTime;                     
                                         // CL_ParseSnapshot+200/r ...
-    int32_t messageNum;                     // XREF: CL_ParseSnapshot+60/w
+    int32_t messageNum;                     
                                         // CL_ParseSnapshot:loc_4A55D6/r ...
-    int32_t deltaNum;                       // XREF: CL_ParseSnapshot+7A/w
+    int32_t deltaNum;                       
                                         // CL_ParseSnapshot+8F/w ...
     int32_t ping;
     int32_t cmdNum;
-    playerState_s ps;                   // XREF: CL_ParseSnapshot+1F4/o
+    playerState_s ps;                   
                                         // CL_ParseSnapshot+21B/o ...
     int32_t numEntities;
     int32_t numClients;
     int32_t parseEntitiesNum;
     int32_t parseClientsNum;
-    int32_t serverCommandNum;               // XREF: CL_ParseSnapshot+41/w
+    int32_t serverCommandNum;               
 };
 
-struct gameState_t // sizeof=0x2262C
-{                                       // XREF: clientActive_t/r
+struct gameState_t 
+{                                       
     int32_t stringOffsets[2442];
     char stringData[131072];
     int32_t dataCount;
 };
 
 enum StanceState
-{                                       // XREF: ?CL_SetStance@@YAXHW4StanceState@@@Z/r
+{                                       
     CL_STANCE_STAND = 0x0,
     CL_STANCE_CROUCH = 0x1,
     CL_STANCE_PRONE = 0x2,
 };
 
-struct ClientArchiveData // sizeof=0x30
-{                                       // XREF: clientActive_t/r
+struct ClientArchiveData 
+{                                       
     int32_t serverTime;
     float origin[3];
     float velocity[3];
@@ -242,14 +242,14 @@ struct ClientArchiveData // sizeof=0x30
     float viewangles[3];
 };
 
-struct outPacket_t // sizeof=0xC
-{                                       // XREF: clientActive_t/r
+struct outPacket_t 
+{                                       
     int32_t p_cmdNumber;
     int32_t p_serverTime;
     int32_t p_realtime;
 };
 enum sessionState_t
-{                                       // ...
+{                                       
     SESS_STATE_PLAYING = 0x0,
     SESS_STATE_DEAD = 0x1,
     SESS_STATE_SPECTATOR = 0x2,
@@ -257,40 +257,40 @@ enum sessionState_t
 };
 
 enum clientConnected_t
-{                                       // ...
+{                                       
     CON_DISCONNECTED = 0x0,
     CON_CONNECTING = 0x1,
     CON_CONNECTED = 0x2,
 };
-struct playerTeamState_t // sizeof=0x4
-{                                       // ...
+struct playerTeamState_t 
+{                                       
     int32_t location;
 };
 
-struct clientState_s // sizeof=0x64
-{                                       // XREF: ?MSG_WriteDeltaClient@@YAXPAUSnapshotInfo_s@@PAUmsg_t@@HPBUclientState_s@@2H@Z/r
+struct clientState_s 
+{                                       
                                         // ?MSG_ReadDeltaClient@@YAHPAUmsg_t@@HPBUclientState_s@@PAU2@H@Z/r ...
     int32_t clientIndex;
-    team_t team;                        // XREF: SpectatorClientEndFrame(gentity_s *):loc_4F9933/r
+    team_t team;                        
     // SpectatorClientEndFrame(gentity_s *):loc_4F9A78/r ...
     int32_t modelindex;
-    int32_t attachModelIndex[6];            // XREF: FX_RestorePhysicsData+156/o
+    int32_t attachModelIndex[6];            
     // FX_SavePhysicsData+156/o ...
-    int32_t attachTagIndex[6];              // XREF: AimTarget_ProcessEntity(int,centity_s const *)+133/o
+    int32_t attachTagIndex[6];              
     // AimTarget_IsTargetValid+228/o ...
-    char name[16];                      // XREF: FX_UpdateEffectBolt+E7/o
+    char name[16];                      
     // _memmove:UnwindDown2/o ...
-    float maxSprintTimeMultiplier;      // XREF: RB_LogPrintState_0(int,int)+123/o
+    float maxSprintTimeMultiplier;      
     // R_ChangeState_0(GfxCmdBufState *,uint)+2E6/o
     int32_t rank;
     int32_t prestige;
     int32_t perks;
     int32_t attachedVehEntNum;
-    int32_t attachedVehSlotIndex;           // XREF: .rdata:_hexc_10_32_table/o
+    int32_t attachedVehSlotIndex;           
 };
 
-struct clientSession_t // sizeof=0x110
-{                                       // ...
+struct clientSession_t 
+{                                       
     sessionState_t sessionState;
     int32_t forceSpectatorClient;
     int32_t killCamEntity;
@@ -301,8 +301,8 @@ struct clientSession_t // sizeof=0x110
     int32_t kills;
     int32_t assists;
     uint16_t scriptPersId;
-    // padding byte
-    // padding byte
+    
+    
     clientConnected_t connected;
     usercmd_s cmd;
     usercmd_s oldcmd;
@@ -322,8 +322,8 @@ struct clientSession_t // sizeof=0x110
     int32_t psOffsetTime;
 };
 
-typedef struct gclient_s // sizeof=0x3184
-{                                       // ...
+typedef struct gclient_s 
+{                                       
     playerState_s ps;
     clientSession_t sess;
     int32_t spectatorClient;
@@ -377,24 +377,24 @@ typedef struct gclient_s // sizeof=0x3184
     bool previouslyFiring;
     bool previouslyUsingNightVision;
     bool previouslySprinting;
-    // padding byte
+    
     int32_t hasRadar;
     int32_t lastStand;
     int32_t lastStandTime;
 } gclient_t;
 
-struct clientActive_t // sizeof=0x1B1BDC
-{                                       // XREF: .data:clientActive_t * clients/r
+struct clientActive_t 
+{                                       
     bool usingAds;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
     int32_t timeoutcount;
     clSnapshot_t snap;
     bool alwaysFalse;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
     int32_t serverTime;
     int32_t oldServerTime;
     int32_t oldFrameServerTime;
@@ -410,9 +410,9 @@ struct clientActive_t // sizeof=0x1B1BDC
     int32_t mouseDy[2];
     int32_t mouseIndex;
     bool stanceHeld;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
     StanceState stance;
     StanceState stancePosition;
     int32_t stanceTime;
@@ -431,26 +431,26 @@ struct clientActive_t // sizeof=0x1B1BDC
     int32_t cgamePredictedDataServerTime;
     float viewangles[3];
     int32_t serverId;
-    int32_t skelTimeStamp;                  // XREF: CL_GetSkelTimeStamp(void)+E/r
-    volatile uint32_t skelMemPos;            // XREF: CL_AllocSkelMemory(uint)+97/o
+    int32_t skelTimeStamp;                  
+    volatile uint32_t skelMemPos;            
     char skelMemory[262144];
-    char *skelMemoryStart;              // XREF: CL_AllocSkelMemory(uint)+66/r
+    char *skelMemoryStart;              
                                         // CL_AllocSkelMemory(uint)+BB/r
     bool allowedAllocSkel;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
     usercmd_s cmds[128];
     int32_t cmdNumber;
     ClientArchiveData clientArchive[256];
     int32_t clientArchiveIndex;
     outPacket_t outPackets[32];
-    clSnapshot_t snapshots[32];         // XREF: Sys_GetPhysicalCpuCount+131/o
+    clSnapshot_t snapshots[32];         
                                         // RB_LogPrintState_0(int,int)+19D/o ...
     entityState_s entityBaselines[1024];
-    entityState_s parseEntities[2048];  // XREF: CG_CompassUpdateActors(int)+540/o
+    entityState_s parseEntities[2048];  
                                         // CountBitsEnabled(uint)+1B/o ...
-    clientState_s parseClients[2048];   // XREF: AimTarget_ProcessEntity(int,centity_s const *)+133/o
+    clientState_s parseClients[2048];   
                                         // AimTarget_IsTargetValid+228/o ...
     int32_t corruptedTranslationFile;
     char translationVersion[256];
@@ -458,8 +458,8 @@ struct clientActive_t // sizeof=0x1B1BDC
     float vehicleViewPitch;
 };
 
-struct clientConnection_t // sizeof=0x615E8
-{                                       // ...
+struct clientConnection_t 
+{                                       
     int32_t qport;
     int32_t clientNum;
     int32_t lastPacketSentTime;
@@ -476,11 +476,11 @@ struct clientConnection_t // sizeof=0x615E8
     int32_t serverMessageSequence;
     int32_t serverCommandSequence;
     int32_t lastExecutedServerCommand;
-    char serverCommands[128][1024];     // ...
+    char serverCommands[128][1024];     
     bool isServerRestarting;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
     int32_t lastClientArchiveIndex;
     char demoName[64];
     int32_t demorecording;
@@ -499,126 +499,126 @@ struct clientConnection_t // sizeof=0x615E8
     char netchanIncomingBuffer[0x20000];
     netProfileInfo_t OOBProf;
     uint8_t statPacketsToSend;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
     int32_t statPacketSendTime[7];
 };
 
 
 
 
-struct serverInfo_t // sizeof=0x94
-{                                       // ...
-    netadr_t adr;                       // ...
-    uint8_t allowAnonymous;     // ...
+struct serverInfo_t 
+{                                       
+    netadr_t adr;                       
+    uint8_t allowAnonymous;     
     uint8_t bPassword;
     uint8_t pure;
     char consoleDisabled;
-    uint8_t netType;            // ...
-    uint8_t clients;            // ...
-    uint8_t maxClients;         // ...
-    uint8_t dirty;              // ...
+    uint8_t netType;            
+    uint8_t clients;            
+    uint8_t maxClients;         
+    uint8_t dirty;              
     char friendlyfire;
     char killcam;
     uint8_t hardware;
     uint8_t mod;
     uint8_t voice;
-    uint8_t punkbuster;         // ...
-    uint8_t requestCount;       // ...
-    // padding byte
-    short minPing;                    // ...
-    short maxPing;                    // ...
-    short ping;                       // ...
-    char hostName[32];                  // ...
-    char mapName[32];                   // ...
-    char game[24];                      // ...
-    char gameType[16];                  // ...
-    // padding byte
-    // padding byte
+    uint8_t punkbuster;         
+    uint8_t requestCount;       
+    
+    short minPing;                    
+    short maxPing;                    
+    short ping;                       
+    char hostName[32];                  
+    char mapName[32];                   
+    char game[24];                      
+    char gameType[16];                  
+    
+    
 };
 
-struct clientLogo_t // sizeof=0x18
-{                                       // ...
-    int32_t startTime;                      // ...
-    int32_t duration;                       // ...
-    int32_t fadein;                         // ...
-    int32_t fadeout;                        // ...
-    void /*Material*/ *material[2];              // ...
+struct clientLogo_t 
+{                                       
+    int32_t startTime;                      
+    int32_t duration;                       
+    int32_t fadein;                         
+    int32_t fadeout;                        
+    void /*Material*/ *material[2];              
 };
-struct vidConfig_t // sizeof=0x30
-{                                       // ...
-    uint32_t sceneWidth;            // ...
-    uint32_t sceneHeight;           // ...
-    uint32_t displayWidth;          // ...
-    uint32_t displayHeight;         // ...
-    uint32_t displayFrequency;      // ...
-    int32_t isFullscreen;                   // ...
-    float aspectRatioWindow;            // ...
-    float aspectRatioScenePixel;        // ...
-    float aspectRatioDisplayPixel;      // ...
-    uint32_t maxTextureSize;        // ...
-    uint32_t maxTextureMaps;        // ...
-    bool deviceSupportsGamma;           // ...
-    // padding byte
-    // padding byte
-    // padding byte
+struct vidConfig_t 
+{                                       
+    uint32_t sceneWidth;            
+    uint32_t sceneHeight;           
+    uint32_t displayWidth;          
+    uint32_t displayHeight;         
+    uint32_t displayFrequency;      
+    int32_t isFullscreen;                   
+    float aspectRatioWindow;            
+    float aspectRatioScenePixel;        
+    float aspectRatioDisplayPixel;      
+    uint32_t maxTextureSize;        
+    uint32_t maxTextureMaps;        
+    bool deviceSupportsGamma;           
+    
+    
+    
 };
 
 struct Font_s;
 
-struct clientStatic_t // sizeof=0x2DD070
-{                                       // ...
-    int32_t quit;                           // ...
-    int32_t hunkUsersStarted;               // ...
-    char servername[256];               // ...
-    int32_t rendererStarted;                // ...
-    int32_t soundStarted;                   // ...
-    int32_t uiStarted;                      // ...
-    int32_t devGuiStarted;                  // ...
-    int32_t frametime;                      // ...
-    int32_t realtime;                       // ...
-    int32_t realFrametime;                  // ...
-    clientLogo_t logo;                  // ...
-    float mapCenter[3];                 // ...
-    int32_t numlocalservers;                // ...
-    serverInfo_t localServers[128];     // ...
-    int32_t waitglobalserverresponse;       // ...
-    int32_t numglobalservers;               // ...
-    serverInfo_t globalServers[20000];  // ...
-    int32_t numfavoriteservers;             // ...
-    serverInfo_t favoriteServers[128];  // ...
-    int32_t pingUpdateSource;               // ...
+struct clientStatic_t 
+{                                       
+    int32_t quit;                           
+    int32_t hunkUsersStarted;               
+    char servername[256];               
+    int32_t rendererStarted;                
+    int32_t soundStarted;                   
+    int32_t uiStarted;                      
+    int32_t devGuiStarted;                  
+    int32_t frametime;                      
+    int32_t realtime;                       
+    int32_t realFrametime;                  
+    clientLogo_t logo;                  
+    float mapCenter[3];                 
+    int32_t numlocalservers;                
+    serverInfo_t localServers[128];     
+    int32_t waitglobalserverresponse;       
+    int32_t numglobalservers;               
+    serverInfo_t globalServers[20000];  
+    int32_t numfavoriteservers;             
+    serverInfo_t favoriteServers[128];  
+    int32_t pingUpdateSource;               
     netadr_t updateServer;
     char updateChallenge[1024];
-    char updateInfoString[1024];        // ...
-    netadr_t authorizeServer;           // ...
-    void /*Material*/*whiteMaterial;            // ...
-    void /*Material*/*consoleMaterial;          // ...
-    Font_s *consoleFont;                // ...
-    char autoupdateServerNames[5][64];  // ...
-    netadr_t autoupdateServer;          // ...
-    vidConfig_t vidConfig;              // ...
-    clientDebug_t debug;                // ...
-    int32_t download;                       // ...
-    char downloadTempName[256];         // ...
-    char downloadName[256];             // ...
+    char updateInfoString[1024];        
+    netadr_t authorizeServer;           
+    void /*Material*/*whiteMaterial;            
+    void /*Material*/*consoleMaterial;          
+    Font_s *consoleFont;                
+    char autoupdateServerNames[5][64];  
+    netadr_t autoupdateServer;          
+    vidConfig_t vidConfig;              
+    clientDebug_t debug;                
+    int32_t download;                       
+    char downloadTempName[256];         
+    char downloadName[256];             
     int32_t downloadNumber;
-    int32_t downloadBlock;                  // ...
-    int32_t downloadCount;                  // ...
-    int32_t downloadSize;                   // ...
-    char downloadList[1024];            // ...
-    int32_t downloadRestart;                // ...
-    int32_t gameDirChanged;                 // ...
-    int32_t wwwDlDisconnected;              // ...
-    int32_t wwwDlInProgress;                // ...
-    int32_t downloadFlags;                  // ...
-    char originalDownloadName[64];      // ...
-    float debugRenderPos[3];            // ...
+    int32_t downloadBlock;                  
+    int32_t downloadCount;                  
+    int32_t downloadSize;                   
+    char downloadList[1024];            
+    int32_t downloadRestart;                
+    int32_t gameDirChanged;                 
+    int32_t wwwDlDisconnected;              
+    int32_t wwwDlInProgress;                
+    int32_t downloadFlags;                  
+    char originalDownloadName[64];      
+    float debugRenderPos[3];            
 };
 
 enum connstate_t
-{                                       // ...
+{                                       
     CA_DISCONNECTED = 0x0,
     CA_CINEMATIC = 0x1,
     CA_LOGO = 0x2,
@@ -631,7 +631,7 @@ enum connstate_t
     CA_ACTIVE = 0x9,
 };
 
-struct clientUIActive_t // sizeof=0x10
+struct clientUIActive_t 
 {
     bool active;
     bool isRunning;
@@ -639,42 +639,42 @@ struct clientUIActive_t // sizeof=0x10
     bool cgameInitCalled;
     int32_t keyCatchers;
     bool displayHUDWithKeycatchUI;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
     connstate_t connectionState;
 };
 
-struct ClientVoicePacket_t // sizeof=0x104
-{                                       // ...
+struct ClientVoicePacket_t 
+{                                       
     uint8_t data[256];
     int32_t dataSize;
 };
-struct voiceCommunication_t // sizeof=0xA30
-{                                       // ...
+struct voiceCommunication_t 
+{                                       
     ClientVoicePacket_t voicePackets[10];
     int32_t voicePacketCount;
     int32_t voicePacketLastTransmit;
 };
 
-struct VoicePacket_t // sizeof=0x105
-{                                       // ...
-    uint8_t talker;             // ...
-    uint8_t data[256];          // ...
-    int32_t dataSize;                       // ...
+struct VoicePacket_t 
+{                                       
+    uint8_t talker;             
+    uint8_t data[256];          
+    int32_t dataSize;                       
 };
 
-struct ping_t // sizeof=0x41C
-{                                       // ...
-    netadr_t adr;                       // ...
-    int32_t start;                          // ...
-    int32_t time;                           // ...
-    char info[1024];                    // ...
+struct ping_t 
+{                                       
+    netadr_t adr;                       
+    int32_t start;                          
+    int32_t time;                           
+    char info[1024];                    
 };
 
 #define MAX_CLIENTS 64
 
-#define STATIC_MAX_LOCAL_CLIENTS 1 // LWSS Add
+#define STATIC_MAX_LOCAL_CLIENTS 1 
 
 // cl_cgame_mp
 struct snapshot_s;
@@ -684,7 +684,7 @@ struct MemoryFile;
 
 // cl_rank
 enum rankTableColumns_t
-{                                       // ...
+{                                       
     MP_RANKTABLE_RANKID = 0x0,
     MP_RANKTABLE_RANK = 0x1,
     MP_RANKTABLE_MINXP = 0x2,
@@ -704,24 +704,24 @@ enum rankTableColumns_t
 };
 
 // cl_input
-struct kbutton_t // sizeof=0x14
-{                                       // ...
-    int32_t down[2];                        // ...
+struct kbutton_t 
+{                                       
+    int32_t down[2];                        
     uint32_t downtime;
     uint32_t msec;
-    bool active;                        // ...
+    bool active;                        
     bool wasPressed;
-    // padding byte
-    // padding byte
+    
+    
 };
 
 // cl_ui_mp
-struct uiClientState_s // sizeof=0xC08
-{                                       // ...
-    connstate_t connState;              // ...
-    int32_t connectPacketCount;             // ...
-    char servername[1024];              // ...
+struct uiClientState_s 
+{                                       
+    connstate_t connState;              
+    int32_t connectPacketCount;             
+    char servername[1024];              
     char updateInfoString[1024];
-    char messageString[1024];           // ...
+    char messageString[1024];           
 };
 

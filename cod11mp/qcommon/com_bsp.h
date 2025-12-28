@@ -4,7 +4,7 @@
 
 #define BSP_VERSION 22
 
-struct DiskPrimaryLight_Version16 // sizeof=0x60
+struct DiskPrimaryLight_Version16 
 {
     unsigned short falloffStart;
     unsigned char falloffSizeLessOne;
@@ -18,7 +18,7 @@ struct DiskPrimaryLight_Version16 // sizeof=0x60
     int exponent;
     char defName[40];
 };
-struct DiskPrimaryLight // sizeof=0x80
+struct DiskPrimaryLight 
 {
     unsigned char type;
     unsigned char canUseShadowMap;
@@ -37,7 +37,7 @@ struct DiskPrimaryLight // sizeof=0x80
 
 
 enum LumpType 
-{                                       // ...
+{                                       
     LUMP_MATERIALS = 0x0,
     LUMP_LIGHTBYTES = 0x1,
     LUMP_LIGHTGRIDENTRIES = 0x2,
@@ -96,29 +96,29 @@ enum LumpType
 };
 
 enum ComSaveLumpBehavior 
-{                                       // ...
+{                                       
     COM_SAVE_LUMP_AND_CLOSE = 0x0,
     COM_SAVE_LUMP_AND_REOPEN = 0x1,
 };
 
-struct BspChunk // sizeof=0x8
-{                                       // ...
-    LumpType type;                      // ...
-    unsigned int length;                // ...
+struct BspChunk 
+{                                       
+    LumpType type;                      
+    unsigned int length;                
 };
-struct BspHeader // sizeof=0x32C
-{                                       // ...
-    unsigned int ident;                 // ...
-    unsigned int version;               // ...
-    unsigned int chunkCount;            // ...
-    BspChunk chunks[100];               // ...
+struct BspHeader 
+{                                       
+    unsigned int ident;                 
+    unsigned int version;               
+    unsigned int chunkCount;            
+    BspChunk chunks[100];               
 };
-struct BspGlob // sizeof=0x54
-{                                       // ...
-    char name[64];                      // ...
-    BspHeader *header;                  // ...
-    unsigned int fileSize;              // ...
-    unsigned int checksum;              // ...
+struct BspGlob 
+{                                       
+    char name[64];                      
+    BspHeader *header;                  
+    unsigned int fileSize;              
+    unsigned int checksum;              
     LumpType loadedLumpType;
-    const void *loadedLumpData;         // ...
+    const void *loadedLumpData;         
 };

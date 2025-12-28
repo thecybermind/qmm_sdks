@@ -2,34 +2,34 @@
 
 
 
-struct MemoryNode // sizeof=0xC
-{                                       // XREF: scrMemTreeGlob_t/r
-    unsigned short prev;              // XREF: MT_Init(void)+46/w
-    unsigned short next;              // XREF: MT_Init(void)+4E/w
-    unsigned int padding[2];            // XREF: MT_RemoveHeadMemoryNode+61/w
+struct MemoryNode 
+{                                       
+    unsigned short prev;              
+    unsigned short next;              
+    unsigned int padding[2];            
 };
 
 #define MEMORY_NODE_BITS 16
 #define MEMORY_NODE_COUNT 0x10000
 #define NUM_BUCKETS 256
 
-struct  scrMemTreeGlob_t // sizeof=0xC0380
-{                                       // XREF: .data:scrMemTreeGlob/r
-    MemoryNode nodes[MEMORY_NODE_COUNT];            // XREF: MT_Init(void)+46/w
+struct  scrMemTreeGlob_t 
+{                                       
+    MemoryNode nodes[MEMORY_NODE_COUNT];            
                                         // MT_Init(void)+4E/w ...
-    unsigned char leftBits[NUM_BUCKETS];      // XREF: MT_InitBits+89/w
+    unsigned char leftBits[NUM_BUCKETS];      
                                         // MT_GetScore+88/r ...
-    unsigned char numBits[NUM_BUCKETS];       // XREF: MT_InitBits+59/w
+    unsigned char numBits[NUM_BUCKETS];       
                                         // MT_GetScore+6A/r ...
-    unsigned char logBits[NUM_BUCKETS];       // XREF: MT_InitBits+BB/w
+    unsigned char logBits[NUM_BUCKETS];       
                                         // MT_GetSize+55/r ...
-    unsigned short head[MEMORY_NODE_BITS + 1];// 0x242E200          // XREF: MT_DumpTree(void)+14B/r
+    unsigned short head[MEMORY_NODE_BITS + 1];// 0x242E200          
                                         // MT_Init(void)+3A/w ...
-    // padding byte
-    // padding byte
-    int totalAlloc;                     // XREF: MT_DumpTree(void):loc_59E783/r
+    
+    
+    int totalAlloc;                     
                                         // MT_DumpTree(void)+1FB/r ...
-    int totalAllocBuckets;              // XREF: MT_DumpTree(void):loc_59E7AE/r
+    int totalAllocBuckets;              
 };
 
 static const char* mt_type_names[22] =

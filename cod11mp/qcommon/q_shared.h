@@ -500,22 +500,22 @@ using cvar_t = cvar_s;
 
 //=============================================
 
-struct cspField_t // sizeof=0xC
-{                                       // ...
-	const char *szName;                 // ...
-	int iOffset;                        // ...
-	int iFieldType;                     // ...
+struct cspField_t 
+{                                       
+	const char *szName;                 
+	int iOffset;                        
+	int iFieldType;                     
 };
 
-union FloatWriteSwap_union // sizeof=0x4
-{                                       // ...
+union FloatWriteSwap_union 
+{                                       
 	float f;
 	int n;
 	unsigned char b[4];
 };
 
-union FloatReadSwap_union // sizeof=0x4
-{                                       // ...
+union FloatReadSwap_union 
+{                                       
 	float f;
 	int n;
 	unsigned char b[4];
@@ -569,7 +569,7 @@ struct TraceThreadInfo
 };
 
 enum TraceHitType
-{                                       // ...
+{                                       
 	TRACE_HITTYPE_NONE = 0x0,
 	TRACE_HITTYPE_ENTITY = 0x1,
 	TRACE_HITTYPE_DYNENT_MODEL = 0x2,
@@ -578,39 +578,39 @@ enum TraceHitType
 
 #define SURF_INVALID -1
 
-struct trace_t // sizeof=0x2C
+struct trace_t 
 {   
 	trace_t()
 	{
 		memset(this, 0, sizeof(trace_t));
 	}
-	// ...
-	float fraction;                     // ...
-	float normal[3];                    // ...
-	int surfaceFlags;                   // ...
-	int contents;                       // ...
-	const char *material;               // ...
-	TraceHitType hitType;               // ...
+	
+	float fraction;                     
+	float normal[3];                    
+	int surfaceFlags;                   
+	int contents;                       
+	const char *material;               
+	TraceHitType hitType;               
 	unsigned short hitId;
-	unsigned short modelIndex;        // ...
-	unsigned short partName;          // ...
-	unsigned short partGroup;         // ...
-	bool allsolid;                      // ...
-	bool startsolid;                    // ...
-	bool walkable;                      // ...
-	// padding byte
+	unsigned short modelIndex;        
+	unsigned short partName;          
+	unsigned short partGroup;         
+	bool allsolid;                      
+	bool startsolid;                    
+	bool walkable;                      
+	
 };
 
 
 // com_shared
-struct qtime_s // sizeof=0x24
-{                                       // ...
+struct qtime_s 
+{                                       
 	int tm_sec;
-	int tm_min;                         // ...
-	int tm_hour;                        // ...
-	int tm_mday;                        // ...
-	int tm_mon;                         // ...
-	int tm_year;                        // ...
+	int tm_min;                         
+	int tm_hour;                        
+	int tm_mday;                        
+	int tm_mon;                         
+	int tm_year;                        
 	int tm_wday;
 	int tm_yday;
 	int tm_isdst;
@@ -618,7 +618,7 @@ struct qtime_s // sizeof=0x24
 
 
 enum trType_t
-{                                       // XREF: trajectory_t/r
+{                                       
 	TR_STATIONARY = 0x0,
 	TR_INTERPOLATE = 0x1,
 	TR_LINEAR = 0x2,
@@ -635,18 +635,18 @@ enum trType_t
 	TR_LAST_RAGDOLL = 0xB,
 };
 
-struct trajectory_t // sizeof=0x24 // (SP/MP same)
-{                                       // XREF: LerpEntityState/r
-	trType_t trType;                    // XREF: ScriptMover_SetupMoveSpeed+563/w
-	int trTime;                         // XREF: ScriptMover_SetupMoveSpeed+570/w
-	int trDuration;                     // XREF: ScriptMover_SetupMoveSpeed+583/w
-	float trBase[3];                    // XREF: Mantle_FindMantleSurface+244/o
-	float trDelta[3];                   // XREF: CountBitsEnabled(uint)+1B/o
+struct trajectory_t 
+{                                       
+	trType_t trType;                    
+	int trTime;                         
+	int trDuration;                     
+	float trBase[3];                    
+	float trDelta[3];                   
 };
 
 // com_stringtable
-struct StringTable // sizeof=0x10
-{                                       // ...
+struct StringTable 
+{                                       
 	const char *name;
 	int columnCount;
 	int rowCount;

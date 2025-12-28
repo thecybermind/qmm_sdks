@@ -1,6 +1,6 @@
 #pragma once
 
-struct infoParm_t // sizeof=0x14
+struct infoParm_t 
 {
     const char *name;
     int clearSolid;

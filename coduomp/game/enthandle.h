@@ -4,20 +4,20 @@
 
 struct gentity_s;
 
-struct EntHandleInfo // sizeof=0x8 // (SP/MP same)
-{                                       // ...
+struct EntHandleInfo 
+{                                       
     void *handle;
-    uint16_t next;              // ...
-    uint16_t prev;              // ...
+    uint16_t next;              
+    uint16_t prev;              
 };
 
-struct EntHandleList // sizeof=0x2 // (SP/MP same)
-{                                       // ...
+struct EntHandleList 
+{                                       
     uint16_t infoIndex;
 };
 
-struct EntHandle // sizeof=0x4 // (SP/MP same)
-{                                       // ...
+struct EntHandle 
+{                                       
     uint16_t number;
     uint16_t infoIndex;
 

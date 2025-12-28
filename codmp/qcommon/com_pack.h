@@ -1,7 +1,7 @@
 #pragma once
 
-struct PackedTexCoords // sizeof=0x4
-{                                       // ...
+struct PackedTexCoords 
+{                                       
     PackedTexCoords()
     {
         packed = 0;

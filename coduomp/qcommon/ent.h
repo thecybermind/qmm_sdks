@@ -3,7 +3,7 @@
 #include "q_shared.h"
 
 enum entityType_t
-{                                       // ...
+{                                       
     ET_GENERAL = 0x0,
     ET_PLAYER = 0x1,
     ET_PLAYER_CORPSE = 0x2,
@@ -24,31 +24,31 @@ enum entityType_t
     ET_EVENTS = 0x11,
 };
 
-struct LerpEntityStateTurret // sizeof=0xC
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStateTurret 
+{                                       
     float gunAngles[3];
 };
-struct LerpEntityStateLoopFx // sizeof=0x8
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStateLoopFx 
+{                                       
     float cullDist;
     int period;
 };
 
-struct LerpEntityStatePrimaryLight // sizeof=0x14
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStatePrimaryLight 
+{                                       
     unsigned char colorAndExp[4];
     float intensity;
     float radius;
     float cosHalfFovOuter;
     float cosHalfFovInner;
 };
-struct LerpEntityStatePlayer // sizeof=0x8
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStatePlayer 
+{                                       
     float leanf;
     int movementDir;
 };
-struct LerpEntityStateVehicle // sizeof=0x1C
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStateVehicle 
+{                                       
     float bodyPitch;
     float bodyRoll;
     float steerYaw;
@@ -57,47 +57,47 @@ struct LerpEntityStateVehicle // sizeof=0x1C
     float gunYaw;
     int teamAndOwnerIndex;
 };
-struct LerpEntityStateMissile // sizeof=0x4
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStateMissile 
+{                                       
     int launchTime;
 };
-struct LerpEntityStateSoundBlend // sizeof=0x4
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStateSoundBlend 
+{                                       
     float lerp;
 };
-struct LerpEntityStateBulletHit // sizeof=0xC
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStateBulletHit 
+{                                       
     float start[3];
 };
-struct LerpEntityStateEarthquake // sizeof=0xC
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStateEarthquake 
+{                                       
     float scale;
     float radius;
     int duration;
 };
-struct LerpEntityStateCustomExplode // sizeof=0x4
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStateCustomExplode 
+{                                       
     int startTime;
 };
-struct LerpEntityStateExplosion // sizeof=0x8
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStateExplosion 
+{                                       
     float innerRadius;
     float magnitude;
 };
-struct LerpEntityStateExplosionJolt // sizeof=0x10
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStateExplosionJolt 
+{                                       
     float innerRadius;
     float impulse[3];
 };
-struct LerpEntityStatePhysicsJitter // sizeof=0xC
-{                                       // XREF: LerpEntityStateTypeUnion/r
+struct LerpEntityStatePhysicsJitter 
+{                                       
     float innerRadius;
     float minDisplacement;
     float maxDisplacement;
 };
 
-union LerpEntityStateTypeUnion // sizeof=0x1C
-{                                       // XREF: LerpEntityState/r
+union LerpEntityStateTypeUnion 
+{                                       
     LerpEntityStateTurret turret;
     LerpEntityStateLoopFx loopFx;
     LerpEntityStatePrimaryLight primaryLight;
@@ -113,24 +113,24 @@ union LerpEntityStateTypeUnion // sizeof=0x1C
     LerpEntityStatePhysicsJitter physicsJitter;
 };
 
-struct LerpEntityState // sizeof=0x68
-{                                       // XREF: entityState_s/r
-    int eFlags;                         // XREF: ClientEndFrame(gentity_s *)+5D9/r
-    trajectory_t pos;                   // XREF: Mantle_FindMantleSurface+244/o
-    trajectory_t apos;                  // XREF: CountBitsEnabled(uint)+1B/o
+struct LerpEntityState 
+{                                       
+    int eFlags;                         
+    trajectory_t pos;                   
+    trajectory_t apos;                  
     LerpEntityStateTypeUnion u;
 };
 
 
-union entityState_s_type_index // sizeof=0x4
-{                                       // XREF: PM_UpdateLean(playerState_s *,float,usercmd_s *,void (*)(trace_t *,float const * const,float const * const,float const * const,float const * const,int,int))+2AC/o
+union entityState_s_type_index 
+{                                       
     int brushmodel;
     int item;
     int xmodel;
     int primaryLight;
 };
-union entityState_s_un1 // sizeof=0x4
-{                                       // XREF: IsValidArrayIndex(uint)+B/o
+union entityState_s_un1 
+{                                       
                                         // entityState_s/r
     operator int()
     {
@@ -140,19 +140,19 @@ union entityState_s_un1 // sizeof=0x4
     int eventParm2;
     int helicopterStage;
 };
-union entityState_s_un2 // sizeof=0x4
-{                                       // XREF: entityState_s/r
+union entityState_s_un2 
+{                                       
     int hintString;
     int vehicleXModel;
 };
 
-struct entityState_s // sizeof=0xF4 // (KISAKTODO: should be in q_shared?)
-{                                       // XREF: ?SV_SendClientGameState@@YAXPAUclient_t@@@Z/r
+struct entityState_s 
+{                                       
     int number;
-    int eType;                          // XREF: BounceMissile+1ED/r
-    LerpEntityState lerp;               // XREF: Mantle_FindMantleSurface+244/o
+    int eType;                          
+    LerpEntityState lerp;               
     int time2;
-    int otherEntityNum;                 // XREF: CG_CompassUpdateActors(int)+540/o
+    int otherEntityNum;                 
     int attackerEntityNum;
     int groundEntityNum;
     int loopSound;
@@ -160,11 +160,11 @@ struct entityState_s // sizeof=0xF4 // (KISAKTODO: should be in q_shared?)
     entityState_s_type_index index;
     int clientNum;
     int iHeadIcon;
-    int iHeadIconTeam;                  // XREF: G_InitGrenadeEntity(gentity_s *,gentity_s *)+218/o
+    int iHeadIconTeam;                  
     int solid;
     unsigned int eventParm;
     int eventSequence;
-    int events[4];                      // XREF: G_MoverPush+3FE/o
+    int events[4];                      
     int eventParms[4];
     int weapon;
     int weaponModel;
@@ -174,18 +174,18 @@ struct entityState_s // sizeof=0xF4 // (KISAKTODO: should be in q_shared?)
     entityState_s_un2 un2;
     float fTorsoPitch;
     float fWaistPitch;
-    unsigned int partBits[4];           // XREF: Fire_Lead:loc_5189EC/o
+    unsigned int partBits[4];           
 };
-struct archivedEntityShared_t // sizeof=0x24
-{                                       // ...
-    int svFlags;                        // ...
-    int clientMask[2];                  // ...
-    float absmin[3];                    // ...
-    float absmax[3];                    // ...
+struct archivedEntityShared_t 
+{                                       
+    int svFlags;                        
+    int clientMask[2];                  
+    float absmin[3];                    
+    float absmax[3];                    
 };
 
-struct archivedEntity_s // sizeof=0x118
-{                                       // ...
-    entityState_s s;                    // ...
-    archivedEntityShared_t r;           // ...
+struct archivedEntity_s 
+{                                       
+    entityState_s s;                    
+    archivedEntityShared_t r;           
 };

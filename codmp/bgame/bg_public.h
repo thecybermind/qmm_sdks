@@ -256,72 +256,72 @@ static const char *eventnames[135] =
   "EV_LANDING_PAIN_PAINTEDMETAL"
 };
 
-struct pmove_t // sizeof=0x110
-{                                       // ...
-    playerState_s *ps;                  // ...
-    usercmd_s cmd;                      // ...
-    usercmd_s oldcmd;                   // ...
-    int tracemask;                      // ...
+struct pmove_t 
+{                                       
+    playerState_s *ps;                  
+    usercmd_s cmd;                      
+    usercmd_s oldcmd;                   
+    int tracemask;                      
     int numtouch;
     int touchents[32];
-    float mins[3];                      // ...
-    float maxs[3];                      // ...
+    float mins[3];                      
+    float maxs[3];                      
     float xyspeed;
     int proneChange;
     float maxSprintTimeMultiplier;
-    bool mantleStarted;                 // ...
-    // padding byte
-    // padding byte
-    // padding byte
-    float mantleEndPos[3];              // ...
-    int mantleDuration;                 // ...
-    int viewChangeTime;                 // ...
+    bool mantleStarted;                 
+    
+    
+    
+    float mantleEndPos[3];              
+    int mantleDuration;                 
+    int viewChangeTime;                 
     float viewChange;
-    unsigned char handler;            // ...
-    // padding byte
-    // padding byte
-    // padding byte
+    unsigned char handler;            
+    
+    
+    
 };
 
-struct pmoveHandler_t // sizeof=0x8
+struct pmoveHandler_t 
 {
     void( *trace)(trace_t *, const float *, const float *, const float *, const float *, int, int);
     void( *playerEvent)(int, int);
 };
 
-struct tagInfo_s // sizeof=0x70  (SP/MP same)
+struct tagInfo_s 
 {
     gentity_s *parent;
     gentity_s *next;
     uint16_t name;
-    // padding byte
-    // padding byte
+    
+    
     int32_t index;
     float axis[4][3];
     float parentInvAxis[4][3];
 };
 
-struct trigger_ent_t // sizeof=0x14
-{                                       // ...
+struct trigger_ent_t 
+{                                       
     int32_t threshold;
     int32_t accumulate;
     int32_t timestamp;
     int32_t singleUserEntIndex;
     bool requireLookAt;
-    // padding byte
-    // padding byte
-    // padding byte
+    
+    
+    
 };
 
-struct item_ent_t // sizeof=0xC (SP/MP same)
-{                                       // ...
+struct item_ent_t 
+{                                       
     int32_t ammoCount;
     int32_t clipAmmoCount;
     int32_t index;
 };
 
-struct mover_ent_t // sizeof=0x60 (SP/MP same)
-{                                       // ...
+struct mover_ent_t 
+{                                       
     float decelTime;
     float aDecelTime;
     float speed;
@@ -336,48 +336,48 @@ struct mover_ent_t // sizeof=0x60 (SP/MP same)
     float apos3[3];
 };
 
-struct entityShared_t // sizeof=0x68
-{                                       // ...
+struct entityShared_t 
+{                                       
     uint8_t linked;
     uint8_t bmodel;
     uint8_t svFlags;
     int32_t clientMask[2];
-    uint8_t inuse;              // ...
+    uint8_t inuse;              
     int32_t broadcastTime;
-    float mins[3];                      // ...
+    float mins[3];                      
     float maxs[3];
-    int32_t contents;                       // ...
-    float absmin[3];                    // ...
+    int32_t contents;                       
+    float absmin[3];                    
     float absmax[3];
-    float currentOrigin[3];             // ...
+    float currentOrigin[3];             
     float currentAngles[3];
     EntHandle ownerNum;
     int32_t eventTime;
 };
 
 enum MissileStage
-{                                       // ...
+{                                       
     MISSILESTAGE_SOFTLAUNCH = 0x0,
     MISSILESTAGE_ASCENT = 0x1,
     MISSILESTAGE_DESCENT = 0x2,
 };
 
 enum MissileFlightMode
-{                                       // ...
+{                                       
     MISSILEFLIGHTMODE_TOP = 0x0,
     MISSILEFLIGHTMODE_DIRECT = 0x1,
 };
 
 
 
-struct corpse_ent_t // sizeof=0x4
-{                                       // ...
+struct corpse_ent_t 
+{                                       
     int32_t deathAnimStartTime;
 };
 
 
-struct missile_ent_t // sizeof=0x3C
-{                                       // ...
+struct missile_ent_t 
+{                                       
     float time;
     int32_t timeOfBirth;
     float travelDist;
@@ -445,11 +445,11 @@ enum gentityFlags_t
     FL_WEAPON_BEING_GRABBED = 0x1'000'000,
 };
 
-typedef struct gentity_s // sizeof=0x274
-{                                       // ...
-    entityState_s s;                    // ...
-    entityShared_t r;                   // ...
-    struct gclient_s *client;                  // ...
+typedef struct gentity_s 
+{                                       
+    entityState_s s;                    
+    entityShared_t r;                   
+    struct gclient_s *client;                  
     struct turretInfo_s *pTurretInfo;
     struct scr_vehicle_s *scr_vehicle;
     uint16_t model;
@@ -459,14 +459,14 @@ typedef struct gentity_s // sizeof=0x274
     uint8_t nopickup;
     EntHandler_t handler;
     uint8_t team;
-    uint16_t classname;         // ...
+    uint16_t classname;         
     uint16_t target;
     uint16_t targetname;
-    // padding byte
-    // padding byte
+    
+    
     uint32_t attachIgnoreCollision;
-    int32_t spawnflags;                     // ...
-    gentityFlags_t flags;                          // ...
+    int32_t spawnflags;                     
+    gentityFlags_t flags;                          
     int32_t eventTime;
     int32_t freeAfterEvent;
     int32_t unlinkAfterEvent;
@@ -474,13 +474,13 @@ typedef struct gentity_s // sizeof=0x274
     int32_t processedFrame;
     EntHandle parent;
     int32_t nextthink;
-    int32_t health;                         // ...
+    int32_t health;                         
     int32_t maxHealth;
     int32_t damage;
     int32_t count;
     gentity_s *chain;
-    union // sizeof=0x60
-    {                                       // ...
+    union 
+    {                                       
         item_ent_t item[2];
         trigger_ent_t trigger;
         mover_ent_t mover;
@@ -490,7 +490,7 @@ typedef struct gentity_s // sizeof=0x274
     EntHandle missileTargetEnt;
     tagInfo_s *tagInfo;
     gentity_s *tagChildren;
-    uint16_t attachModelNames[19]; // ...
+    uint16_t attachModelNames[19]; 
     uint16_t attachTagNames[19];
     int32_t useCount;
     gentity_s *nextFree;

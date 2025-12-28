@@ -6,27 +6,27 @@
 
 #define TRACK_FREE 1
 
-struct meminfo_t // sizeof=0xA0
-{                                       // ...
-    int total;                          // ...
-    int nonSwapTotal;                   // ...
-    int nonSwapMinSpecTotal;            // ...
-    int typeTotal[37];                  // ...
+struct meminfo_t 
+{                                       
+    int total;                          
+    int nonSwapTotal;                   
+    int nonSwapMinSpecTotal;            
+    int typeTotal[37];                  
 };
 
-struct mem_track_t // sizeof=0x14
-{                                       // ...
-    const char* name;                   // ...
+struct mem_track_t 
+{                                       
+    const char* name;                   
     const char* filename;
-    int size;                           // ...
-    int pos;                            // ...
-    unsigned char type;               // ...
-    unsigned char usageType;          // ...
-    // padding byte
-    // padding byte
+    int size;                           
+    int pos;                            
+    unsigned char type;               
+    unsigned char usageType;          
+    
+    
 };
 
-struct mem_track_node_s // sizeof=0x20
+struct mem_track_node_s 
 {
     mem_track_t data;
     int project;
