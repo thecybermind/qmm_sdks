@@ -1,141 +1,116 @@
 #pragma once
-
 #include "../qcommon/q_shared.h"
-
 #include "../qcommon/msg.h"
-
 #include "../qcommon/qcommon.h"
 #include "../qcommon/ent.h"
-
 #include "../game/enthandle.h"
-
 #include "bg_weapons.h"
-
 #include <cstdint>
-
 typedef int team_t;
-
 enum animBodyPart_t
 {                                       
-    ANIM_BP_UNUSED = 0x0,
-    ANIM_BP_LEGS = 0x1,
-    ANIM_BP_TORSO = 0x2,
-    ANIM_BP_BOTH = 0x3,
-    NUM_ANIM_BODYPARTS = 0x4,
+    ANIM_BP_UNUSED,
+    ANIM_BP_LEGS,
+    ANIM_BP_TORSO,
+    ANIM_BP_BOTH,
+    NUM_ANIM_BODYPARTS,
 };
-
 enum aistateEnum_t
 {                                       
-    AISTATE_COMBAT = 0x0,
-    MAX_AISTATES = 0x1,
+    AISTATE_COMBAT,
+    MAX_AISTATES,
 };
-inline aistateEnum_t &operator--(aistateEnum_t &e) {
-    e = static_cast<aistateEnum_t>(static_cast<int>(e) - 1);
-    return e;
-}
-inline aistateEnum_t &operator--(aistateEnum_t &e, int i)
-{
-    --e;
-    return e;
-}
-
 enum scriptAnimStrafeStates_t 
 {                                       
-    ANIM_STRAFE_NOT = 0x0,
-    ANIM_STRAFE_LEFT = 0x1,
-    ANIM_STRAFE_RIGHT = 0x2,
-    NUM_ANIM_STRAFESTATES = 0x3,
+    ANIM_STRAFE_NOT,
+    ANIM_STRAFE_LEFT,
+    ANIM_STRAFE_RIGHT,
+    NUM_ANIM_STRAFESTATES,
 };
-
 enum scriptAnimMoveTypes_t 
 {                                       
-    ANIM_MT_UNUSED = 0x0,
-    ANIM_MT_IDLE = 0x1,
-    ANIM_MT_IDLECR = 0x2,
-    ANIM_MT_IDLEPRONE = 0x3,
-    ANIM_MT_WALK = 0x4, 
-    ANIM_MT_WALKBK = 0x5, 
-    ANIM_MT_WALKCR = 0x6, 
-    ANIM_MT_WALKCRBK = 0x7, 
-    ANIM_MT_WALKPRONE = 0x8, 
-    ANIM_MT_WALKPRONEBK = 0x9, 
-    ANIM_MT_RUN = 0xA, 
-    ANIM_MT_RUNBK = 0xB, 
-    ANIM_MT_RUNCR = 0xC, 
-    ANIM_MT_RUNCRBK = 0xD, 
-    ANIM_MT_TURNRIGHT = 0xE,
-    ANIM_MT_TURNLEFT = 0xF,
-    ANIM_MT_TURNRIGHTCR = 0x10,
-    ANIM_MT_TURNLEFTCR = 0x11,
-    ANIM_MT_CLIMBUP = 0x12,
-    ANIM_MT_CLIMBDOWN = 0x13,
-    ANIM_MT_SPRINT = 0x14,
-    ANIM_MT_MANTLE_ROOT = 0x15,
-    ANIM_MT_MANTLE_UP_57 = 0x16,
-    ANIM_MT_MANTLE_UP_51 = 0x17,
-    ANIM_MT_MANTLE_UP_45 = 0x18,
-    ANIM_MT_MANTLE_UP_39 = 0x19,
-    ANIM_MT_MANTLE_UP_33 = 0x1A,
-    ANIM_MT_MANTLE_UP_27 = 0x1B,
-    ANIM_MT_MANTLE_UP_21 = 0x1C,
-    ANIM_MT_MANTLE_OVER_HIGH = 0x1D,
-    ANIM_MT_MANTLE_OVER_MID = 0x1E,
-    ANIM_MT_MANTLE_OVER_LOW = 0x1F,
-    ANIM_MT_FLINCH_FORWARD = 0x20,
-    ANIM_MT_FLINCH_BACKWARD = 0x21,
-    ANIM_MT_FLINCH_LEFT = 0x22,
-    ANIM_MT_FLINCH_RIGHT = 0x23,
-    ANIM_MT_STUMBLE_FORWARD = 0x24, 
-    ANIM_MT_STUMBLE_BACKWARD = 0x25, 
-    ANIM_MT_STUMBLE_WALK_FORWARD = 0x26, 
-    ANIM_MT_STUMBLE_WALK_BACKWARD = 0x27, 
-    ANIM_MT_STUMBLE_CROUCH_FORWARD = 0x28, 
-    ANIM_MT_STUMBLE_CROUCH_BACKWARD = 0x29, 
-    ANIM_MT_STUMBLE_SPRINT_FORWARD = 0x2A,
-    NUM_ANIM_MOVETYPES = 0x2B,
+    ANIM_MT_UNUSED,
+    ANIM_MT_IDLE,
+    ANIM_MT_IDLECR,
+    ANIM_MT_IDLEPRONE,
+    ANIM_MT_WALK, 
+    ANIM_MT_WALKBK, 
+    ANIM_MT_WALKCR, 
+    ANIM_MT_WALKCRBK, 
+    ANIM_MT_WALKPRONE, 
+    ANIM_MT_WALKPRONEBK, 
+    ANIM_MT_RUN, 
+    ANIM_MT_RUNBK, 
+    ANIM_MT_RUNCR, 
+    ANIM_MT_RUNCRBK, 
+    ANIM_MT_TURNRIGHT,
+    ANIM_MT_TURNLEFT,
+    ANIM_MT_TURNRIGHTCR,
+    ANIM_MT_TURNLEFTCR,
+    ANIM_MT_CLIMBUP,
+    ANIM_MT_CLIMBDOWN,
+    ANIM_MT_SPRINT,
+    ANIM_MT_MANTLE_ROOT,
+    ANIM_MT_MANTLE_UP_57,
+    ANIM_MT_MANTLE_UP_51,
+    ANIM_MT_MANTLE_UP_45,
+    ANIM_MT_MANTLE_UP_39,
+    ANIM_MT_MANTLE_UP_33,
+    ANIM_MT_MANTLE_UP_27,
+    ANIM_MT_MANTLE_UP_21,
+    ANIM_MT_MANTLE_OVER_HIGH,
+    ANIM_MT_MANTLE_OVER_MID,
+    ANIM_MT_MANTLE_OVER_LOW,
+    ANIM_MT_FLINCH_FORWARD,
+    ANIM_MT_FLINCH_BACKWARD,
+    ANIM_MT_FLINCH_LEFT,
+    ANIM_MT_FLINCH_RIGHT,
+    ANIM_MT_STUMBLE_FORWARD, 
+    ANIM_MT_STUMBLE_BACKWARD, 
+    ANIM_MT_STUMBLE_WALK_FORWARD, 
+    ANIM_MT_STUMBLE_WALK_BACKWARD, 
+    ANIM_MT_STUMBLE_CROUCH_FORWARD, 
+    ANIM_MT_STUMBLE_CROUCH_BACKWARD, 
+    ANIM_MT_STUMBLE_SPRINT_FORWARD,
+    NUM_ANIM_MOVETYPES,
 };
-
 enum scriptAnimEventTypes_t 
 {                                       
-    ANIM_ET_PAIN = 0x0,
-    ANIM_ET_DEATH = 0x1,
-    ANIM_ET_FIREWEAPON = 0x2,
-    ANIM_ET_JUMP = 0x3,
-    ANIM_ET_JUMPBK = 0x4,
-    ANIM_ET_LAND = 0x5,
-    ANIM_ET_DROPWEAPON = 0x6,
-    ANIM_ET_RAISEWEAPON = 0x7,
-    ANIM_ET_CLIMB_MOUNT = 0x8,
-    ANIM_ET_CLIMB_DISMOUNT = 0x9,
-    ANIM_ET_RELOAD = 0xA,
-    ANIM_ET_CROUCH_TO_PRONE = 0xB,
-    ANIM_ET_PRONE_TO_CROUCH = 0xC,
-    ANIM_ET_STAND_TO_CROUCH = 0xD,
-    ANIM_ET_CROUCH_TO_STAND = 0xE,
-    ANIM_ET_STAND_TO_PRONE = 0xF,
-    ANIM_ET_PRONE_TO_STAND = 0x10,
-    ANIM_ET_MELEEATTACK = 0x11,
-    ANIM_ET_KNIFE_MELEE = 0x12,
-    ANIM_ET_KNIFE_MELEE_CHARGE = 0x13,
-    ANIM_ET_SHELLSHOCK = 0x14,
-    NUM_ANIM_EVENTTYPES = 0x15,
+    ANIM_ET_PAIN,
+    ANIM_ET_DEATH,
+    ANIM_ET_FIREWEAPON,
+    ANIM_ET_JUMP,
+    ANIM_ET_JUMPBK,
+    ANIM_ET_LAND,
+    ANIM_ET_DROPWEAPON,
+    ANIM_ET_RAISEWEAPON,
+    ANIM_ET_CLIMB_MOUNT,
+    ANIM_ET_CLIMB_DISMOUNT,
+    ANIM_ET_RELOAD,
+    ANIM_ET_CROUCH_TO_PRONE,
+    ANIM_ET_PRONE_TO_CROUCH,
+    ANIM_ET_STAND_TO_CROUCH,
+    ANIM_ET_CROUCH_TO_STAND,
+    ANIM_ET_STAND_TO_PRONE,
+    ANIM_ET_PRONE_TO_STAND,
+    ANIM_ET_MELEEATTACK,
+    ANIM_ET_KNIFE_MELEE,
+    ANIM_ET_KNIFE_MELEE_CHARGE,
+    ANIM_ET_SHELLSHOCK,
+    NUM_ANIM_EVENTTYPES,
 };
-
 enum animScriptConditionTypes_t 
 {                                       
-    ANIM_CONDTYPE_BITFLAGS = 0x0,       
-    ANIM_CONDTYPE_VALUE = 0x1,       
-    NUM_ANIM_CONDTYPES = 0x2,
+    ANIM_CONDTYPE_BITFLAGS,       
+    ANIM_CONDTYPE_VALUE,       
+    NUM_ANIM_CONDTYPES,
 };
-
-
 enum ShockViewTypes 
 {                                       
-    SHELLSHOCK_VIEWTYPE_BLURRED = 0x0,
-    SHELLSHOCK_VIEWTYPE_FLASHED = 0x1,
-    SHELLSHOCK_VIEWTYPE_NONE = 0x2,
+    SHELLSHOCK_VIEWTYPE_BLURRED,
+    SHELLSHOCK_VIEWTYPE_FLASHED,
+    SHELLSHOCK_VIEWTYPE_NONE,
 };
-
 union hudelem_color_t 
 {                                       
     struct
@@ -147,16 +122,13 @@ union hudelem_color_t
     };
     uint32_t rgba;
 };
-static_assert(sizeof(union hudelem_color_t) == 0x4);
-
 enum ViewLockTypes 
 {                                       
-    PLAYERVIEWLOCK_NONE = 0x0,
-    PLAYERVIEWLOCK_FULL = 0x1,
-    PLAYERVIEWLOCK_WEAPONJITTER = 0x2,
-    PLAYERVIEWLOCKCOUNT = 0x3,
+    PLAYERVIEWLOCK_NONE,
+    PLAYERVIEWLOCK_FULL,
+    PLAYERVIEWLOCK_WEAPONJITTER,
+    PLAYERVIEWLOCKCOUNT,
 };
-
 struct scr_anim_s 
 {   
     scr_anim_s()
@@ -165,7 +137,7 @@ struct scr_anim_s
     }
     scr_anim_s(int i)
     {
-        linkPointer = (const char *)i; // KISAKHACK
+        linkPointer = (const char *)i;
     }
     union
     {
@@ -177,14 +149,12 @@ struct scr_anim_s
         const char* linkPointer;
     };
 };
-
 struct loadAnim_t 
 {
     scr_anim_s anim;
     int32_t iNameHash;
     char szAnimName[64];
 };
-
 struct pml_t 
 {                                       
     float forward[3];
@@ -200,33 +170,28 @@ struct pml_t
     float previous_origin[3];           
     float previous_velocity[3];         
 };
-
 struct animStringItem_t 
 {                                       
     const char *string;                 
     int32_t hash;                           
 };
-
 struct controller_info_t 
 {                                       
     float angles[6][3];
     float tag_origin_angles[3];         
     float tag_origin_offset[3];         
 };
-
 struct animConditionTable_t 
 {                                       
     animScriptConditionTypes_t type;    
     animStringItem_t *values;           
 };
-
 struct viewDamage_t 
 {                                       
     int32_t time;
     int32_t duration;
     float yaw;
 };
-
 struct shellshock_parms_t_screenblend 
 {                                       
     int32_t blurredFadeTime;
@@ -235,14 +200,12 @@ struct shellshock_parms_t_screenblend
     int32_t flashShotFadeTime;
     ShockViewTypes type;
 };
-
 struct shellshock_parms_t_view 
 {                                       
     int32_t fadeTime;
     float kickRate;
     float kickRadius;
 };
-
 struct shellshock_parms_t_sound 
 {                                       
     bool affect;
@@ -250,9 +213,6 @@ struct shellshock_parms_t_sound
     char loopSilent[64];
     char end[64];
     char endAbort[64];
-    
-    
-    
     int32_t fadeInTime;
     int32_t fadeOutTime;
     float drylevel;
@@ -263,24 +223,18 @@ struct shellshock_parms_t_sound
     int32_t loopFadeTime;
     int32_t loopEndDelay;
 };
-
 struct shellshock_parms_t_lookcontrol 
 {                                       
     bool affect;
-    
-    
-    
     int32_t fadeTime;
     float mouseSensitivity;
     float maxPitchSpeed;
     float maxYawSpeed;
 };
-
 struct shellshock_parms_t_movement 
 {                                       
     bool affect;
 };
-
 struct shellshock_parms_t 
 {                                       
     shellshock_parms_t_screenblend screenBlend;
@@ -288,11 +242,7 @@ struct shellshock_parms_t
     shellshock_parms_t_sound sound;
     shellshock_parms_t_lookcontrol lookControl;
     shellshock_parms_t_movement movement;
-    
-    
-    
 };
-
 struct shellshock_t 
 {                                       
     const shellshock_parms_t* parms;
@@ -303,7 +253,6 @@ struct shellshock_t
     float viewDelta[2];
     int32_t hasSavedScreen;
 };
-
 struct  animation_s 
 {                                       
     char name[64];
@@ -312,25 +261,14 @@ struct  animation_s
     int32_t duration;
     int32_t nameHash;
     int32_t flags;
-    
-    
-    
-    
     int64_t movetype;
     int32_t noteType;
-    
-    
-    
-    
 };
-
 struct animScriptCondition_t 
 {                                       
     int32_t index;
     uint32_t value[2];
 };
-
-
 struct animScriptCommand_t 
 {                                       
     int16_t bodyPart[2];
@@ -338,17 +276,15 @@ struct animScriptCommand_t
     int16_t animDuration[2];
     void /*snd_alias_list_t*/* soundAlias;
 };
-
 enum animScriptParseMode_t 
 {                                       
-    PARSEMODE_DEFINES = 0x0,
-    PARSEMODE_ANIMATION = 0x1,
-    PARSEMODE_CANNED_ANIMATIONS = 0x2,
-    PARSEMODE_STATECHANGES = 0x3,
-    PARSEMODE_EVENTS = 0x4,
-    NUM_PARSEMODES = 0x5,
+    PARSEMODE_DEFINES,
+    PARSEMODE_ANIMATION,
+    PARSEMODE_CANNED_ANIMATIONS,
+    PARSEMODE_STATECHANGES,
+    PARSEMODE_EVENTS,
+    NUM_PARSEMODES,
 };
-
 struct animScriptItem_t 
 {                                       
     int32_t numConditions;
@@ -356,13 +292,11 @@ struct animScriptItem_t
     int32_t numCommands;
     animScriptCommand_t commands[8];
 };
-
 struct animScript_t 
 {                                       
     int32_t numItems;
     animScriptItem_t* items[128];
 };
-
 struct scr_animtree_t 
 {                                       
     scr_animtree_t()
@@ -371,7 +305,6 @@ struct scr_animtree_t
     }
     void/*XAnim_s*/* anims;                     
 };
-
 struct  animScriptData_t 
 {                                       
     animation_s animations[512];
@@ -386,16 +319,9 @@ struct  animScriptData_t
     uint16_t torsoAnim;
     uint16_t legsAnim;
     uint16_t turningAnim;
-    
-    
     void/*snd_alias_list_t*/* (* soundAlias)(const char*);
     int32_t(* playSoundAlias)(int32_t, void/*snd_alias_list_t*/*);
-    
-    
-    
-    
 };
-
 struct lerpFrame_t 
 {                                       
     float yawAngle;
@@ -409,14 +335,12 @@ struct lerpFrame_t
     float animSpeedScale;
     int32_t oldFrameSnapshotTime;
 };
-
 struct clientControllers_t 
 {                                       
     float angles[6][3];
     float tag_origin_angles[3];
     float tag_origin_offset[3];
 };
-
 struct clientInfo_t 
 {                                       
     int32_t infoValid;                      
@@ -446,23 +370,14 @@ struct clientInfo_t
     XAnimTree_s* pXAnimTree;            
     int32_t iDObjWeapon;
     uint8_t weaponModel;
-    
-    
-    
     int32_t stanceTransitionTime;
     int32_t turnAnimEndTime;
     char turnAnimType;
-    
-    
-    
     int32_t attachedVehEntNum;
     int32_t attachedVehSlotIndex;
     bool hideWeapon;
     bool usingKnife;
-    
-    
 };
-
 struct bgs_t_human 
 {                                       
     scr_animtree_t tree;                
@@ -470,7 +385,6 @@ struct bgs_t_human
     scr_anim_s legs;
     scr_anim_s turning;
 };
-
 struct bgs_t 
 {                                       
     animScriptData_t animScriptData;    
@@ -487,31 +401,28 @@ struct bgs_t
     void* (* AllocXAnim)(int32_t);   
     clientInfo_t clientinfo[64];        
 };
-
 struct hudElemSoundInfo_t 
 {                                       
     int32_t lastPlayedTime;
 };
-
 enum he_type_t 
 {                                       
-    HE_TYPE_FREE = 0x0,
-    HE_TYPE_TEXT = 0x1,
-    HE_TYPE_VALUE = 0x2,
-    HE_TYPE_PLAYERNAME = 0x3,
-    HE_TYPE_MAPNAME = 0x4,
-    HE_TYPE_GAMETYPE = 0x5,
-    HE_TYPE_MATERIAL = 0x6,
-    HE_TYPE_TIMER_DOWN = 0x7,
-    HE_TYPE_TIMER_UP = 0x8,
-    HE_TYPE_TENTHS_TIMER_DOWN = 0x9,
-    HE_TYPE_TENTHS_TIMER_UP = 0xA,
-    HE_TYPE_CLOCK_DOWN = 0xB,
-    HE_TYPE_CLOCK_UP = 0xC,
-    HE_TYPE_WAYPOINT = 0xD,
-    HE_TYPE_COUNT = 0xE,
+    HE_TYPE_FREE,
+    HE_TYPE_TEXT,
+    HE_TYPE_VALUE,
+    HE_TYPE_PLAYERNAME,
+    HE_TYPE_MAPNAME,
+    HE_TYPE_GAMETYPE,
+    HE_TYPE_MATERIAL,
+    HE_TYPE_TIMER_DOWN,
+    HE_TYPE_TIMER_UP,
+    HE_TYPE_TENTHS_TIMER_DOWN,
+    HE_TYPE_TENTHS_TIMER_UP,
+    HE_TYPE_CLOCK_DOWN,
+    HE_TYPE_CLOCK_UP,
+    HE_TYPE_WAYPOINT,
+    HE_TYPE_COUNT,
 };
-
 struct hudelem_s 
 {                                       
     he_type_t type;
@@ -555,7 +466,6 @@ struct hudelem_s
     int32_t soundID;
     int32_t flags;
 };
-
 struct MantleState 
 {                                       
     float yaw;
@@ -563,32 +473,27 @@ struct MantleState
     int32_t transIndex;
     int32_t flags;
 };
-
 struct playerState_s_hud 
 {                                       
     hudelem_s current[31];              
     hudelem_s archival[31];             
 };
-
 enum ActionSlotType 
 {                                       
-    ACTIONSLOTTYPE_DONOTHING = 0x0,
-    ACTIONSLOTTYPE_SPECIFYWEAPON = 0x1,
-    ACTIONSLOTTYPE_ALTWEAPONTOGGLE = 0x2,
-    ACTIONSLOTTYPE_NIGHTVISION = 0x3,
-    ACTIONSLOTTYPECOUNT = 0x4,
+    ACTIONSLOTTYPE_DONOTHING,
+    ACTIONSLOTTYPE_SPECIFYWEAPON,
+    ACTIONSLOTTYPE_ALTWEAPONTOGGLE,
+    ACTIONSLOTTYPE_NIGHTVISION,
+    ACTIONSLOTTYPECOUNT,
 };
-
 struct ActionSlotParam_SpecifyWeapon 
 {                                       
     uint32_t index;
 };
-
 struct ActionSlotParam 
 {                                       
     ActionSlotParam_SpecifyWeapon specifyWeapon;
 };
-
 struct SprintState 
 {                                       
     int32_t sprintButtonUpRequired;
@@ -597,19 +502,17 @@ struct SprintState
     int32_t lastSprintEnd;
     int32_t sprintStartMaxLength;
 };
-
 enum objectiveState_t 
 {                                       
                                         // Scr_Objective_Add/r ...
-    OBJST_EMPTY = 0x0,
-    OBJST_ACTIVE = 0x1,
-    OBJST_INVISIBLE = 0x2,
-    OBJST_DONE = 0x3,
-    OBJST_CURRENT = 0x4,
-    OBJST_FAILED = 0x5,
-    OBJST_NUMSTATES = 0x6,
+    OBJST_EMPTY,
+    OBJST_ACTIVE,
+    OBJST_INVISIBLE,
+    OBJST_DONE,
+    OBJST_CURRENT,
+    OBJST_FAILED,
+    OBJST_NUMSTATES,
 };
-
 struct objective_t 
 {                                       
     objectiveState_t state;
@@ -619,7 +522,6 @@ struct objective_t
     // _memcpy+2E8/o
     int32_t icon;
 };
-
 enum pmflags_t  // (MP/SP same)
 {
     PMF_PRONE = 1 << 0,
@@ -644,20 +546,18 @@ enum pmflags_t  // (MP/SP same)
     PMF_NO_JUMP = 1 << 19,
     PMF_VEHICLE_ATTACHED = 1 << 20
 };
-
 enum pmtype_t 
 {
-    PM_NORMAL = 0x0,
-    PM_NORMAL_LINKED = 0x1,
-    PM_NOCLIP = 0x2,
-    PM_UFO = 0x3,
-    PM_SPECTATOR = 0x4,
-    PM_INTERMISSION = 0x5,
-    PM_LASTSTAND = 0x6,
-    PM_DEAD = 0x7,
-    PM_DEAD_LINKED = 0x8,
+    PM_NORMAL,
+    PM_NORMAL_LINKED,
+    PM_NOCLIP,
+    PM_UFO,
+    PM_SPECTATOR,
+    PM_INTERMISSION,
+    PM_LASTSTAND,
+    PM_DEAD,
+    PM_DEAD_LINKED,
 };
-
 struct playerState_s 
 {                                       
                                         // clSnapshot_t/r ...
@@ -688,7 +588,6 @@ struct playerState_s
     float vLadderVec[3];
     int32_t jumpTime;
     float jumpOriginZ;                  
-    
     int32_t legsTimer;
     int32_t legsAnim;
     int32_t torsoTimer;
@@ -779,24 +678,18 @@ struct playerState_s
     int32_t killCamEntity;                  
     // SpectatorClientEndFrame(gentity_s *)+17B/w
     playerState_s_hud hud;
-    
     // TRACK_sv_main(void)+A/o ...
 };
-
 struct CEntPlayerInfo 
 {                                       
     clientControllers_t* control;       
     uint8_t tag[6];             
-    
-    
 };
-
 struct CEntTurretAngles 
 {                                       
     float pitch;
     float yaw;
 };
-
 struct CEntTurretInfo 
 {                                       
     union
@@ -810,7 +703,6 @@ struct CEntTurretInfo
     uint8_t tag_aim_animated;
     uint8_t tag_flash;
 };
-
 struct CEntVehicleInfo 
 {                                       
     int16_t pitch;
@@ -819,25 +711,18 @@ struct CEntVehicleInfo
     int16_t barrelPitch;
     float barrelRoll;
     int16_t steerYaw;
-    
-    
     float time;
     uint16_t wheelFraction[4];
     uint8_t wheelBoneIndex[4];
     uint8_t tag_body;
     uint8_t tag_turret;
     uint8_t tag_barrel;
-    
 };
-
-
 struct CEntFx 
 {                                       
     int32_t triggerTime;
     void* /*FxEffect**/ effect;
 };
-
-
 struct GfxSkinCacheEntry 
 {                                       
     uint32_t frameCount;
@@ -845,7 +730,6 @@ struct GfxSkinCacheEntry
     uint16_t numSkinnedVerts;
     uint16_t ageCount;
 };
-
 struct cpose_t 
 {                                       
     uint16_t lightingHandle;
@@ -868,7 +752,6 @@ struct cpose_t
         CEntFx fx;
     };
 };
-
 struct centity_s 
 {                                       
     cpose_t pose;
@@ -877,13 +760,11 @@ struct centity_s
     bool nextValid;
     bool bMuzzleFlash;
     bool bTrailMade;
-    
     int32_t previousEventSequence;
     int32_t miscTime;
     float lightingOrigin[3];
     XAnimTree_s* tree;
 };
-
 struct turretInfo_s 
 {                                       
     int32_t inuse;                          
@@ -904,14 +785,12 @@ struct turretInfo_s
     uint8_t stopSnd;
     uint8_t stopSndPlayer;
 };
-
 struct VehicleRideSlot_t 
 {                                       
     uint32_t tagName;
     int32_t boneIdx;
     int32_t entNum;
 };
-
 struct vehicle_node_t 
 {                                       
     uint16_t name;
@@ -919,8 +798,6 @@ struct vehicle_node_t
     uint16_t script_linkname;
     uint16_t script_noteworthy;
     int16_t index;
-    
-    
     int32_t rotated;
     float speed;
     float lookAhead;
@@ -931,7 +808,6 @@ struct vehicle_node_t
     int16_t nextIdx;
     int16_t prevIdx;
 };
-
 struct vehicle_pathpos_t 
 {                                       
     int16_t nodeIdx;
@@ -945,7 +821,6 @@ struct vehicle_pathpos_t
     float lookPos[3];
     vehicle_node_t switchNode[2];
 };
-
 struct vehicle_physic_t 
 {                                       
     float origin[3];
@@ -957,8 +832,6 @@ struct vehicle_physic_t
     float yawDecel;
     char inputAccelerationOLD;
     char inputTurning;
-    
-    
     float driverPedal;
     float driverSteer;
     int32_t onGround;
@@ -977,7 +850,6 @@ struct vehicle_physic_t
     float worldTilt[3];
     float worldTiltVel[3];
 };
-
 struct VehicleTags 
 {                                       
     VehicleRideSlot_t riderSlots[3];
@@ -990,21 +862,18 @@ struct VehicleTags
     int32_t flash[5];
     int32_t wheel[4];
 };
-
 enum VehicleMoveState 
 {                                       
-    VEH_MOVESTATE_STOP = 0x0,
-    VEH_MOVESTATE_MOVE = 0x1,
-    VEH_MOVESTATE_HOVER = 0x2,
+    VEH_MOVESTATE_STOP,
+    VEH_MOVESTATE_MOVE,
+    VEH_MOVESTATE_HOVER,
 };
-
 enum VehicleTurretState 
 {                                       
-    VEH_TURRET_STOPPED = 0x0,
-    VEH_TURRET_STOPPING = 0x1,
-    VEH_TURRET_MOVING = 0x2,
+    VEH_TURRET_STOPPED,
+    VEH_TURRET_STOPPING,
+    VEH_TURRET_MOVING,
 };
-
 struct VehicleTurret 
 {                                       
     int32_t fireTime;
@@ -1013,7 +882,6 @@ struct VehicleTurret
     int32_t barrelBlocked;
     VehicleTurretState turretState;
 };
-
 struct VehicleJitter 
 {                                       
     int32_t jitterPeriodMin;
@@ -1024,7 +892,6 @@ struct VehicleJitter
     float jitterAccel[3];
     float jitterPos[3];
 };
-
 struct VehicleHover 
 {                                       
     float hoverRadius;
@@ -1033,21 +900,16 @@ struct VehicleHover
     float hoverGoalPos[3];
     int32_t useHoverAccelForAngles;
 };
-
 struct scr_vehicle_s 
 {                                       
     vehicle_pathpos_t pathPos;
     vehicle_physic_t phys;
     int32_t entNum;                         
     int16_t infoIdx;
-    
-    
     int32_t flags;
     int32_t team;
     VehicleMoveState moveState;
     int16_t waitNode;
-    
-    
     float waitSpeed;
     VehicleTurret turret;
     VehicleJitter jitter;
@@ -1093,43 +955,37 @@ struct scr_vehicle_s
     int32_t turretHitNum;
     float forcedMaterialSpeed;
 };
-
 enum proneCheckType_t 
 {                                       
-    PCT_CLIENT = 0x0,
-    PCT_ACTOR = 0x1,
+    PCT_CLIENT,
+    PCT_ACTOR,
 };
-
 enum itemType_t 
 {                                       
-    IT_BAD = 0x0,
-    IT_WEAPON = 0x1,
+    IT_BAD,
+    IT_WEAPON,
 };
-
 struct gitem_s 
 {
     itemType_t giType;
 };
-
 enum PmStanceFrontBack 
 {                                       
-    PM_STANCE_STAND = 0x0,
-    PM_STANCE_PRONE = 0x1,
-    PM_STANCE_CROUCH = 0x2,
-    PM_STANCE_BACKWARD_FIRST = 0x3,
-    PM_STANCE_BACKWARD_RUN = 0x3,
-    PM_STANCE_BACKWARD_PRONE = 0x4,
-    PM_STANCE_BACKWARD_CROUCH = 0x5,
-    NUM_PM_STANCE_FRONTBACK = 0x6,
+    PM_STANCE_STAND,
+    PM_STANCE_PRONE,
+    PM_STANCE_CROUCH,
+    PM_STANCE_BACKWARD_FIRST,
+    PM_STANCE_BACKWARD_RUN,
+    PM_STANCE_BACKWARD_PRONE,
+    PM_STANCE_BACKWARD_CROUCH,
+    NUM_PM_STANCE_FRONTBACK,
 };
-
 struct viewLerpWaypoint_s 
 {                                       
     int32_t iFrac;
     float fViewHeight;
     int32_t iOffset;
 };
-
 // bg_mantle
 struct MantleResults 
 {                                       
@@ -1140,14 +996,12 @@ struct MantleResults
     int32_t flags;                          
     int32_t duration;
 };
-
 struct MantleAnimTransition 
 {                                       
     int32_t upAnimIndex;                    
     int32_t overAnimIndex;                  
     float height;                       
 };
-
 // bg_weapons
 struct BulletFireParams 
 {                                       
@@ -1160,19 +1014,14 @@ struct BulletFireParams
     float end[3];                       
     float dir[3];                       
 };
-
 struct BulletTraceResults 
 {                                       
     trace_t trace;                      
     struct gentity_s *hitEnt;                  
     float hitPos[3];                    
     bool ignoreHitEnt;                  
-    
-    
-    
     int32_t depthSurfaceType;               
 };
-
 struct viewState_t 
 {                                       
     playerState_s *ps;                  
@@ -1185,7 +1034,6 @@ struct viewState_t
     float fLastIdleFactor;              
     int32_t*weapIdleTime;                  
 };
-
 struct weaponState_t 
 {                                       
     const playerState_s *ps;            
@@ -1202,19 +1050,15 @@ struct weaponState_t
     float swayAngles[3];                
     int32_t*weapIdleTime;                  
 };
-
 // bg_vehicles_mp
 enum vehicleRideSlots_t 
 {
-    VEHICLE_RIDESLOT_DRIVER = 0x0,
-    VEHICLE_RIDESLOT_PASSENGER = 0x1,
-    VEHICLE_RIDESLOT_GUNNER = 0x2,
-    VEHICLE_RIDESLOTS_COUNT = 0x3,
+    VEHICLE_RIDESLOT_DRIVER,
+    VEHICLE_RIDESLOT_PASSENGER,
+    VEHICLE_RIDESLOT_GUNNER,
+    VEHICLE_RIDESLOTS_COUNT,
 };
-
-
 const float playerMins[] = { -15.0, -15.0, 0.0 };
 const float playerMaxs[] = { 15.0, 15.0, 70.0 };
-
 const int serverOnlyEvents[4] = { 31, 20, 19, -1 }; // idb
 const int singleClientEvents[13] = { 6, 7, 8, 34, 13, 14, 32, 33, 34, 37, 42, 43, -1 }; // idb

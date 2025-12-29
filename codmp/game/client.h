@@ -1,24 +1,18 @@
 #pragma once
 #include "../qcommon/qcommon.h"
-
 #include "../qcommon/ent.h"
 #include "../qcommon/net_chan.h"
-
 #include "../bgame/bg_local.h"
-
 struct GfxConfiguration;
-
 #define MAX_PARSE_ENTITIES 2048
 #define MAX_PARSE_CLIENTS 2048
 static_assert(((MAX_PARSE_ENTITIES) & (MAX_PARSE_ENTITIES - 1)) == 0, "MAX_PARSE_ENTITIES must be power of 2");
 static_assert(((MAX_PARSE_CLIENTS) & (MAX_PARSE_CLIENTS - 1)) == 0, "MAX_PARSE_CLIENTS must be power of 2");
-
 struct serverAddress_t 
 {                                       
     uint8_t ip[4];              
     uint16_t port;              
 };
-
 struct trDebugString_t 
 {
     float xyz[3];
@@ -26,7 +20,6 @@ struct trDebugString_t
     float scale;
     char text[96];
 };
-
 struct clientDebugStringInfo_t 
 {                                       
     int max;                            
@@ -34,7 +27,6 @@ struct clientDebugStringInfo_t
     trDebugString_t* strings;           
     int* durations;                     
 };
-
 struct trDebugLine_t 
 {
     float start[3];
@@ -42,7 +34,6 @@ struct trDebugLine_t
     float color[4];
     int depthTest;
 };
-
 struct clientDebugLineInfo_t 
 {                                       
     int max;                            
@@ -50,7 +41,6 @@ struct clientDebugLineInfo_t
     trDebugLine_t* lines;               
     int* durations;                     
 };
-
 struct clientDebug_t 
 {                                       
     int prevFromServer;
@@ -62,14 +52,12 @@ struct clientDebug_t
     clientDebugLineInfo_t svLinesBuffer; 
     clientDebugLineInfo_t svLines;      
 };
-
 struct GfxDebugPoly 
 {
     float color[4];
     int firstVert;
     int vertCount;
 };
-
 struct GfxDebugPlume 
 {
     float origin[3];
@@ -78,7 +66,6 @@ struct GfxDebugPlume
     int startTime;
     int duration;
 };
-
 struct DebugGlobals 
 {                                       
     float (*verts)[3];
@@ -103,53 +90,51 @@ struct DebugGlobals
     int plumeCount;                     
     int plumeLimit;                     
 };
-
 enum GfxWarningType
 {                                       
-    R_WARN_FRONTEND_ENT_LIMIT = 0x0,
-    R_WARN_KNOWN_MODELS = 0x1,
-    R_WARN_KNOWN_SPECIAL_MODELS = 0x2,
-    R_WARN_MODEL_LIGHT_CACHE = 0x3,
-    R_WARN_SCENE_ENTITIES = 0x4,
-    R_WARN_TEMP_SKIN_BUF_SIZE = 0x5,
-    R_WARN_MAX_SKINNED_CACHE_VERTICES = 0x6,
-    R_WARN_MAX_SCENE_SURFS_SIZE = 0x7,
-    R_WARN_PORTAL_PLANES = 0x8,
-    R_WARN_MAX_CLOUDS = 0x9,
-    R_WARN_MAX_DLIGHTS = 0xA,
-    R_WARN_SMODEL_LIGHTING = 0xB,
-    R_WARN_MAX_DRAWSURFS = 0xC,
-    R_WARN_GFX_CODE_MESH_LIMIT = 0xD,
-    R_WARN_GFX_MARK_MESH_LIMIT = 0xE,
-    R_WARN_MAX_SCENE_DRAWSURFS = 0xF,
-    R_WARN_MAX_FX_DRAWSURFS = 0x10,
-    R_WARN_NONEMISSIVE_FX_MATERIAL = 0x11,
-    R_WARN_NONLIGHTMAP_MARK_MATERIAL = 0x12,
-    R_WARN_PRIM_DRAW_SURF_BUFFER_SIZE = 0x13,
-    R_WARN_CMDBUF_OVERFLOW = 0x14,
-    R_WARN_MISSING_DECL_NONDEBUG = 0x15,
-    R_WARN_MAX_DYNENT_REFS = 0x16,
-    R_WARN_MAX_SCENE_DOBJ_REFS = 0x17,
-    R_WARN_MAX_SCENE_MODEL_REFS = 0x18,
-    R_WARN_MAX_SCENE_BRUSH_REFS = 0x19,
-    R_WARN_MAX_CODE_INDS = 0x1A,
-    R_WARN_MAX_CODE_VERTS = 0x1B,
-    R_WARN_MAX_CODE_ARGS = 0x1C,
-    R_WARN_MAX_MARK_INDS = 0x1D,
-    R_WARN_MAX_MARK_VERTS = 0x1E,
-    R_WARN_DEBUG_ALLOC = 0x1F,
-    R_WARN_SPOT_LIGHT_LIMIT = 0x20,
-    R_WARN_FX_ELEM_LIMIT = 0x21,
-    R_WARN_WORKER_CMD_SIZE = 0x22,
-    R_WARN_UNKNOWN_STATICMODEL_SHADER = 0x23,
-    R_WARN_UNKNOWN_XMODEL_SHADER = 0x24,
-    R_WARN_DYNAMIC_INDEX_BUFFER_SIZE = 0x25,
-    R_WARN_TOO_MANY_LIGHT_GRID_POINTS = 0x26,
-    R_WARN_FOGABLE_2DTEXT = 0x27,
-    R_WARN_FOGABLE_2DGLYPH = 0x28,
-    R_WARN_COUNT = 0x29,
+    R_WARN_FRONTEND_ENT_LIMIT,
+    R_WARN_KNOWN_MODELS,
+    R_WARN_KNOWN_SPECIAL_MODELS,
+    R_WARN_MODEL_LIGHT_CACHE,
+    R_WARN_SCENE_ENTITIES,
+    R_WARN_TEMP_SKIN_BUF_SIZE,
+    R_WARN_MAX_SKINNED_CACHE_VERTICES,
+    R_WARN_MAX_SCENE_SURFS_SIZE,
+    R_WARN_PORTAL_PLANES,
+    R_WARN_MAX_CLOUDS,
+    R_WARN_MAX_DLIGHTS,
+    R_WARN_SMODEL_LIGHTING,
+    R_WARN_MAX_DRAWSURFS,
+    R_WARN_GFX_CODE_MESH_LIMIT,
+    R_WARN_GFX_MARK_MESH_LIMIT,
+    R_WARN_MAX_SCENE_DRAWSURFS,
+    R_WARN_MAX_FX_DRAWSURFS,
+    R_WARN_NONEMISSIVE_FX_MATERIAL,
+    R_WARN_NONLIGHTMAP_MARK_MATERIAL,
+    R_WARN_PRIM_DRAW_SURF_BUFFER_SIZE,
+    R_WARN_CMDBUF_OVERFLOW,
+    R_WARN_MISSING_DECL_NONDEBUG,
+    R_WARN_MAX_DYNENT_REFS,
+    R_WARN_MAX_SCENE_DOBJ_REFS,
+    R_WARN_MAX_SCENE_MODEL_REFS,
+    R_WARN_MAX_SCENE_BRUSH_REFS,
+    R_WARN_MAX_CODE_INDS,
+    R_WARN_MAX_CODE_VERTS,
+    R_WARN_MAX_CODE_ARGS,
+    R_WARN_MAX_MARK_INDS,
+    R_WARN_MAX_MARK_VERTS,
+    R_WARN_DEBUG_ALLOC,
+    R_WARN_SPOT_LIGHT_LIMIT,
+    R_WARN_FX_ELEM_LIMIT,
+    R_WARN_WORKER_CMD_SIZE,
+    R_WARN_UNKNOWN_STATICMODEL_SHADER,
+    R_WARN_UNKNOWN_XMODEL_SHADER,
+    R_WARN_DYNAMIC_INDEX_BUFFER_SIZE,
+    R_WARN_TOO_MANY_LIGHT_GRID_POINTS,
+    R_WARN_FOGABLE_2DTEXT,
+    R_WARN_FOGABLE_2DGLYPH,
+    R_WARN_COUNT,
 };
-
 const char * const s_warnFormat[41] =
 {
     "entity buffer exceeded - not drawing model",
@@ -194,44 +179,34 @@ const char * const s_warnFormat[41] =
     "Fogable material %s used for 2D text %s",
     "Fogable material %s used for 2D glyph",
 };
-
 struct clSnapshot_t 
 {                                       
-                                        // clientActive_t/r ...
     int32_t valid;                          
-                                        // CL_ParseSnapshot:loc_4A5715/w ...
     int32_t snapFlags;                      
     int32_t serverTime;                     
-                                        // CL_ParseSnapshot+200/r ...
     int32_t messageNum;                     
-                                        // CL_ParseSnapshot:loc_4A55D6/r ...
     int32_t deltaNum;                       
-                                        // CL_ParseSnapshot+8F/w ...
     int32_t ping;
     int32_t cmdNum;
     playerState_s ps;                   
-                                        // CL_ParseSnapshot+21B/o ...
     int32_t numEntities;
     int32_t numClients;
     int32_t parseEntitiesNum;
     int32_t parseClientsNum;
     int32_t serverCommandNum;               
 };
-
 struct gameState_t 
 {                                       
     int32_t stringOffsets[2442];
     char stringData[131072];
     int32_t dataCount;
 };
-
 enum StanceState
 {                                       
-    CL_STANCE_STAND = 0x0,
-    CL_STANCE_CROUCH = 0x1,
-    CL_STANCE_PRONE = 0x2,
+    CL_STANCE_STAND,
+    CL_STANCE_CROUCH,
+    CL_STANCE_PRONE,
 };
-
 struct ClientArchiveData 
 {                                       
     int32_t serverTime;
@@ -241,7 +216,6 @@ struct ClientArchiveData
     int32_t movementDir;
     float viewangles[3];
 };
-
 struct outPacket_t 
 {                                       
     int32_t p_cmdNumber;
@@ -250,45 +224,36 @@ struct outPacket_t
 };
 enum sessionState_t
 {                                       
-    SESS_STATE_PLAYING = 0x0,
-    SESS_STATE_DEAD = 0x1,
-    SESS_STATE_SPECTATOR = 0x2,
-    SESS_STATE_INTERMISSION = 0x3,
+    SESS_STATE_PLAYING,
+    SESS_STATE_DEAD,
+    SESS_STATE_SPECTATOR,
+    SESS_STATE_INTERMISSION,
 };
-
 enum clientConnected_t
 {                                       
-    CON_DISCONNECTED = 0x0,
-    CON_CONNECTING = 0x1,
-    CON_CONNECTED = 0x2,
+    CON_DISCONNECTED,
+    CON_CONNECTING,
+    CON_CONNECTED,
 };
 struct playerTeamState_t 
 {                                       
     int32_t location;
 };
-
 struct clientState_s 
 {                                       
-                                        // ?MSG_ReadDeltaClient@@YAHPAUmsg_t@@HPBUclientState_s@@PAU2@H@Z/r ...
     int32_t clientIndex;
     team_t team;                        
-    // SpectatorClientEndFrame(gentity_s *):loc_4F9A78/r ...
     int32_t modelindex;
     int32_t attachModelIndex[6];            
-    // FX_SavePhysicsData+156/o ...
     int32_t attachTagIndex[6];              
-    // AimTarget_IsTargetValid+228/o ...
     char name[16];                      
-    // _memmove:UnwindDown2/o ...
     float maxSprintTimeMultiplier;      
-    // R_ChangeState_0(GfxCmdBufState *,uint)+2E6/o
     int32_t rank;
     int32_t prestige;
     int32_t perks;
     int32_t attachedVehEntNum;
     int32_t attachedVehSlotIndex;           
 };
-
 struct clientSession_t 
 {                                       
     sessionState_t sessionState;
@@ -301,8 +266,6 @@ struct clientSession_t
     int32_t kills;
     int32_t assists;
     uint16_t scriptPersId;
-    
-    
     clientConnected_t connected;
     usercmd_s cmd;
     usercmd_s oldcmd;
@@ -321,7 +284,6 @@ struct clientSession_t
     clientState_s cs;
     int32_t psOffsetTime;
 };
-
 typedef struct gclient_s 
 {                                       
     playerState_s ps;
@@ -377,24 +339,16 @@ typedef struct gclient_s
     bool previouslyFiring;
     bool previouslyUsingNightVision;
     bool previouslySprinting;
-    
     int32_t hasRadar;
     int32_t lastStand;
     int32_t lastStandTime;
 } gclient_t;
-
 struct clientActive_t 
 {                                       
     bool usingAds;
-    
-    
-    
     int32_t timeoutcount;
     clSnapshot_t snap;
     bool alwaysFalse;
-    
-    
-    
     int32_t serverTime;
     int32_t oldServerTime;
     int32_t oldFrameServerTime;
@@ -410,9 +364,6 @@ struct clientActive_t
     int32_t mouseDy[2];
     int32_t mouseIndex;
     bool stanceHeld;
-    
-    
-    
     StanceState stance;
     StanceState stancePosition;
     int32_t stanceTime;
@@ -435,29 +386,21 @@ struct clientActive_t
     volatile uint32_t skelMemPos;            
     char skelMemory[262144];
     char *skelMemoryStart;              
-                                        // CL_AllocSkelMemory(uint)+BB/r
     bool allowedAllocSkel;
-    
-    
-    
     usercmd_s cmds[128];
     int32_t cmdNumber;
     ClientArchiveData clientArchive[256];
     int32_t clientArchiveIndex;
     outPacket_t outPackets[32];
     clSnapshot_t snapshots[32];         
-                                        // RB_LogPrintState_0(int,int)+19D/o ...
     entityState_s entityBaselines[1024];
     entityState_s parseEntities[2048];  
-                                        // CountBitsEnabled(uint)+1B/o ...
     clientState_s parseClients[2048];   
-                                        // AimTarget_IsTargetValid+228/o ...
     int32_t corruptedTranslationFile;
     char translationVersion[256];
     float vehicleViewYaw;
     float vehicleViewPitch;
 };
-
 struct clientConnection_t 
 {                                       
     int32_t qport;
@@ -478,9 +421,6 @@ struct clientConnection_t
     int32_t lastExecutedServerCommand;
     char serverCommands[128][1024];     
     bool isServerRestarting;
-    
-    
-    
     int32_t lastClientArchiveIndex;
     char demoName[64];
     int32_t demorecording;
@@ -499,15 +439,8 @@ struct clientConnection_t
     char netchanIncomingBuffer[0x20000];
     netProfileInfo_t OOBProf;
     uint8_t statPacketsToSend;
-    
-    
-    
     int32_t statPacketSendTime[7];
 };
-
-
-
-
 struct serverInfo_t 
 {                                       
     netadr_t adr;                       
@@ -526,7 +459,6 @@ struct serverInfo_t
     uint8_t voice;
     uint8_t punkbuster;         
     uint8_t requestCount;       
-    
     short minPing;                    
     short maxPing;                    
     short ping;                       
@@ -534,10 +466,7 @@ struct serverInfo_t
     char mapName[32];                   
     char game[24];                      
     char gameType[16];                  
-    
-    
 };
-
 struct clientLogo_t 
 {                                       
     int32_t startTime;                      
@@ -560,13 +489,8 @@ struct vidConfig_t
     uint32_t maxTextureSize;        
     uint32_t maxTextureMaps;        
     bool deviceSupportsGamma;           
-    
-    
-    
 };
-
 struct Font_s;
-
 struct clientStatic_t 
 {                                       
     int32_t quit;                           
@@ -616,21 +540,19 @@ struct clientStatic_t
     char originalDownloadName[64];      
     float debugRenderPos[3];            
 };
-
 enum connstate_t
 {                                       
-    CA_DISCONNECTED = 0x0,
-    CA_CINEMATIC = 0x1,
-    CA_LOGO = 0x2,
-    CA_CONNECTING = 0x3,
-    CA_CHALLENGING = 0x4,
-    CA_CONNECTED = 0x5,
-    CA_SENDINGSTATS = 0x6,
-    CA_LOADING = 0x7,
-    CA_PRIMED = 0x8,
-    CA_ACTIVE = 0x9,
+    CA_DISCONNECTED,
+    CA_CINEMATIC,
+    CA_LOGO,
+    CA_CONNECTING,
+    CA_CHALLENGING,
+    CA_CONNECTED,
+    CA_SENDINGSTATS,
+    CA_LOADING,
+    CA_PRIMED,
+    CA_ACTIVE,
 };
-
 struct clientUIActive_t 
 {
     bool active;
@@ -639,12 +561,8 @@ struct clientUIActive_t
     bool cgameInitCalled;
     int32_t keyCatchers;
     bool displayHUDWithKeycatchUI;
-    
-    
-    
     connstate_t connectionState;
 };
-
 struct ClientVoicePacket_t 
 {                                       
     uint8_t data[256];
@@ -656,14 +574,12 @@ struct voiceCommunication_t
     int32_t voicePacketCount;
     int32_t voicePacketLastTransmit;
 };
-
 struct VoicePacket_t 
 {                                       
     uint8_t talker;             
     uint8_t data[256];          
     int32_t dataSize;                       
 };
-
 struct ping_t 
 {                                       
     netadr_t adr;                       
@@ -671,39 +587,31 @@ struct ping_t
     int32_t time;                           
     char info[1024];                    
 };
-
 #define MAX_CLIENTS 64
-
 #define STATIC_MAX_LOCAL_CLIENTS 1 
-
-// cl_cgame_mp
 struct snapshot_s;
 struct snd_alias_t;
 struct refdef_s;
 struct MemoryFile;
-
-// cl_rank
 enum rankTableColumns_t
 {                                       
-    MP_RANKTABLE_RANKID = 0x0,
-    MP_RANKTABLE_RANK = 0x1,
-    MP_RANKTABLE_MINXP = 0x2,
-    MP_RANKTABLE_XPTONEXT = 0x3,
-    MP_RANKTABLE_SHORTRANK = 0x4,
-    MP_RANKTABLE_FULLRANK = 0x5,
-    MP_RANKTABLE_ICON = 0x6,
-    MP_RANKTABLE_MAXXP = 0x7,
-    MP_RANKTABLE_WEAPUNLOCK = 0x8,
-    MP_RANKTABLE_PERKUNLOCK = 0x9,
-    MP_RANKTABLE_CHALLENGE = 0xA,
-    MP_RANKTABLE_CAMO = 0xB,
-    MP_RANKTABLE_ATTACHMENT = 0xC,
-    MP_RANKTABLE_LEVEL = 0xD,
-    MP_RANKTABLE_DISPLAYLEVEL = 0xE,
-    MP_RANKTABLE_COUNT = 0xF,
+    MP_RANKTABLE_RANKID,
+    MP_RANKTABLE_RANK,
+    MP_RANKTABLE_MINXP,
+    MP_RANKTABLE_XPTONEXT,
+    MP_RANKTABLE_SHORTRANK,
+    MP_RANKTABLE_FULLRANK,
+    MP_RANKTABLE_ICON,
+    MP_RANKTABLE_MAXXP,
+    MP_RANKTABLE_WEAPUNLOCK,
+    MP_RANKTABLE_PERKUNLOCK,
+    MP_RANKTABLE_CHALLENGE,
+    MP_RANKTABLE_CAMO,
+    MP_RANKTABLE_ATTACHMENT,
+    MP_RANKTABLE_LEVEL,
+    MP_RANKTABLE_DISPLAYLEVEL,
+    MP_RANKTABLE_COUNT,
 };
-
-// cl_input
 struct kbutton_t 
 {                                       
     int32_t down[2];                        
@@ -711,11 +619,7 @@ struct kbutton_t
     uint32_t msec;
     bool active;                        
     bool wasPressed;
-    
-    
 };
-
-// cl_ui_mp
 struct uiClientState_s 
 {                                       
     connstate_t connState;              
@@ -724,4 +628,3 @@ struct uiClientState_s
     char updateInfoString[1024];
     char messageString[1024];           
 };
-

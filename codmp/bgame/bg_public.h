@@ -1,101 +1,95 @@
 #pragma once
-
 #include "../qcommon/q_shared.h"
-
 #include "../qcommon/msg.h"
-
 #include "../game/enthandle.h"
 #include "../game/client.h"
-
 #define abs8(x) abs(x)
 #define abs32(x) abs(x)
-
 enum entity_event_t
 {
-    EV_NONE = 0x0,
-    EV_FOLIAGE_SOUND = 0x1,
-    EV_STOP_WEAPON_SOUND = 0x2,
-    EV_SOUND_ALIAS = 0x3,
-    EV_SOUND_ALIAS_AS_MASTER = 0x4,
-    EV_STOPSOUNDS = 0x5,
-    EV_STANCE_FORCE_STAND = 0x6,
-    EV_STANCE_FORCE_CROUCH = 0x7,
-    EV_STANCE_FORCE_PRONE = 0x8,
-    EV_ITEM_PICKUP = 0x9,
-    EV_AMMO_PICKUP = 0xA,
-    EV_NOAMMO = 0xB,
-    EV_EMPTYCLIP = 0xC,
-    EV_EMPTY_OFFHAND = 0xD,
-    EV_RESET_ADS = 0xE,
-    EV_RELOAD = 0xF,
-    EV_RELOAD_FROM_EMPTY = 0x10,
-    EV_RELOAD_START = 0x11,
-    EV_RELOAD_END = 0x12,
-    EV_RELOAD_START_NOTIFY = 0x13,
-    EV_RELOAD_ADDAMMO = 0x14,
-    EV_RAISE_WEAPON = 0x15,
-    EV_FIRST_RAISE_WEAPON = 0x16,
-    EV_PUTAWAY_WEAPON = 0x17,
-    EV_WEAPON_ALT = 0x18,
-    EV_PULLBACK_WEAPON = 0x19,
-    EV_FIRE_WEAPON = 0x1A,
-    EV_FIRE_WEAPON_LASTSHOT = 0x1B,
-    EV_RECHAMBER_WEAPON = 0x1C,
-    EV_EJECT_BRASS = 0x1D,
-    EV_MELEE_SWIPE = 0x1E,
-    EV_FIRE_MELEE = 0x1F,
-    EV_PREP_OFFHAND = 0x20,
-    EV_USE_OFFHAND = 0x21,
-    EV_SWITCH_OFFHAND = 0x22,
-    EV_MELEE_HIT = 0x23,
-    EV_MELEE_MISS = 0x24,
-    EV_MELEE_BLOOD = 0x25,
-    EV_FIRE_WEAPON_MG42 = 0x26,
-    EV_FIRE_QUADBARREL_1 = 0x27,
-    EV_FIRE_QUADBARREL_2 = 0x28,
-    EV_BULLET_HIT = 0x29,
-    EV_BULLET_HIT_CLIENT_SMALL = 0x2A,
-    EV_BULLET_HIT_CLIENT_LARGE = 0x2B,
-    EV_GRENADE_BOUNCE = 0x2C,
-    EV_GRENADE_EXPLODE = 0x2D,
-    EV_ROCKET_EXPLODE = 0x2E,
-    EV_ROCKET_EXPLODE_NOMARKS = 0x2F,
-    EV_FLASHBANG_EXPLODE = 0x30,
-    EV_CUSTOM_EXPLODE = 0x31,
-    EV_CUSTOM_EXPLODE_NOMARKS = 0x32,
-    EV_CHANGE_TO_DUD = 0x33,
-    EV_DUD_EXPLODE = 0x34,
-    EV_DUD_IMPACT = 0x35,
-    EV_BULLET = 0x36,
-    EV_PLAY_FX = 0x37,
-    EV_PLAY_FX_ON_TAG = 0x38,
-    EV_PHYS_EXPLOSION_SPHERE = 0x39,
-    EV_PHYS_EXPLOSION_CYLINDER = 0x3A,
-    EV_PHYS_EXPLOSION_JOLT = 0x3B,
-    EV_PHYS_JITTER = 0x3C,
-    EV_EARTHQUAKE = 0x3D,
-    EV_GRENADE_SUICIDE = 0x3E,
-    EV_DETONATE = 0x3F,
-    EV_NIGHTVISION_WEAR = 0x40,
-    EV_NIGHTVISION_REMOVE = 0x41,
-    EV_OBITUARY = 0x42,
-    EV_NO_FRAG_GRENADE_HINT = 0x43,
-    EV_NO_SPECIAL_GRENADE_HINT = 0x44,
-    EV_TARGET_TOO_CLOSE_HINT = 0x45,
-    EV_TARGET_NOT_ENOUGH_CLEARANCE = 0x46,
-    EV_LOCKON_REQUIRED_HINT = 0x47,
-    EV_FOOTSTEP_SPRINT = 0x48,
-    EV_FOOTSTEP_RUN = 0x49,
-    EV_FOOTSTEP_WALK = 0x4A,
-    EV_FOOTSTEP_PRONE = 0x4B,
-    EV_JUMP = 0x4C,
-    EV_LANDING_FIRST = 0x4D,
-    EV_LANDING_LAST = 0x69,
-    EV_LANDING_PAIN_FIRST = 0x6A,
-    EV_LANDING_PAIN_LAST = 0x86,
-    EV_MAX_EVENTS = 0x87,
+    EV_NONE,
+    EV_FOLIAGE_SOUND,
+    EV_STOP_WEAPON_SOUND,
+    EV_SOUND_ALIAS,
+    EV_SOUND_ALIAS_AS_MASTER,
+    EV_STOPSOUNDS,
+    EV_STANCE_FORCE_STAND,
+    EV_STANCE_FORCE_CROUCH,
+    EV_STANCE_FORCE_PRONE,
+    EV_ITEM_PICKUP,
+    EV_AMMO_PICKUP,
+    EV_NOAMMO,
+    EV_EMPTYCLIP,
+    EV_EMPTY_OFFHAND,
+    EV_RESET_ADS,
+    EV_RELOAD,
+    EV_RELOAD_FROM_EMPTY,
+    EV_RELOAD_START,
+    EV_RELOAD_END,
+    EV_RELOAD_START_NOTIFY,
+    EV_RELOAD_ADDAMMO,
+    EV_RAISE_WEAPON,
+    EV_FIRST_RAISE_WEAPON,
+    EV_PUTAWAY_WEAPON,
+    EV_WEAPON_ALT,
+    EV_PULLBACK_WEAPON,
+    EV_FIRE_WEAPON,
+    EV_FIRE_WEAPON_LASTSHOT,
+    EV_RECHAMBER_WEAPON,
+    EV_EJECT_BRASS,
+    EV_MELEE_SWIPE,
+    EV_FIRE_MELEE,
+    EV_PREP_OFFHAND,
+    EV_USE_OFFHAND,
+    EV_SWITCH_OFFHAND,
+    EV_MELEE_HIT,
+    EV_MELEE_MISS,
+    EV_MELEE_BLOOD,
+    EV_FIRE_WEAPON_MG42,
+    EV_FIRE_QUADBARREL_1,
+    EV_FIRE_QUADBARREL_2,
+    EV_BULLET_HIT,
+    EV_BULLET_HIT_CLIENT_SMALL,
+    EV_BULLET_HIT_CLIENT_LARGE,
+    EV_GRENADE_BOUNCE,
+    EV_GRENADE_EXPLODE,
+    EV_ROCKET_EXPLODE,
+    EV_ROCKET_EXPLODE_NOMARKS,
+    EV_FLASHBANG_EXPLODE,
+    EV_CUSTOM_EXPLODE,
+    EV_CUSTOM_EXPLODE_NOMARKS,
+    EV_CHANGE_TO_DUD,
+    EV_DUD_EXPLODE,
+    EV_DUD_IMPACT,
+    EV_BULLET,
+    EV_PLAY_FX,
+    EV_PLAY_FX_ON_TAG,
+    EV_PHYS_EXPLOSION_SPHERE,
+    EV_PHYS_EXPLOSION_CYLINDER,
+    EV_PHYS_EXPLOSION_JOLT,
+    EV_PHYS_JITTER,
+    EV_EARTHQUAKE,
+    EV_GRENADE_SUICIDE,
+    EV_DETONATE,
+    EV_NIGHTVISION_WEAR,
+    EV_NIGHTVISION_REMOVE,
+    EV_OBITUARY,
+    EV_NO_FRAG_GRENADE_HINT,
+    EV_NO_SPECIAL_GRENADE_HINT,
+    EV_TARGET_TOO_CLOSE_HINT,
+    EV_TARGET_NOT_ENOUGH_CLEARANCE,
+    EV_LOCKON_REQUIRED_HINT,
+    EV_FOOTSTEP_SPRINT,
+    EV_FOOTSTEP_RUN,
+    EV_FOOTSTEP_WALK,
+    EV_FOOTSTEP_PRONE,
+    EV_JUMP,
+    EV_LANDING_FIRST,
+    EV_LANDING_LAST,
+    EV_LANDING_PAIN_FIRST,
+    EV_LANDING_PAIN_LAST,
+    EV_MAX_EVENTS,
 };
-
 static const char *entityTypeNames[17] =
 {
     "ET_GENERAL",
@@ -116,7 +110,6 @@ static const char *entityTypeNames[17] =
     "ET_VEHICLE_COLLMAP",
     "ET_VEHICLE_CORPSE"
 };
-
 static const char *eventnames[135] =
 {
   "EV_NONE",
@@ -255,7 +248,6 @@ static const char *eventnames[135] =
   "EV_LANDING_PAIN_FRUIT",
   "EV_LANDING_PAIN_PAINTEDMETAL"
 };
-
 struct pmove_t 
 {                                       
     playerState_s *ps;                  
@@ -270,37 +262,26 @@ struct pmove_t
     int proneChange;
     float maxSprintTimeMultiplier;
     bool mantleStarted;                 
-    
-    
-    
     float mantleEndPos[3];              
     int mantleDuration;                 
     int viewChangeTime;                 
     float viewChange;
     unsigned char handler;            
-    
-    
-    
 };
-
 struct pmoveHandler_t 
 {
     void( *trace)(trace_t *, const float *, const float *, const float *, const float *, int, int);
     void( *playerEvent)(int, int);
 };
-
 struct tagInfo_s 
 {
     gentity_s *parent;
     gentity_s *next;
     uint16_t name;
-    
-    
     int32_t index;
     float axis[4][3];
     float parentInvAxis[4][3];
 };
-
 struct trigger_ent_t 
 {                                       
     int32_t threshold;
@@ -308,18 +289,13 @@ struct trigger_ent_t
     int32_t timestamp;
     int32_t singleUserEntIndex;
     bool requireLookAt;
-    
-    
-    
 };
-
 struct item_ent_t 
 {                                       
     int32_t ammoCount;
     int32_t clipAmmoCount;
     int32_t index;
 };
-
 struct mover_ent_t 
 {                                       
     float decelTime;
@@ -335,7 +311,6 @@ struct mover_ent_t
     float apos2[3];
     float apos3[3];
 };
-
 struct entityShared_t 
 {                                       
     uint8_t linked;
@@ -354,28 +329,21 @@ struct entityShared_t
     EntHandle ownerNum;
     int32_t eventTime;
 };
-
 enum MissileStage
 {                                       
-    MISSILESTAGE_SOFTLAUNCH = 0x0,
-    MISSILESTAGE_ASCENT = 0x1,
-    MISSILESTAGE_DESCENT = 0x2,
+    MISSILESTAGE_SOFTLAUNCH,
+    MISSILESTAGE_ASCENT,
+    MISSILESTAGE_DESCENT,
 };
-
 enum MissileFlightMode
 {                                       
-    MISSILEFLIGHTMODE_TOP = 0x0,
-    MISSILEFLIGHTMODE_DIRECT = 0x1,
+    MISSILEFLIGHTMODE_TOP,
+    MISSILEFLIGHTMODE_DIRECT,
 };
-
-
-
 struct corpse_ent_t 
 {                                       
     int32_t deathAnimStartTime;
 };
-
-
 struct missile_ent_t 
 {                                       
     float time;
@@ -388,52 +356,50 @@ struct missile_ent_t
     MissileStage stage;
     MissileFlightMode flightMode;
 };
-
 enum EntHandler_t 
 {
-    ENT_HANDLER_NULL = 0x0,
-    ENT_HANDLER_TRIGGER_MULTIPLE = 0x1,
-    ENT_HANDLER_TRIGGER_HURT = 0x2,
-    ENT_HANDLER_TRIGGER_HURT_TOUCH = 0x3,
-    ENT_HANDLER_TRIGGER_DAMAGE = 0x4,
-    ENT_HANDLER_SCRIPT_MOVER = 0x5,
-    ENT_HANDLER_SCRIPT_MODEL = 0x6,
-    ENT_HANDLER_GRENADE = 0x7,
-    ENT_HANDLER_TIMED_OBJECT = 0x8,
-    ENT_HANDLER_ROCKET = 0x9,
-    ENT_HANDLER_CLIENT = 0xA,
-    ENT_HANDLER_CLIENT_SPECTATOR = 0xB,
-    ENT_HANDLER_CLIENT_DEAD = 0xC,
-    ENT_HANDLER_PLAYER_CLONE = 0xD,
-    ENT_HANDLER_TURRET_INIT = 0xE,
-    ENT_HANDLER_TURRET = 0xF,
-    ENT_HANDLER_DROPPED_ITEM = 0x10,
-    ENT_HANDLER_ITEM_INIT = 0x11,
-    ENT_HANDLER_ITEM = 0x12,
-    ENT_HANDLER_TRIGGER_USE = 0x13,
-    ENT_HANDLER_PRIMARY_LIGHT = 0x14,
-    ENT_HANDLER_PLAYER_BLOCK = 0x15,
-    ENT_HANDLER_VEHICLE = 0x16,
-    ENT_HANDLER_HELICOPTER = 0x17,
-    ENT_HANDLER_COUNT = 0x18,
+    ENT_HANDLER_NULL,
+    ENT_HANDLER_TRIGGER_MULTIPLE,
+    ENT_HANDLER_TRIGGER_HURT,
+    ENT_HANDLER_TRIGGER_HURT_TOUCH,
+    ENT_HANDLER_TRIGGER_DAMAGE,
+    ENT_HANDLER_SCRIPT_MOVER,
+    ENT_HANDLER_SCRIPT_MODEL,
+    ENT_HANDLER_GRENADE,
+    ENT_HANDLER_TIMED_OBJECT,
+    ENT_HANDLER_ROCKET,
+    ENT_HANDLER_CLIENT,
+    ENT_HANDLER_CLIENT_SPECTATOR,
+    ENT_HANDLER_CLIENT_DEAD,
+    ENT_HANDLER_PLAYER_CLONE,
+    ENT_HANDLER_TURRET_INIT,
+    ENT_HANDLER_TURRET,
+    ENT_HANDLER_DROPPED_ITEM,
+    ENT_HANDLER_ITEM_INIT,
+    ENT_HANDLER_ITEM,
+    ENT_HANDLER_TRIGGER_USE,
+    ENT_HANDLER_PRIMARY_LIGHT,
+    ENT_HANDLER_PLAYER_BLOCK,
+    ENT_HANDLER_VEHICLE,
+    ENT_HANDLER_HELICOPTER,
+    ENT_HANDLER_COUNT,
 };
-
 enum gentityFlags_t 
 {
-    FL_GODMODE              = 0x1,
-    FL_DEMI_GODMODE         = 0x2,
-    FL_NOTARGET             = 0x4,
-    FL_NO_KNOCKBACK         = 0x8,
-    FL_DROPPED_ITEM         = 0x10,
-    FL_NO_BOTS              = 0x20,
-    FL_NO_HUMANS            = 0x40,
-    FL_TOGGLE               = 0x80,
-    FL_SOFTACTIVATE         = 0x100,
-    FL_PARACHUTE            = 0x200,
-    FL_NO_HEADCHECK         = 0x400,
-    FL_SUPPORTS_LINKTO      = 0x1000,
-    FL_NO_AUTO_ANIM_UPDATE  = 0x2000,
-    FL_GRENADE_TOUCH_DAMAGE = 0x4000,
+    FL_GODMODE             ,
+    FL_DEMI_GODMODE        ,
+    FL_NOTARGET            ,
+    FL_NO_KNOCKBACK        ,
+    FL_DROPPED_ITEM        ,
+    FL_NO_BOTS             ,
+    FL_NO_HUMANS           ,
+    FL_TOGGLE              ,
+    FL_SOFTACTIVATE        ,
+    FL_PARACHUTE           ,
+    FL_NO_HEADCHECK        ,
+    FL_SUPPORTS_LINKTO     ,
+    FL_NO_AUTO_ANIM_UPDATE ,
+    FL_GRENADE_TOUCH_DAMAGE,
     FL_MISSILE_DESTABILIZED = 0x10'000,
     FL_STABLE_MISSILES      = 0x20'000,
     FL_REPEAT_ANIM_UPDATE   = 0x40'000,
@@ -444,7 +410,6 @@ enum gentityFlags_t
     FL_MISSILE_ATTRACTOR    = 0x800'000,
     FL_WEAPON_BEING_GRABBED = 0x1'000'000,
 };
-
 typedef struct gentity_s 
 {                                       
     entityState_s s;                    
@@ -462,8 +427,6 @@ typedef struct gentity_s
     uint16_t classname;         
     uint16_t target;
     uint16_t targetname;
-    
-    
     uint32_t attachIgnoreCollision;
     int32_t spawnflags;                     
     gentityFlags_t flags;                          

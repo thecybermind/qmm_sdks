@@ -1,12 +1,9 @@
 #pragma once
-
+#include "../qcommon/q_shared.h"
 #include "../qcommon/qcommon.h"
-
 #include "../bgame/bg_public.h"
 #include "../bgame/bg_local.h"
-
 struct gentity_s;
-
 struct entityHandler_t 
 {
     void( *think)(gentity_s *);
@@ -20,7 +17,6 @@ struct entityHandler_t
     int32_t methodOfDeath;
     int32_t splashMethodOfDeath;
 };
-
 struct trigger_info_t 
 {                                       
     uint16_t entnum;
@@ -28,17 +24,13 @@ struct trigger_info_t
     int32_t useCount;
     int32_t otherUseCount;
 };
-
 struct cached_tag_mat_t 
 {                                       
     int32_t time;
     int32_t entnum;
     uint16_t name;              
-    
-    
     float tagMat[4][3];                 
 };
-
 struct com_parse_mark_t 
 {                                       
     int lines;                          
@@ -47,7 +39,6 @@ struct com_parse_mark_t
     int backup_lines;
     const char *backup_text;
 };
-
 struct level_locals_t 
 {                                       
     struct gclient_s *clients;                 

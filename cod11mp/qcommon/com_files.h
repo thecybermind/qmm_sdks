@@ -1,26 +1,22 @@
 #pragma once
-
 #include "q_shared.h"
-
 enum FsThread
 {                                       
-    FS_THREAD_MAIN = 0x0,
-    FS_THREAD_STREAM = 0x1,
-    FS_THREAD_DATABASE = 0x2,
-    FS_THREAD_BACKEND = 0x3,
-    FS_THREAD_SERVER = 0x4,
-    FS_THREAD_COUNT = 0x5,
-    FS_THREAD_INVALID = 0x6,
+    FS_THREAD_MAIN,
+    FS_THREAD_STREAM,
+    FS_THREAD_DATABASE,
+    FS_THREAD_BACKEND,
+    FS_THREAD_SERVER,
+    FS_THREAD_COUNT,
+    FS_THREAD_INVALID,
 };
-
 enum fsMode_t
 {                                       
-    FS_READ = 0x0,
-    FS_WRITE = 0x1,
-    FS_APPEND = 0x2,
-    FS_APPEND_SYNC = 0x3,
+    FS_READ,
+    FS_WRITE,
+    FS_APPEND,
+    FS_APPEND_SYNC,
 };
-
 struct directory_t 
 {
     char path[256];
@@ -43,9 +39,6 @@ struct iwd_t
     volatile unsigned int hasOpenFile;
     int numfiles;
     unsigned char referenced;
-    
-    
-    
     unsigned int hashSize;
     fileInIwd_s** hashTable;
     fileInIwd_s* buildBuffer;
@@ -60,7 +53,6 @@ struct searchpath_s
     int ignorePureCheck;
     int language;
 };
-
 union qfile_gus 
 {                                       
     FILE *o;
@@ -81,9 +73,8 @@ struct fileHandleData_t
     int streamed;
     char name[256];
 };
-
 enum FsListBehavior_e 
 {                                       
-    FS_LIST_PURE_ONLY = 0x0,
-    FS_LIST_ALL = 0x1,
+    FS_LIST_PURE_ONLY,
+    FS_LIST_ALL,
 };

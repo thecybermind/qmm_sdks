@@ -1,42 +1,33 @@
 #pragma once
-
 #include "../qcommon/q_shared.h"
-
 #include "../qcommon/msg.h"
 #include "../bgame/bg_public.h"
 #include "../script/scr_variable.h"
 #include "g_main.h"
 #include "../script/scr_const.h"
 #include "../bgame/bg_local.h"
-
 struct game_hudelem_s;
 struct weaponParms;
-
 #define PERK_COUNT 20
-
-static const char *g_dedicatedEnumNames[4] = { "listen server", "dedicated LAN server", "dedicated internet server", NULL }; // idb
-
+static const char *g_dedicatedEnumNames[4] = { "listen server", "dedicated LAN server", "dedicated internet server", NULL };
 struct BuiltinFunctionDef 
 {
     const char *actionString;
     void( *actionFunc)();
     int32_t type;
 };
-
 struct BuiltinMethodDef 
 {                                       
     const char *actionString;           
     void( *actionFunc)(scr_entref_t); 
     int32_t type;                           
 };
-
 struct gameTypeScript_t 
 {                                       
     char pszScript[64];
     char pszName[64];                   
     int32_t bTeamBased;
 };
-
 struct scr_data_t_s 
 {                                       
     int32_t main;                           
@@ -51,7 +42,6 @@ struct scr_data_t_s
     int32_t iNumGameTypes;                  
     gameTypeScript_t list[32];          
 };
-
 struct corpseInfo_t 
 {                                       
     XAnimTree_s *tree;                  
@@ -59,11 +49,7 @@ struct corpseInfo_t
     int32_t time;
     clientInfo_t ci;
     bool falling;
-    
-    
-    
 };
-
 struct scr_data_t 
 {                                       
     int32_t levelscript;                    
@@ -74,46 +60,36 @@ struct scr_data_t
     int32_t createstruct;                   
     corpseInfo_t playerCorpseInfo[8];   
 };
-
-
 enum meansOfDeath_t
 {                                       
-    MOD_UNKNOWN = 0x0,
-    MOD_PISTOL_BULLET = 0x1,
-    MOD_RIFLE_BULLET = 0x2,
-    MOD_GRENADE = 0x3,
-    MOD_GRENADE_SPLASH = 0x4,
-    MOD_PROJECTILE = 0x5,
-    MOD_PROJECTILE_SPLASH = 0x6,
-    MOD_MELEE = 0x7,
-    MOD_HEAD_SHOT = 0x8,
-    MOD_CRUSH = 0x9,
-    MOD_TELEFRAG = 0xA,
-    MOD_FALLING = 0xB,
-    MOD_SUICIDE = 0xC,
-    MOD_TRIGGER_HURT = 0xD,
-    MOD_EXPLOSIVE = 0xE,
-    MOD_IMPACT = 0xF,
-    MOD_NUM = 0x10,
+    MOD_UNKNOWN,
+    MOD_PISTOL_BULLET,
+    MOD_RIFLE_BULLET,
+    MOD_GRENADE,
+    MOD_GRENADE_SPLASH,
+    MOD_PROJECTILE,
+    MOD_PROJECTILE_SPLASH,
+    MOD_MELEE,
+    MOD_HEAD_SHOT,
+    MOD_CRUSH,
+    MOD_TELEFRAG,
+    MOD_FALLING,
+    MOD_SUICIDE,
+    MOD_TRIGGER_HURT,
+    MOD_EXPLOSIVE,
+    MOD_IMPACT,
+    MOD_NUM,
 };
-
-// g_spawn_mp
 struct SpawnFuncEntry 
 {                                       
     const char *classname;
     void( *callback)(gentity_s *);
 };
-
-
-// player_use_mp
 struct useList_t 
 {                                       
     gentity_s *ent;                     
     float score;
 };
-
-
-// syscall cmds
 enum {
 	G_PRINTF,							// ( const char* msg );
 	G_ERROR,							// ( const char* err );
@@ -251,10 +227,8 @@ enum {
 	G_FREEWEAPONINFOMEMORY,				// ( int source );
 	G_FREECLIENTSCRIPTPERS,				// ? ( void );
 	G_RESETENTITYPARSEPOINT,			// ( void );
-
 	G_PRINT = G_PRINTF,
 };
-
 // vmMain cmds
 enum {
 	GAME_INIT,						// ( int levelTime, int randomSeed, int restart, int savepersist );

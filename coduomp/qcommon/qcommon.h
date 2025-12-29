@@ -1,23 +1,19 @@
 #pragma once
-
 #include "../qcommon/q_shared.h"
-
 typedef enum
 {
-    SE_NONE = 0x0,
-    SE_KEY = 0x1,
-    SE_CHAR = 0x2,
-    SE_CONSOLE = 0x3,
+    SE_NONE,
+    SE_KEY,
+    SE_CHAR,
+    SE_CONSOLE,
 } sysEventType_t;
-
 enum SphereEdgeTraceResult 
 {                                       
-    SPHERE_HITS_EDGE = 0x0,
-    SPHERE_MISSES_EDGE = 0x1,
-    SPHERE_MAY_HIT_V0 = 0x2,
-    SPHERE_MAY_HIT_V1 = 0x3,
+    SPHERE_HITS_EDGE,
+    SPHERE_MISSES_EDGE,
+    SPHERE_MAY_HIT_V0,
+    SPHERE_MAY_HIT_V1,
 };
-
 struct field_t 
 {                                       
 	int cursor;                         
@@ -28,38 +24,35 @@ struct field_t
 	int fixedSize;                      
 	char buffer[256];                   
 };
-
 enum hitLocation_t  // (MP/SP same)
 {                                       
-    HITLOC_NONE = 0x0,
-    HITLOC_HELMET = 0x1,
-    HITLOC_HEAD = 0x2,
-    HITLOC_NECK = 0x3,
-    HITLOC_TORSO_UPR = 0x4,
-    HITLOC_TORSO_LWR = 0x5,
-    HITLOC_R_ARM_UPR = 0x6,
-    HITLOC_L_ARM_UPR = 0x7,
-    HITLOC_R_ARM_LWR = 0x8,
-    HITLOC_L_ARM_LWR = 0x9,
-    HITLOC_R_HAND = 0xA,
-    HITLOC_L_HAND = 0xB,
-    HITLOC_R_LEG_UPR = 0xC,
-    HITLOC_L_LEG_UPR = 0xD,
-    HITLOC_R_LEG_LWR = 0xE,
-    HITLOC_L_LEG_LWR = 0xF,
-    HITLOC_R_FOOT = 0x10,
-    HITLOC_L_FOOT = 0x11,
-    HITLOC_GUN = 0x12,
-    HITLOC_NUM = 0x13,
+    HITLOC_NONE,
+    HITLOC_HELMET,
+    HITLOC_HEAD,
+    HITLOC_NECK,
+    HITLOC_TORSO_UPR,
+    HITLOC_TORSO_LWR,
+    HITLOC_R_ARM_UPR,
+    HITLOC_L_ARM_UPR,
+    HITLOC_R_ARM_LWR,
+    HITLOC_L_ARM_LWR,
+    HITLOC_R_HAND,
+    HITLOC_L_HAND,
+    HITLOC_R_LEG_UPR,
+    HITLOC_L_LEG_UPR,
+    HITLOC_R_LEG_LWR,
+    HITLOC_L_LEG_LWR,
+    HITLOC_R_FOOT,
+    HITLOC_L_FOOT,
+    HITLOC_GUN,
+    HITLOC_NUM,
 };
-
 enum DemoType 
 {                                       
-    DEMO_TYPE_NONE = 0x0,
-    DEMO_TYPE_CLIENT = 0x1,
-    DEMO_TYPE_SERVER = 0x2,
+    DEMO_TYPE_NONE,
+    DEMO_TYPE_CLIENT,
+    DEMO_TYPE_SERVER,
 };
-
 static const char *WeaponStateNames[27] =
 {
   "WEAPON_READY",
@@ -90,107 +83,84 @@ static const char *WeaponStateNames[27] =
   "WEAPON_NIGHTVISION_WEAR",
   "WEAPON_NIGHTVISION_REMOVE"
 }; // idb
-
-
 enum errorParm_t
 {                                       
-    ERR_FATAL = 0x0,
-    ERR_DROP = 0x1,
-    ERR_SERVERDISCONNECT = 0x2,
-    ERR_DISCONNECT = 0x3,
-    ERR_SCRIPT = 0x4,
-    ERR_SCRIPT_DROP = 0x5,
-    ERR_LOCALIZATION = 0x6,
-    ERR_MAPLOADERRORSUMMARY = 0x7,
+    ERR_FATAL,
+    ERR_DROP,
+    ERR_SERVERDISCONNECT,
+    ERR_DISCONNECT,
+    ERR_SCRIPT,
+    ERR_SCRIPT_DROP,
+    ERR_LOCALIZATION,
+    ERR_MAPLOADERRORSUMMARY,
 };
-
 enum $6ABDC6367E3229B6421BFD1B2626A094  // (SP/MP same)
 {
-    CON_CHANNEL_DONT_FILTER = 0x0,
-    CON_CHANNEL_ERROR = 0x1,
-    CON_CHANNEL_GAMENOTIFY = 0x2,
-    CON_CHANNEL_BOLDGAME = 0x3,
-    CON_CHANNEL_SUBTITLE = 0x4,
-    CON_CHANNEL_OBITUARY = 0x5,
-    CON_CHANNEL_LOGFILEONLY = 0x6,
-    CON_CHANNEL_CONSOLEONLY = 0x7,
-    CON_CHANNEL_GFX = 0x8,
-    CON_CHANNEL_SOUND = 0x9,
-    CON_CHANNEL_FILES = 0xA,
-    CON_CHANNEL_DEVGUI = 0xB,
-    CON_CHANNEL_PROFILE = 0xC,
-    CON_CHANNEL_UI = 0xD,
-    CON_CHANNEL_CLIENT = 0xE,
-    CON_CHANNEL_SERVER = 0xF,
-    CON_CHANNEL_SYSTEM = 0x10,
-    CON_CHANNEL_PLAYERWEAP = 0x11,
-    CON_CHANNEL_AI = 0x12,
-    CON_CHANNEL_ANIM = 0x13,
-    CON_CHANNEL_PHYS = 0x14,
-    CON_CHANNEL_FX = 0x15,
-    CON_CHANNEL_LEADERBOARDS = 0x16,
-    CON_CHANNEL_PARSERSCRIPT = 0x17,
-    CON_CHANNEL_SCRIPT = 0x18,
-    CON_BUILTIN_CHANNEL_COUNT = 0x19,
+    CON_CHANNEL_DONT_FILTER,
+    CON_CHANNEL_ERROR,
+    CON_CHANNEL_GAMENOTIFY,
+    CON_CHANNEL_BOLDGAME,
+    CON_CHANNEL_SUBTITLE,
+    CON_CHANNEL_OBITUARY,
+    CON_CHANNEL_LOGFILEONLY,
+    CON_CHANNEL_CONSOLEONLY,
+    CON_CHANNEL_GFX,
+    CON_CHANNEL_SOUND,
+    CON_CHANNEL_FILES,
+    CON_CHANNEL_DEVGUI,
+    CON_CHANNEL_PROFILE,
+    CON_CHANNEL_UI,
+    CON_CHANNEL_CLIENT,
+    CON_CHANNEL_SERVER,
+    CON_CHANNEL_SYSTEM,
+    CON_CHANNEL_PLAYERWEAP,
+    CON_CHANNEL_AI,
+    CON_CHANNEL_ANIM,
+    CON_CHANNEL_PHYS,
+    CON_CHANNEL_FX,
+    CON_CHANNEL_LEADERBOARDS,
+    CON_CHANNEL_PARSERSCRIPT,
+    CON_CHANNEL_SCRIPT,
+    CON_BUILTIN_CHANNEL_COUNT,
 };
-
 inline bool Con_IsNotifyChannel(int channel)
 {
     return channel == (CON_CHANNEL_GAMENOTIFY || channel == CON_CHANNEL_BOLDGAME || channel == CON_CHANNEL_SUBTITLE);
 }
-
-
 struct SndCurve;
 struct SpeakerMapInfo;
 struct XModelPiece;
-
-
-
 enum CvarSetSource 
 {                                       
-    CVAR_SOURCE_INTERNAL = 0x0,
-    CVAR_SOURCE_EXTERNAL = 0x1,
-    CVAR_SOURCE_SCRIPT = 0x2,
-    CVAR_SOURCE_DEVGUI = 0x3,
+    CVAR_SOURCE_INTERNAL,
+    CVAR_SOURCE_EXTERNAL,
+    CVAR_SOURCE_SCRIPT,
+    CVAR_SOURCE_DEVGUI,
 };
-
-
-
 /*
 ==============================================================
-
 MISC
-
 ==============================================================
 */
-
 #define RoundUp(N, M) ((N) + ((unsigned int)(M)) - (((unsigned int)(N)) % ((unsigned int)(M))))
 #define RoundDown(N, M) ((N) - (((unsigned int)(N)) % ((unsigned int)(M))))
-
 /*
 ==============================================================
-
 DOBJ MANAGEMENT
-
 ==============================================================
 */
-
 struct XModel;
 struct DObj_s;
 struct DObjModel_s;
 struct XAnimTree_s;
-
 /*
 ==============================================================
-
 TRACES
 (CM = Collision Model)
-
 ==============================================================
 */
 // cm_trace
 #define CAPSULE_SIZE_EPSILON 0.01f
-
 struct TraceExtents 
 {                                       
     TraceExtents()
@@ -198,11 +168,9 @@ struct TraceExtents
         start[0] = 0.0f;
         start[1] = 0.0f;
         start[2] = 0.0f;
-
         end[0] = 0.0f;
         end[1] = 0.0f;
         end[2] = 0.0f;
-
         invDelta[0] = 0.0f;
         invDelta[1] = 0.0f;
         invDelta[2] = 0.0f;
@@ -230,8 +198,6 @@ struct traceWork_t
     int contents;                       
     bool isPoint;                       
     bool axialCullOnly;
-    
-    
     float radius;                       
     float offsetZ;                      
     float radiusOffset[3];              
@@ -265,17 +231,14 @@ struct moveclip_t
     int passOwnerNum;
     int contentmask;
 };
-
 struct cLeafBrushNode_s;
 struct cLeaf_t;
 struct cmodel_t;
-
-// KISAKTODO: move this the fuck outta here
 enum DynEntityDrawType 
 {                                       
-    DYNENT_DRAW_MODEL = 0x0,
-    DYNENT_DRAW_BRUSH = 0x1,
-    DYNENT_DRAW_COUNT = 0x2,
+    DYNENT_DRAW_MODEL,
+    DYNENT_DRAW_BRUSH,
+    DYNENT_DRAW_COUNT,
 };
 inline DynEntityDrawType &operator++(DynEntityDrawType &e) {
     e = static_cast<DynEntityDrawType>(static_cast<int>(e) + 1);
@@ -286,7 +249,6 @@ inline DynEntityDrawType& operator++(DynEntityDrawType &e, int i)
     ++e;
     return e;
 }
-
 // cm_test
 struct leafList_s 
 {                                       
@@ -297,8 +259,6 @@ struct leafList_s
     float bounds[2][3];                 
     int lastLeaf;                       
 };
-
-// cm_world
 struct areaParms_t 
 {                                       
     const float *mins;                  
@@ -332,30 +292,20 @@ struct sightpointtrace_t
     int locational;                     
     unsigned char *priorityMap;       
 };
-
-// cm_load_obj
 struct SpawnVar 
 {                                       
     bool spawnVarsValid;                
-    
-    
-    
     int32_t numSpawnVars;                   
     char *spawnVars[64][2];             
     int32_t numSpawnVarChars;
     char spawnVarChars[2048];
 };
-
-// cm_showcollision
 #define BOXSIDE_FRONT 1
 #define BOXSIDE_BACK 2
-
 struct ShowCollisionBrushPt 
 {                                       
     float xyz[3];
     short sideIndex[3];
-    
-    
 };
 struct winding_t 
 {
@@ -372,8 +322,6 @@ struct cLeaf_t
     float maxs[3];                      
     int leafBrushNode;                  
     short cluster;
-    
-    
 };
 struct cmodel_t 
 {                                       
@@ -420,8 +368,6 @@ struct clipMap_t
     unsigned int numSubModels;          
     struct cmodel_t *cmodels;                  
     unsigned short numBrushes;        
-    
-    
     struct cbrush_t *brushes;                  
     int numClusters;                    
     int clusterBytes;                   
@@ -437,21 +383,17 @@ struct clipMap_t
     struct DynEntityColl *dynEntCollList[2];   
     unsigned int checksum;              
 };
-
-
 /*
 ==============================================================
-
 Profiler
-
 ==============================================================
 */
 enum MapProfileTrackedValue
 {                                       
-    MAP_PROFILE_FILE_OPEN = 0x0,
-    MAP_PROFILE_FILE_SEEK = 0x1,
-    MAP_PROFILE_FILE_READ = 0x2,
-    MAP_PROFILE_VALUE_MAX = 0x3,
+    MAP_PROFILE_FILE_OPEN,
+    MAP_PROFILE_FILE_SEEK,
+    MAP_PROFILE_FILE_READ,
+    MAP_PROFILE_VALUE_MAX,
 };
 struct MapProfileElement 
 {                                       
@@ -480,42 +422,26 @@ struct MapProfileHotSpot
 struct mapLoadProfile_t 
 {                                       
     bool isLoading;                     
-    
-    
-    
     int profileEntryCount;              
     MapProfileEntry profileEntries[384]; 
     MapProfileEntry *currentEntry;      
-    
-    
-    
-    
     unsigned __int64 ticksStart;        
     unsigned __int64 ticksFinish;       
     unsigned __int64 ticksProfiled;     
     int elementAccessCount[3];          
-    
-    
-    
-    
     MapProfileElement elements[3];      
 };
-
 // statmonitor
 struct statmonitor_s 
 {                                       
     int endtime;                        
     void *material;                 
 };
-
-
 #define FloatAsInt(f) (*(int*)&(f))
-
 inline bool IsPowerOf2(int num)
 {
     return (num & (num - 1)) == 0;
 }
-
 template <typename T>
 inline T Buf_Read(unsigned char **pos)
 {
@@ -523,4 +449,3 @@ inline T Buf_Read(unsigned char **pos)
     *pos += sizeof(T);
     return value;
 }
-

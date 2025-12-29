@@ -1,8 +1,6 @@
 #pragma once
-
 // q_shared.h -- included first by ALL program modules.
 // A user mod should never modify this file
-
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
@@ -15,27 +13,20 @@
 #include <cfloat> // FLT_MAX
 #include <cstdint>
 #include <climits>
-
 #include "com_files.h"
-
 // this is the define for determining if we have an asm version of a C function
 #if (defined _M_IX86 || defined __i386__) && !defined __sun__  && !defined __LCC__
 #define id386	1
 #else
 #define id386	0
 #endif
-
 // for windows fastcall option
 #define	QDECL
-
 //======================= WIN32 DEFINES =================================
 #ifdef WIN32
-
 #define	MAC_STATIC
-
 #undef QDECL
 #define	QDECL	
-
 // buildstring will be incorporated into the version string
 #ifdef NDEBUG
 #ifdef _M_IX86
@@ -50,90 +41,63 @@
 #define	CPUSTRING	"win-AXP-debug"
 #endif
 #endif
-
 #define ID_INLINE __inline 
-
 int  ShortSwap(short l);
 int  LongSwap(int l);
-
 static ID_INLINE short BigShort(short l) { return ShortSwap(l); }
 #define LittleShort
 static ID_INLINE int BigLong(int l) { return LongSwap(l); }
 #define LittleLong
 //static ID_INLINE float BigFloat(const float *l) { FloatSwap(l); }
 #define LittleFloat
-
 #define	PATH_SEP '\\'
-
 #endif // WIN32
-
 #define PI_DIV_180		0.017453292519943295769236907684886
 #define INV_PI_DIV_180	57.295779513082320876798154814105
-
 // Punish Aurelio if you don't like these performance enhancements. :-)
 #define DEG2RAD( a ) ( ( (a) * PI_DIV_180 ) )
 #define RAD2DEG( a ) ( ( (a) * INV_PI_DIV_180 ) )
-
 //=============================================================
-
 typedef unsigned long		ulong;
 typedef unsigned short		word;
-
 typedef unsigned char 		byte;
-
 typedef const char* LPCSTR;
-
 typedef enum { qfalse, qtrue }	qboolean;
 #define	qboolean	int		//don't want strict type checking on the qboolean
-
 typedef int		qhandle_t;
 typedef int		thandle_t;
 typedef int		fxHandle_t;
 typedef int		sfxHandle_t;
 typedef intptr_t	fileHandle_t;
 typedef int		clipHandle_t;
-
 #define ptype_int intptr_t
-
-
 #ifndef NULL
 #define NULL ((void *)0)
 #endif
-
 #define	MAX_QINT			0x7fffffff
 #define	MIN_QINT			(-MAX_QINT-1)
-
-
 // angle indexes
 #define	PITCH				0		// up / down
 #define	YAW					1		// left / right
 #define	ROLL				2		// fall over
-
 // the game guarantees that no string from the network will ever
 // exceed MAX_STRING_CHARS
 #define	MAX_STRING_CHARS	1024	// max length of a string passed to Cmd_TokenizeString
 #define	MAX_STRING_TOKENS	256		// max tokens resulting from Cmd_TokenizeString
 #define	MAX_TOKEN_CHARS		1024	// max length of an individual token
-
 #define	MAX_INFO_STRING		1024
 #define	MAX_INFO_KEY		1024
 #define	MAX_INFO_VALUE		1024
-
-
 #define	MAX_QPATH			64		// max length of a quake game pathname
 #define	MAX_OSPATH			260		// max length of a filesystem pathname
-
 #define	MAX_NAME_LENGTH		32		// max length of a client name
-
 #ifdef KISAK_SP
 #define	MAX_GENTITIES		(2176) // 0x880
 #elif KISAK_MP
 #define	MAX_GENTITIES		(1024) // 0x400
 #endif
-
 #define ENTITYNUM_WORLD (MAX_GENTITIES - 2)
 #define ENTITYNUM_NONE (MAX_GENTITIES - 1)
-
 // paramters for command buffer stuffing
 typedef enum {
 	EXEC_NOW,			// don't return until completed, a VM should NEVER use this,
@@ -141,21 +105,16 @@ typedef enum {
 	EXEC_INSERT,		// insert at current position, but don't run yet
 	EXEC_APPEND			// add to end of the command buffer (normal case)
 } cbufExec_t;
-
-
 //
 // these aren't needed by any of the VMs.  put in another header?
 //
 #define	MAX_MAP_AREA_BYTES		32		// bit vector of area visibility
-
 // Light Style Constants
-
 #define LS_STYLES_START			0
 #define LS_NUM_STYLES			32
 #define	LS_SWITCH_START			(LS_STYLES_START+LS_NUM_STYLES)
 #define LS_NUM_SWITCH			32
 #define MAX_LIGHT_STYLES		64
-
 // print levels from renderer (FIXME: set up for game / cgame?)
 typedef enum {
 	PRINT_ALL,
@@ -163,30 +122,23 @@ typedef enum {
 	PRINT_WARNING,
 	PRINT_ERROR
 } printParm_t;
-
 // font rendering values used by ui and cgame
 #define PROP_GAP_WIDTH			2
 //#define PROP_GAP_WIDTH			3
 #define PROP_SPACE_WIDTH		4
 #define PROP_HEIGHT				16
-
 #define PROP_TINY_SIZE_SCALE	1
 #define PROP_SMALL_SIZE_SCALE	1
 #define PROP_BIG_SIZE_SCALE		1
 #define PROP_GIANT_SIZE_SCALE	2
-
 #define PROP_TINY_HEIGHT		10
 #define PROP_GAP_TINY_WIDTH		1
 #define PROP_SPACE_TINY_WIDTH	3
-
 #define PROP_BIG_HEIGHT			24
 #define PROP_GAP_BIG_WIDTH		3
 #define PROP_SPACE_BIG_WIDTH	6
-
-
 #define BLINK_DIVISOR			600
 #define PULSE_DIVISOR			75
-
 #define UI_LEFT			0x00000000	// default
 #define UI_CENTER		0x00000001
 #define UI_RIGHT		0x00000002
@@ -200,8 +152,6 @@ typedef enum {
 #define UI_PULSE		0x00004000
 #define UI_UNDERLINE	0x00008000
 #define UI_TINYFONT		0x00010000
-
-
 // stuff for TA's ROQ cinematic code...
 //
 #define CIN_system	1
@@ -209,16 +159,12 @@ typedef enum {
 #define	CIN_hold	4
 #define CIN_silent	8
 #define CIN_shader	16
-
-
-
 #undef MAKEWORD
 #undef MAKELONG
 #undef LOWORD
 #undef HIWORD
 #undef LOBYTE
 #undef HIBYTE
-
 #if defined(__GNUC__)
 typedef          long long ll;
 typedef unsigned long long ull;
@@ -245,7 +191,6 @@ typedef unsigned int uint;
 typedef unsigned char uchar;
 typedef unsigned short ushort;
 typedef unsigned long ulong;
-
 typedef   signed char   int8;
 typedef   signed char   sint8;
 typedef unsigned char   uint8;
@@ -258,7 +203,6 @@ typedef signed long			sint32;
 typedef ll              int64;
 typedef ll              sint64;
 typedef ull             uint64;
-
 // Partially defined types. They are used when the decompiler does not know
 // anything about the type except its size.
 #define _BYTE  uint8
@@ -268,13 +212,10 @@ typedef ull             uint64;
 #if !defined(_MSC_VER)
 #define _LONGLONG __int128
 #endif
-
 #ifndef M_PI
 #define M_PI		3.14159265358979323846	// matches value in gcc v2 math.h
 #endif
-
 #define M_PI_HALF (M_PI / 2.0) 
-
 // Some convenience macros to make partial accesses nicer
 #define LAST_IND(x,part_type)    (sizeof(x)/sizeof(part_type) - 1)
 #if defined(__BYTE_ORDER) && __BYTE_ORDER == __BIG_ENDIAN
@@ -288,7 +229,6 @@ typedef ull             uint64;
 #define BYTEn(x, n)   (*((_BYTE*)&(x)+n))
 #define WORDn(x, n)   (*((_WORD*)&(x)+n))
 #define DWORDn(x, n)  (*((_DWORD*)&(x)+n))
-
 #define LOBYTE(x)  BYTEn(x,LOW_IND(x,_BYTE))
 #define LOWORD(x)  WORDn(x,LOW_IND(x,_WORD))
 #define LODWORD(x) DWORDn(x,LOW_IND(x,_DWORD))
@@ -317,12 +257,10 @@ typedef ull             uint64;
 #define WORD5(x)   WORDn(x,  5)
 #define WORD6(x)   WORDn(x,  6)
 #define WORD7(x)   WORDn(x,  7)
-
 // now signed macros (the same but with sign extension)
 #define SBYTEn(x, n)   (*((int8*)&(x)+n))
 #define SWORDn(x, n)   (*((int16*)&(x)+n))
 #define SDWORDn(x, n)  (*((int32*)&(x)+n))
-
 #define SLOBYTE(x)  SBYTEn(x,LOW_IND(x,int8))
 #define SLOWORD(x)  SWORDn(x,LOW_IND(x,int16))
 #define SLODWORD(x) SDWORDn(x,LOW_IND(x,int32))
@@ -351,7 +289,6 @@ typedef ull             uint64;
 #define SWORD5(x)   SWORDn(x,  5)
 #define SWORD6(x)   SWORDn(x,  6)
 #define SWORD7(x)   SWORDn(x,  7)
-
 // Generate a pair of operands. S stands for 'signed'
 #define __SPAIR16__(high, low)  (((int16)  (high) <<  8) | (uint8) (low))
 #define __SPAIR32__(high, low)  (((int32)  (high) << 16) | (uint16)(low))
@@ -361,49 +298,42 @@ typedef ull             uint64;
 #define __PAIR32__(high, low)   (((uint32) (high) << 16) | (uint16)(low))
 #define __PAIR64__(high, low)   (((uint64) (high) << 32) | (uint32)(low))
 #define __PAIR128__(high, low)  (((uint128)(high) << 64) | (uint64)(low))
-
-
-
 //=============================================
 enum CvarType
 {
-	CVAR_TYPE_BOOL = 0x0,
-	CVAR_TYPE_FLOAT = 0x1,
-	CVAR_TYPE_FLOAT_2 = 0x2,
-	CVAR_TYPE_FLOAT_3 = 0x3,
-	CVAR_TYPE_FLOAT_4 = 0x4,
-	CVAR_TYPE_INT = 0x5,
-	CVAR_TYPE_ENUM = 0x6,
-	CVAR_TYPE_STRING = 0x7,
-	CVAR_TYPE_COLOR = 0x8,
-	CVAR_TYPE_COUNT = 0x9,
+	CVAR_TYPE_BOOL,
+	CVAR_TYPE_FLOAT,
+	CVAR_TYPE_FLOAT_2,
+	CVAR_TYPE_FLOAT_3,
+	CVAR_TYPE_FLOAT_4,
+	CVAR_TYPE_INT,
+	CVAR_TYPE_ENUM,
+	CVAR_TYPE_STRING,
+	CVAR_TYPE_COLOR,
+	CVAR_TYPE_COUNT,
 };
-
-enum CvarFlags : uint16
+enum CvarFlags
 {
-	CVAR_NOFLAG             = 0x0,
-	CVAR_ARCHIVE            = 0x1,  // will be saved to config(_mp).cfg
-	CVAR_USERINFO           = 0x2,  // sent to server on connect or change
-	CVAR_SERVERINFO         = 0x4,  // sent in response to front end requests
-	CVAR_SYSTEMINFO         = 0x8,  // this is sent (replicated) to all clients if you are host
-	CVAR_INIT               = 0x10, // don't allow change from console at all (i think)
-	CVAR_LATCH              = 0x20, // will only change when C code next does
+	CVAR_NOFLAG            ,
+	CVAR_ARCHIVE           ,  // will be saved to config(_mp).cfg
+	CVAR_USERINFO          ,  // sent to server on connect or change
+	CVAR_SERVERINFO        ,  // sent in response to front end requests
+	CVAR_SYSTEMINFO        ,  // this is sent (replicated) to all clients if you are host
+	CVAR_INIT              , // don't allow change from console at all (i think)
+	CVAR_LATCH             , // will only change when C code next does
                                     // a Cvar_Get(), so it can't be changed
                                     // without proper initialization.  modified
                                     // will be set, even though the value hasn't changed yet
-	
-	CVAR_ROM                = 0x40, // display only, cannot be set by user at all (can be set by code)
-	CVAR_CHEAT              = 0x80, // can not be changed if cheats are disabled
-
+	CVAR_ROM               , // display only, cannot be set by user at all (can be set by code)
+	CVAR_CHEAT             , // can not be changed if cheats are disabled
 	// CVAR_AUTOEXEC, CVAR_SAVED, and CVAR_CHANGEABLE_RESET are not 100% sure
-	CVAR_TEMP               = 0x100,
-	CVAR_AUTOEXEC           = 0x200,
-	CVAR_NORESTART          = 0x400,    // do not clear when a cvar_restart is issued
-	CVAR_SAVED              = 0x1000,
-	CVAR_EXTERNAL           = 0x4000,   // created by a set command or setclientdvar
-	CVAR_CHANGEABLE_RESET   = 0x8000,
+	CVAR_TEMP              ,
+	CVAR_AUTOEXEC          ,
+	CVAR_NORESTART         ,    // do not clear when a cvar_restart is issued
+	CVAR_SAVED             ,
+	CVAR_EXTERNAL          ,   // created by a set command or setclientdvar
+	CVAR_CHANGEABLE_RESET  ,
 };
-
 union CvarValue 
 {                
 	CvarValue()
@@ -480,7 +410,6 @@ union CvarLimits
 	CvarLimits_Value value;
 	CvarLimits_Vector vector;
 };
-
 // nothing outside the Dvar_*() functions should modify these fields!
 struct cvar_s {
 	const char *name;
@@ -495,32 +424,26 @@ struct cvar_s {
 	bool ( *domainFunc)(cvar_s*, CvarValue);
 	cvar_s* hashNext;
 };
-
 using cvar_t = cvar_s;
-
 //=============================================
-
 struct cspField_t 
 {                                       
 	const char *szName;                 
 	int iOffset;                        
 	int iFieldType;                     
 };
-
 union FloatWriteSwap_union 
 {                                       
 	float f;
 	int n;
 	unsigned char b[4];
 };
-
 union FloatReadSwap_union 
 {                                       
 	float f;
 	int n;
 	unsigned char b[4];
 };
-
 static const float colorBlack[4] = { 0.0, 0.0, 0.0, 1.0 }; // idb
 static const float colorRed[4] = { 1.0, 0.0, 0.0, 1.0 }; // idb
 static const float colorGreen[4] = { 0.0, 1.0, 0.0, 1.0 }; // idb
@@ -544,8 +467,6 @@ static const float colorLtOrange[4] = { 0.75, 0.52499998f, 0.0, 1.0 }; // idb
 static const float colorWhiteFaded[4] = { 1.0, 1.0, 1.0, 0.75 }; // idb
 static const float colorGreenFaded[4] = { 0.0, 1.0, 0.0, 0.75 }; // idb
 static const float colorRedFaded[4] = { 0.75, 0.25, 0.0, 0.75 }; // idb
-
-
 #define arr_esize(a) (sizeof((a)[0]))
 #define arr_cnt(a) (sizeof(a)/arr_esize(a))
 #define ARRAY_COUNT(a) arr_cnt(a)
@@ -554,8 +475,6 @@ struct va_info_t
 	char va_string[2][1024];
 	int index;
 };
-
-
 struct TraceCheckCount
 {
 	int global;
@@ -567,24 +486,20 @@ struct TraceThreadInfo
 	struct cbrush_t *box_brush;
 	struct cmodel_t *box_model;
 };
-
 enum TraceHitType
 {                                       
-	TRACE_HITTYPE_NONE = 0x0,
-	TRACE_HITTYPE_ENTITY = 0x1,
-	TRACE_HITTYPE_DYNENT_MODEL = 0x2,
-	TRACE_HITTYPE_DYNENT_BRUSH = 0x3,
+	TRACE_HITTYPE_NONE,
+	TRACE_HITTYPE_ENTITY,
+	TRACE_HITTYPE_DYNENT_MODEL,
+	TRACE_HITTYPE_DYNENT_BRUSH,
 };
-
 #define SURF_INVALID -1
-
 struct trace_t 
 {   
 	trace_t()
 	{
 		memset(this, 0, sizeof(trace_t));
 	}
-	
 	float fraction;                     
 	float normal[3];                    
 	int surfaceFlags;                   
@@ -598,10 +513,7 @@ struct trace_t
 	bool allsolid;                      
 	bool startsolid;                    
 	bool walkable;                      
-	
 };
-
-
 // com_shared
 struct qtime_s 
 {                                       
@@ -615,26 +527,23 @@ struct qtime_s
 	int tm_yday;
 	int tm_isdst;
 };
-
-
 enum trType_t
 {                                       
-	TR_STATIONARY = 0x0,
-	TR_INTERPOLATE = 0x1,
-	TR_LINEAR = 0x2,
-	TR_LINEAR_STOP = 0x3,
-	TR_SINE = 0x4,
-	TR_GRAVITY = 0x5,
-	TR_ACCELERATE = 0x6,
-	TR_DECELERATE = 0x7,
-	TR_PHYSICS = 0x8,
-	TR_FIRST_RAGDOLL = 0x9,
-	TR_RAGDOLL = 0x9,
-	TR_RAGDOLL_GRAVITY = 0xA,
-	TR_RAGDOLL_INTERPOLATE = 0xB,
-	TR_LAST_RAGDOLL = 0xB,
+	TR_STATIONARY,
+	TR_INTERPOLATE,
+	TR_LINEAR,
+	TR_LINEAR_STOP,
+	TR_SINE,
+	TR_GRAVITY,
+	TR_ACCELERATE,
+	TR_DECELERATE,
+	TR_PHYSICS,
+	TR_FIRST_RAGDOLL,
+	TR_RAGDOLL,
+	TR_RAGDOLL_GRAVITY,
+	TR_RAGDOLL_INTERPOLATE,
+	TR_LAST_RAGDOLL,
 };
-
 struct trajectory_t 
 {                                       
 	trType_t trType;                    
@@ -643,7 +552,6 @@ struct trajectory_t
 	float trBase[3];                    
 	float trDelta[3];                   
 };
-
 // com_stringtable
 struct StringTable 
 {                                       
@@ -652,5 +560,4 @@ struct StringTable
 	int rowCount;
 	const char **values;
 };
-
 union XAssetHeader;

@@ -1,9 +1,6 @@
 #pragma once
-
 #include "../qcommon/q_shared.h"
-
 #include "scr_variable.h"
-
 static const char *var_typename[] =
 {
     "undefined",
@@ -30,7 +27,6 @@ static const char *var_typename[] =
     "array",
     "removed thread",
 };
-
 struct scrVarPub_t 
 {
     char* fieldBuffer;
@@ -70,11 +66,9 @@ struct scrVarPub_t
     int totalObjectRefCount;
     volatile unsigned int totalVectorRefCount;
 };
-
 struct PrecacheEntry 
 {                                       
     unsigned short filename;
     bool include;
-    
     unsigned int sourcePos;
 };

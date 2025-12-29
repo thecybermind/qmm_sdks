@@ -1,7 +1,5 @@
 #pragma once
-
 #define CMD_MAX_NESTING 8
-
 struct CmdArgs
 {
     int nesting;
@@ -18,7 +16,6 @@ struct CmdArgsPrivate
     int totalUsedArgvPool;
     int totalUsedTextPool;
 };
-
 struct cmd_function_s
 {
     cmd_function_s *next;
@@ -27,7 +24,6 @@ struct cmd_function_s
     const char *autoCompleteExt;
     void( *function)();
 };
-
 struct CmdText 
 {                                       
     unsigned char *data;              

@@ -1,9 +1,7 @@
 #pragma once
 //#include <xanim/xanim.h>
 #include "../bgame/bg_local.h"
-
-#define MAX_XANIMTREE_NUM       0x80 // 128
-
+#define MAX_XANIMTREE_NUM       128
 struct scrAnimPub_t 
 {                                       
     unsigned int animtrees;             
@@ -13,11 +11,7 @@ struct scrAnimPub_t
     unsigned int xanim_num[2];          
     unsigned int animTreeIndex;         
     bool animtree_loading;              
-    
-    
-    
 };
-
 struct scrAnimGlob_t 
 {                                       
     const char *start;                  

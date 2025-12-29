@@ -1,29 +1,26 @@
 #pragma once
-
 #include "q_shared.h"
-
 enum entityType_t
 {                                       
-    ET_GENERAL = 0x0,
-    ET_PLAYER = 0x1,
-    ET_PLAYER_CORPSE = 0x2,
-    ET_ITEM = 0x3,
-    ET_MISSILE = 0x4,
-    ET_INVISIBLE = 0x5,
-    ET_SCRIPTMOVER = 0x6,
-    ET_SOUND_BLEND = 0x7,
-    ET_FX = 0x8,
-    ET_LOOP_FX = 0x9,
-    ET_PRIMARY_LIGHT = 0xA,
-    ET_MG42 = 0xB,
-    ET_HELICOPTER = 0xC,
-    ET_PLANE = 0xD,
-    ET_VEHICLE = 0xE,
-    ET_VEHICLE_COLLMAP = 0xF,
-    ET_VEHICLE_CORPSE = 0x10,
-    ET_EVENTS = 0x11,
+    ET_GENERAL,
+    ET_PLAYER,
+    ET_PLAYER_CORPSE,
+    ET_ITEM,
+    ET_MISSILE,
+    ET_INVISIBLE,
+    ET_SCRIPTMOVER,
+    ET_SOUND_BLEND,
+    ET_FX,
+    ET_LOOP_FX,
+    ET_PRIMARY_LIGHT,
+    ET_MG42,
+    ET_HELICOPTER,
+    ET_PLANE,
+    ET_VEHICLE,
+    ET_VEHICLE_COLLMAP,
+    ET_VEHICLE_CORPSE,
+    ET_EVENTS,
 };
-
 struct LerpEntityStateTurret 
 {                                       
     float gunAngles[3];
@@ -33,7 +30,6 @@ struct LerpEntityStateLoopFx
     float cullDist;
     int period;
 };
-
 struct LerpEntityStatePrimaryLight 
 {                                       
     unsigned char colorAndExp[4];
@@ -95,7 +91,6 @@ struct LerpEntityStatePhysicsJitter
     float minDisplacement;
     float maxDisplacement;
 };
-
 union LerpEntityStateTypeUnion 
 {                                       
     LerpEntityStateTurret turret;
@@ -112,7 +107,6 @@ union LerpEntityStateTypeUnion
     LerpEntityStateExplosionJolt explosionJolt;
     LerpEntityStatePhysicsJitter physicsJitter;
 };
-
 struct LerpEntityState 
 {                                       
     int eFlags;                         
@@ -120,8 +114,6 @@ struct LerpEntityState
     trajectory_t apos;                  
     LerpEntityStateTypeUnion u;
 };
-
-
 union entityState_s_type_index 
 {                                       
     int brushmodel;
@@ -145,7 +137,6 @@ union entityState_s_un2
     int hintString;
     int vehicleXModel;
 };
-
 struct entityState_s 
 {                                       
     int number;
@@ -183,7 +174,6 @@ struct archivedEntityShared_t
     float absmin[3];                    
     float absmax[3];                    
 };
-
 struct archivedEntity_s 
 {                                       
     entityState_s s;                    

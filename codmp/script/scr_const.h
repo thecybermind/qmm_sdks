@@ -1,5 +1,4 @@
 #pragma once
-
 struct scr_const_t 
 {                                       
     unsigned short _;                 

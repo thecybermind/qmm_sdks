@@ -1,5 +1,4 @@
 #pragma once
-
 struct infoParm_t 
 {
     const char *name;
@@ -8,7 +7,6 @@ struct infoParm_t
     int contents;
     int toolFlags;
 };
-
 const infoParm_t infoParms[60] =
 {
     { "bark", 0, 0x100000, 0, 0},
