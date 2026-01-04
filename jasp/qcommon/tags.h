@@ -44,10 +44,6 @@
 	TAGDEF(DEFLATE),				// Temp memory used by zlib32
 	TAGDEF(POINTCACHE),					// weather effects
 	TAGDEF(NEWDEL),
-#ifdef _XBOX
-	TAGDEF(UI_ALLOC),
-	TAGDEF(BINK),
-#endif
 	TAGDEF(COUNT)
 	
 //////////////// eof //////////////

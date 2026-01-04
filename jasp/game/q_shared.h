@@ -38,8 +38,9 @@
 #define G2_PERFORMANCE_ANALYSIS
 #endif
 
-#include <assert.h>
+#if 0
 #include <math.h>
+#include <assert.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
@@ -48,26 +49,7 @@
 #include <ctype.h>
 #include <limits.h>
 #include <stdint.h>
-
-#ifdef _XBOX
-#define tvector(T) std::vector< T >
-#define tdeque(T) std::deque< T >
-
-#define tlist(T) std::list< T >
-#define tslist(T) std::slist< T >
-
-#define tset(T) std::set< T, std::less< T > >
-#define tmultiset(T) std::multiset< T, std::less< T > >
-
-#define tcset(T,C) std::set< T, C >
-#define tcmultiset(T,C) std::multiset< T, C >
-
-#define tmap(K,T) std::map< K, T, std::less< K > >
-#define tmultimap(K,T) std::multimap< K, T, std::less< K > >
-
-#define tcmap(K,T,C) std::map< K, T, C >
-#define tcmultimap(K,T,C) std::multimap< K, T, C >
-#endif // _XBOX
+#endif
 
 
 // this is the define for determining if we have an asm version of a C function
@@ -110,45 +92,6 @@
 
 #endif
 
-//======================= MAC OS X SERVER DEFINES =====================
-
-#if defined(__MACH__) && defined(__APPLE__)
-
-#define MAC_STATIC
-
-#ifdef __ppc__
-#define CPUSTRING	"MacOSXS-ppc"
-#elif defined __i386__
-#define CPUSTRING	"MacOSXS-i386"
-#else
-#define CPUSTRING	"MacOSXS-other"
-#endif
-
-#define	PATH_SEP	'/'
-
-#define	GAME_HARD_LINKED
-#define	CGAME_HARD_LINKED
-#define	UI_HARD_LINKED
-
-#endif
-
-//======================= MAC DEFINES =================================
-
-#ifdef __MACOS__
-
-#define	MAC_STATIC	static
-
-#define	CPUSTRING	"MacOS-PPC"
-
-#define	PATH_SEP ':'
-
-#define	GAME_HARD_LINKED
-#define	CGAME_HARD_LINKED
-#define	UI_HARD_LINKED
-
-void Sys_PumpEvents( void );
-
-#endif
 
 //======================= LINUX DEFINES =================================
 
@@ -219,8 +162,10 @@ typedef int		fileHandle_t;
 typedef int		clipHandle_t;
 
 
+#if 0
 #ifndef NULL
 #define NULL ((void *)0)
+#endif
 #endif
 
 #define	MAX_QINT			0x7fffffff
@@ -366,7 +311,6 @@ typedef	int	fixed16_t;
 #endif
 
 #define NUMVERTEXNORMALS	162
-extern	vec3_t	bytedirs[NUMVERTEXNORMALS];
 
 // all drawing is done to a 640*480 virtual screen size
 // and will be automatically scaled to the real resolution
@@ -533,48 +477,12 @@ typedef enum
 
 struct cplane_s;
 
-extern	const vec3_t	vec3_origin;
-extern	const vec3_t	axisDefault[3];
-
 #define	nanmask (255<<23)
 
 #define	IS_NAN(x) (((*(int *)&x)&nanmask)==nanmask)
 
 #define Q_isnan(x) (isnan(x))
 
-#ifdef _XBOX
-inline void Q_CastShort2Float(float *f, const short *s)
-{
-	*f = ((float)*s);
-}
-
-inline void Q_CastUShort2Float(float *f, const unsigned short *s)
-{
-	*f = ((float)*s);
-}
-
-inline void Q_CastShort2FloatScale(float *f, const short *s, float scale)
-{
-	*f = ((float)*s) * scale;
-}
-
-inline void Q_CastUShort2FloatScale(float *f, const unsigned short *s, float scale)
-{
-	*f = ((float)*s) * scale;
-}
-#endif
-
-float Q_fabs( float f );
-float Q_rsqrt( float f );		// reciprocal square root
-
-#define SQRTFAST( x ) ( 1.0f / Q_rsqrt( x ) )
-
-signed char ClampChar( int i );
-signed short ClampShort( int i );
-
-// this isn't a real cheap function to call!
-int DirToByte( vec3_t dir );
-void ByteToDir( int b, vec3_t dir );
 
 #define _DotProduct(x,y)		((x)[0]*(y)[0]+(x)[1]*(y)[1]+(x)[2]*(y)[2])
 #define _VectorSubtract(a,b,c)	((c)[0]=(a)[0]-(b)[0],(c)[1]=(a)[1]-(b)[1],(c)[2]=(a)[2]-(b)[2])
@@ -591,628 +499,12 @@ void ByteToDir( int b, vec3_t dir );
 
 #define	SnapVector(v) {v[0]=(int)v[0];v[1]=(int)v[1];v[2]=(int)v[2];}
 
-// just in case you do't want to use the macros
-inline void VectorMA( const vec3_t veca, float scale, const vec3_t vecb, vec3_t vecc) {
-	vecc[0] = veca[0] + scale*vecb[0];
-	vecc[1] = veca[1] + scale*vecb[1];
-	vecc[2] = veca[2] + scale*vecb[2];
-}
-
-#ifdef _XBOX
-inline void VectorMA( const vec3_t veca, float scale, const short vecb[3], vec3_t vecc) {
-	// The only time this overload gets used is with normals, so
-	// (I think) it's safe to do this....
-	vecc[0] = veca[0] + scale * ((float)vecb[0] / 32767.0f);
-	vecc[1] = veca[1] + scale * ((float)vecb[1] / 32767.0f);
-	vecc[2] = veca[2] + scale * ((float)vecb[2] / 32767.0f);
-}
-#endif
-
-inline vec_t DotProduct( const vec3_t v1, const vec3_t v2 ) {
-#ifdef _XBOX		/// use SSE
-	float res;
-    __asm {
-        mov     edx, v1
-        movss   xmm1, [edx]
-        movhps  xmm1, [edx+4]
-
-        mov     edx, v2
-        movss   xmm2, [edx]
-        movhps  xmm2, [edx+4]
-
-        mulps   xmm1, xmm2
-
-        movaps  xmm0, xmm1
-
-        shufps  xmm0, xmm0, 32h
-        addps   xmm1, xmm0
-
-        shufps  xmm0, xmm0, 32h
-        addps   xmm1, xmm0
-
-        movss   [res], xmm1
-    }
-    return res;
-#else
-	return v1[0]*v2[0] + v1[1]*v2[1] + v1[2]*v2[2];
-#endif
-}
-
-#ifdef _XBOX
-inline vec_t DotProduct( const short v1[3], const vec3_t v2 ) {
-	return v1[0]*v2[0] + v1[1]*v2[1] + v1[2]*v2[2];
-}
-#endif
-
-inline void CrossProduct( const vec3_t v1, const vec3_t v2, vec3_t cross ) {
-	cross[0] = v1[1]*v2[2] - v1[2]*v2[1];
-	cross[1] = v1[2]*v2[0] - v1[0]*v2[2];
-	cross[2] = v1[0]*v2[1] - v1[1]*v2[0];
-}
-
-inline void VectorSubtract( const vec3_t veca, const vec3_t vecb, vec3_t o ) {
-#ifdef _XBOX
-	__asm {
-        mov      ecx, veca
-        movss    xmm0, [ecx]
-        movhps   xmm0, [ecx+4]
-
-        mov      edx, vecb
-        movss    xmm1, [edx]
-        movhps   xmm1, [edx+4]
-
-        subps    xmm0, xmm1
-
-        mov      eax, o
-        movss    [eax], xmm0
-        movhps   [eax+4], xmm0
-    }
-#else
-	o[0] = veca[0]-vecb[0];
-	o[1] = veca[1]-vecb[1];
-	o[2] = veca[2]-vecb[2];
-#endif
-}
-
-#ifdef _XBOX
-inline void VectorSubtract( const short veca[3], const vec3_t vecb, vec3_t o ) {
-	o[0] = veca[0]-vecb[0];
-	o[1] = veca[1]-vecb[1];
-	o[2] = veca[2]-vecb[2];
-}
-
-inline void VectorSubtract( const vec3_t veca, const short vecb[3], vec3_t o ) {
-	o[0] = veca[0]-vecb[0];
-	o[1] = veca[1]-vecb[1];
-	o[2] = veca[2]-vecb[2];
-}
-
-inline void VectorSubtract( const short veca[3], const short vecb[3], vec3_t o ) {
-	o[0] = veca[0]-vecb[0];
-	o[1] = veca[1]-vecb[1];
-	o[2] = veca[2]-vecb[2];
-}
-#endif
-
-inline void VectorAdd( const vec3_t veca, const vec3_t vecb, vec3_t o ) {
-#ifdef _XBOX
-  __asm {
-        mov      ecx, veca
-        movss    xmm0, [ecx]
-        movhps   xmm0, [ecx+4]
-
-        mov      edx, vecb
-        movss    xmm1, [edx]
-        movhps   xmm1, [edx+4]
-
-        addps    xmm0, xmm1
-
-        mov      eax, o
-        movss    [eax], xmm0
-        movhps   [eax+4], xmm0
-    }
-#else
-	o[0] = veca[0]+vecb[0];
-	o[1] = veca[1]+vecb[1];
-	o[2] = veca[2]+vecb[2];
-#endif
-}
-
-inline void VectorCopy( const vec3_t in, vec3_t out ) {
-	out[0] = in[0];
-	out[1] = in[1];
-	out[2] = in[2];
-}
-
-#ifdef _XBOX
-inline void VectorCopy( const short in[3], vec3_t out ) {
-	out[0] = (float)in[0];
-	out[1] = (float)in[1];
-	out[2] = (float)in[2];
-}
-#endif
-
-inline void VectorScale( const vec3_t i, vec_t scale, vec3_t o ) {
-#ifdef _XBOX
-__asm {
-        movss    xmm0, scale
-        shufps   xmm0, xmm0, 0h
-
-        mov      edx, i
-        movss    xmm1, [edx]
-        movhps   xmm1, [edx+4]
-
-        mulps    xmm0, xmm1
-
-        mov      eax, o
-        movss    [eax], xmm0
-        movhps   [eax+4], xmm0
-    }
-#else
-	o[0] = i[0]*scale;
-	o[1] = i[1]*scale;
-	o[2] = i[2]*scale;
-#endif
-}
-
-float DotProductNormalize( const vec3_t inVec1, const vec3_t inVec2 );
-
-unsigned ColorBytes3 (float r, float g, float b);
-unsigned ColorBytes4 (float r, float g, float b, float a);
-
-float NormalizeColor( const vec3_t in, vec3_t out );
-float RadiusFromBounds( const vec3_t mins, const vec3_t maxs );
-
-void ClearBounds( vec3_t mins, vec3_t maxs );
-
-#ifdef _XBOX
-inline void AddPointToBounds( const short v[3], vec3_t mins, vec3_t maxs ) {
-	if ( v[0] < mins[0] ) {
-		mins[0] = v[0];
-	}
-	if ( v[0] > maxs[0]) {
-		maxs[0] = v[0];
-	}
-
-	if ( v[1] < mins[1] ) {
-		mins[1] = v[1];
-	}
-	if ( v[1] > maxs[1]) {
-		maxs[1] = v[1];
-	}
-
-	if ( v[2] < mins[2] ) {
-		mins[2] = v[2];
-	}
-	if ( v[2] > maxs[2]) {
-		maxs[2] = v[2];
-	}
-}
-#endif
-
-inline void AddPointToBounds( const vec3_t v, vec3_t mins, vec3_t maxs ) {
-	if ( v[0] < mins[0] ) {
-		mins[0] = v[0];
-	}
-	if ( v[0] > maxs[0]) {
-		maxs[0] = v[0];
-	}
-
-	if ( v[1] < mins[1] ) {
-		mins[1] = v[1];
-	}
-	if ( v[1] > maxs[1]) {
-		maxs[1] = v[1];
-	}
-
-	if ( v[2] < mins[2] ) {
-		mins[2] = v[2];
-	}
-	if ( v[2] > maxs[2]) {
-		maxs[2] = v[2];
-	}
-}
-
-inline int VectorCompare( const vec3_t v1, const vec3_t v2 ) {
-	if (v1[0] != v2[0] || v1[1] != v2[1] || v1[2] != v2[2]) {
-		return 0;
-	}			
-	return 1;
-}
-
-//NOTE: less precise
-inline int VectorCompare2( const vec3_t v1, const vec3_t v2 ) {
-	if ( v1[0] > v2[0]+0.0001f || v1[0] < v2[0]-0.0001f
-		|| v1[1] > v2[1]+0.0001f || v1[1] < v2[1]-0.0001f
-		|| v1[2] > v2[2]+0.0001f || v1[2] < v2[2]-0.0001f ) {
-		return 0;
-	}			
-	return 1;
-}
-inline vec_t VectorLength( const vec3_t v ) {
-#ifdef _XBOX
-	float res;
-
-	__asm {
-        mov     edx, v
-        movss   xmm1, [edx]
-        movhps  xmm1, [edx+4]
-
-        movaps  xmm2, xmm1
-
-        mulps   xmm1, xmm2
-
-        movaps  xmm0, xmm1
-
-        shufps  xmm0, xmm0, 32h
-        addps   xmm1, xmm0
-
-        shufps  xmm0, xmm0, 32h
-        addps   xmm1, xmm0
-
-        sqrtss  xmm1, xmm1
-        movss   [res], xmm1
-    }
-
-    return res;
-#else
-	return (vec_t)sqrt (v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
-#endif
-}
-
-inline vec_t VectorLengthSquared( const vec3_t v ) {
-#ifdef _XBOX
-	float res;
-	__asm {
-        mov     edx, v
-        movss   xmm1, [edx]
-        movhps  xmm1, [edx+4]
-
-        movaps  xmm2, xmm1
-
-        mulps   xmm1, xmm2
-
-        movaps  xmm0, xmm1
-
-        shufps  xmm0, xmm0, 32h
-        addps   xmm1, xmm0
-
-        shufps  xmm0, xmm0, 32h
-        addps   xmm1, xmm0
-
-        movss   [res], xmm1
-    }
-
-    return res;
-#else
-	return (v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
-#endif
-}
-
-inline vec_t Distance( const vec3_t p1, const vec3_t p2 ) {
-	vec3_t	v;
-
-	VectorSubtract (p2, p1, v);
-	return VectorLength( v );
-}
-
-inline vec_t DistanceSquared( const vec3_t p1, const vec3_t p2 ) {
-	vec3_t	v;
-
-	VectorSubtract (p2, p1, v);
-	return v[0]*v[0] + v[1]*v[1] + v[2]*v[2];
-}
-
-// fast vector normalize routine that does not check to make sure
-// that length != 0, nor does it return length, uses rsqrt approximation
-inline void VectorNormalizeFast( vec3_t v )
-{
-	float ilength;
-
-	ilength = Q_rsqrt( DotProduct( v, v ) );
-
-	v[0] *= ilength;
-	v[1] *= ilength;
-	v[2] *= ilength;
-}
-
-inline void VectorInverse( vec3_t v ){
-	v[0] = -v[0];
-	v[1] = -v[1];
-	v[2] = -v[2];
-}
-
-inline void VectorRotate( vec3_t in, vec3_t matrix[3], vec3_t out )
-{
-	out[0] = DotProduct( in, matrix[0] );
-	out[1] = DotProduct( in, matrix[1] );
-	out[2] = DotProduct( in, matrix[2] );
-}
-
-//if length is 0, v is untouched otherwise v is normalized
-inline vec_t VectorNormalize( vec3_t v ) {
-	float	length, ilength;
-
-	length = v[0]*v[0] + v[1]*v[1] + v[2]*v[2];
-	length = sqrt (length);
-
-	if ( length > 0.0001f ) {
-		ilength = 1/length;
-		v[0] *= ilength;
-		v[1] *= ilength;
-		v[2] *= ilength;
-	}
-		
-	return length;
-}
-
-
-//if length is 0, out is cleared, otherwise out is normalized
-inline vec_t VectorNormalize2( const vec3_t v, vec3_t out) {
-	float	length, ilength;
-
-	length = v[0]*v[0] + v[1]*v[1] + v[2]*v[2];
-	length = sqrt (length);
-
-	if (length)
-	{
-		ilength = 1/length;
-		out[0] = v[0]*ilength;
-		out[1] = v[1]*ilength;
-		out[2] = v[2]*ilength;
-	} else {
-		VectorClear( out );
-	}
-		
-	return length;
-}
-
-#ifdef _XBOX
-inline vec_t VectorNormalize2( const vec3_t v, short out[3]) {
-	float	length, ilength;
-
-	length = v[0]*v[0] + v[1]*v[1] + v[2]*v[2];
-	length = sqrt (length);
-
-	if (length)
-	{
-		ilength = 1/length;
-		out[0] = (short)(v[0]*ilength * 32767.0f);
-		out[1] = (short)(v[1]*ilength * 32767.0f);
-		out[2] = (short)(v[2]*ilength * 32767.0f);
-	} else {
-		VectorClear( out );
-	}
-
-	return length;
-}
-#endif
-
-int Q_log2(int val);
-
-inline int Q_rand( int *seed ) {
-	*seed = (69069 * *seed + 1);
-	return *seed;
-}
-
-inline float Q_random( int *seed ) {
-	return ( Q_rand( seed ) & 0xffff ) / (float)0x10000;
-}
-
-inline float Q_crandom( int *seed ) {
-	return 2.0F * ( Q_random( seed ) - 0.5f );
-}
-
-//  Returns a float min <= x < max (exclusive; will get max - 0.00001; but never max
-inline float Q_flrand(float min, float max) {
-	return ((rand() * (max - min)) / (float)(RAND_MAX)) + min;
-}
-
-// Returns an integer min <= x <= max (ie inclusive)
-inline int Q_irand(int min, int max) {
-	max++; //so it can round down
-	return ((rand() * (max - min)) / (RAND_MAX)) + min;
-}
 
 //returns a float between 0 and 1.0
 #define random()	((rand () & 0x7fff) / ((float)0x7fff))
 
 //returns a float between -1 and 1.0
 #define crandom()	(2.0F * (random() - 0.5F))
-
-float erandom( float mean );
-
-void AngleVectors( const vec3_t angles, vec3_t forward, vec3_t right, vec3_t up);
-
-/*
-=================
-AnglesToAxis
-=================
-*/
-inline void AnglesToAxis( const vec3_t angles, vec3_t axis[3] ) {
-	vec3_t	right;
-
-	// angle vectors returns "right" instead of "y axis"
-	AngleVectors( angles, axis[0], right, axis[2] );
-	VectorSubtract( vec3_origin, right, axis[1] );
-}
-
-inline void AxisClear( vec3_t axis[3] ) {
-	axis[0][0] = 1;
-	axis[0][1] = 0;
-	axis[0][2] = 0;
-	axis[1][0] = 0;
-	axis[1][1] = 1;
-	axis[1][2] = 0;
-	axis[2][0] = 0;
-	axis[2][1] = 0;
-	axis[2][2] = 1;
-}
-
-inline void AxisCopy( const vec3_t in[3], vec3_t out[3] ) {
-	VectorCopy( in[0], out[0] );
-	VectorCopy( in[1], out[1] );
-	VectorCopy( in[2], out[2] );
-}
-
-void vectoangles( const vec3_t value1, vec3_t angles);
-
-vec_t DistanceHorizontal( const vec3_t p1, const vec3_t p2 );
-vec_t DistanceHorizontalSquared( const vec3_t p1, const vec3_t p2 );
-
-inline vec_t GetYawForDirection( const vec3_t p1, const vec3_t p2 ) {
-	vec3_t v, angles;
-
-	VectorSubtract( p2, p1, v );
-	vectoangles( v, angles );
-
-	return angles[YAW];
-}
-
-inline void GetAnglesForDirection( const vec3_t p1, const vec3_t p2, vec3_t out ) {
-	vec3_t v;
-
-	VectorSubtract( p2, p1, v );
-	vectoangles( v, out );
-}
-
-
-void SetPlaneSignbits( struct cplane_s *out );
-int BoxOnPlaneSide (vec3_t emins, vec3_t emaxs, struct cplane_s *plane);
-//float	AngleMod(float a);
-
-inline float LerpAngle (float from, float to, float frac) {
-	float	a;
-
-	if ( to - from > 180 ) {
-		to -= 360;
-	}
-	if ( to - from < -180 ) {
-		to += 360;
-	}
-	a = from + frac * (to - from);
-
-	return a;
-}
-
-/*
-=================
-AngleSubtract
-
-Always returns a value from -180 to 180
-=================
-*/
-inline float	AngleSubtract( float a1, float a2 ) {
-	float	a;
-
-	a = a1 - a2;
-	while ( a > 180 ) {
-		a -= 360;
-	}
-	while ( a < -180 ) {
-		a += 360;
-	}
-	return a;
-}
-
-inline void AnglesSubtract( vec3_t v1, vec3_t v2, vec3_t v3 ) {
-	v3[0] = AngleSubtract( v1[0], v2[0] );
-	v3[1] = AngleSubtract( v1[1], v2[1] );
-	v3[2] = AngleSubtract( v1[2], v2[2] );
-}
-
-/*
-=================
-AngleNormalize360
-
-returns angle normalized to the range [0 <= angle < 360]
-=================
-*/
-inline float AngleNormalize360 ( float angle ) {
-	return (360.0 / 65536) * ((int)(angle * (65536 / 360.0)) & 65535);
-}
-
-/*
-=================
-AngleNormalize180
-
-returns angle normalized to the range [-180 < angle <= 180]
-=================
-*/
-inline float AngleNormalize180 ( float angle ) {
-	angle = AngleNormalize360( angle );
-	if ( angle > 180.0 ) {
-		angle -= 360.0;
-	}
-	return angle;
-}
-
-/*
-=================
-AngleDelta
-
-returns the normalized delta from angle1 to angle2
-=================
-*/
-inline float AngleDelta ( float angle1, float angle2 ) {
-	return AngleNormalize180( angle1 - angle2 );
-}
-
-qboolean PlaneFromPoints( vec4_t plane, const vec3_t a, const vec3_t b, const vec3_t c );
-#ifdef _XBOX
-qboolean PlaneFromPoints( vec4_t plane, const short a[3], const short b[3], const short c[3] );
-#endif
-void ProjectPointOnPlane( vec3_t dst, const vec3_t p, const vec3_t normal );
-void RotatePointAroundVector( vec3_t dst, const vec3_t dir, const vec3_t point, float degrees );
-void RotateAroundDirection( vec3_t axis[3], float yaw );
-void MakeNormalVectors( const vec3_t forward, vec3_t right, vec3_t up );
-// perpendicular vector could be replaced by this
-
-int	PlaneTypeForNormal (vec3_t normal);
-
-void MatrixMultiply(float in1[3][3], float in2[3][3], float out[3][3]);
-void PerpendicularVector( vec3_t dst, const vec3_t src );
-
-
-
-//=============================================
-
-float Com_Clamp( float min, float max, float value );
-
-char	*COM_SkipPath( char *pathname );
-void	COM_StripExtension( const char *in, char *out );
-void	COM_DefaultExtension( char *path, int maxSize, const char *extension );
-
-//JLFCALLOUT include MPNOTUSED
-#ifdef _XBOX
-void	 COM_BeginParseSession( bool nested = false );
-#else
-void	 COM_BeginParseSession( void );
-#endif
-
-int		 COM_GetCurrentParseLine( void );
-char	*COM_Parse( const char **data_p );
-char	*COM_ParseExt( const char **data_p, qboolean allowLineBreak );
-int		 COM_Compress( char *data_p );
-qboolean COM_ParseString( const char **data, const char **s );
-qboolean COM_ParseInt( const char **data, int *i );
-qboolean COM_ParseFloat( const char **data, float *f );
-qboolean COM_ParseVec4( const char **buffer, vec4_t *c);
-
-// data is an in/out parm, returns a parsed out token
-
-void	COM_MatchToken( char**buf_p, char *match );
-
-void SkipBracedSection (const char **program);
-void SkipRestOfLine ( const char **data );
-
-void Parse1DMatrix (const char **buf_p, int x, float *m);
-void Parse2DMatrix (const char **buf_p, int y, int x, float *m);
-void Parse3DMatrix (const char **buf_p, int z, int y, int x, float *m);
-int Com_HexStrToInt( const char *str );
-
-void	QDECL Com_sprintf (char *dest, int size, const char *fmt, ...);
-
 
 // mode parm for FS_FOpenFile
 typedef enum {
@@ -1230,114 +522,6 @@ typedef enum {
 
 //=============================================
 
-int Q_isprint( int c );
-int Q_islower( int c );
-int Q_isupper( int c );
-int Q_isalpha( int c );
-
-// portable case insensitive compare
-//inline  int Q_stricmp (const char *s1, const char *s2) {return Q_stricmpn (s1, s2, 99999);}
-//int		Q_strncmp (const char *s1, const char *s2, int n);
-//int		Q_stricmpn (const char *s1, const char *s2, int n);
-//char	*Q_strlwr( char *s1 );
-//char	*Q_strupr( char *s1 );
-//char	*Q_strrchr( const char* string, int c );
-
-// NON-portable (but faster) versions
-#ifdef WIN32
-inline int	Q_stricmp (const char *s1, const char *s2) { return stricmp(s1, s2); }
-inline int	Q_strnicmp (const char *s1, const char *s2, int n) { return strnicmp(s1, s2, n); }
-inline int	Q_strcmpi (const char *s1, const char *s2) { return strcmpi(s1, s2); }
-inline int	Q_strncmp (const char *s1, const char *s2, int n) { return strncmp(s1, s2, n); }
-inline int	Q_stricmpn (const char *s1, const char *s2, int n) { return strnicmp(s1, s2, n); }
-inline char	*Q_strlwr( char *s1 ) { return strlwr(s1); }
-inline char	*Q_strupr( char *s1 ) { return strupr(s1); }
-#else
-inline int	Q_stricmp (const char *s1, const char *s2) { return strcasecmp(s1, s2); }
-inline int	Q_strnicmp (const char *s1, const char *s2, int n) { return strncasecmp(s1, s2, n); }
-inline int	Q_strcmpi (const char *s1, const char *s2) { return strcasecmp(s1, s2); }
-inline int	Q_strncmp (const char *s1, const char *s2, int n) { return strncasecmp(s1, s2, n); }
-inline int	Q_stricmpn (const char *s1, const char *s2, int n) { return strncasecmp(s1, s2, n); }
-
-inline char *Q_strlwr( char *s1 )
-{
-	char	*s;
-
-	s = s1;
-	while ( *s ) {
-		*s = tolower(*s);
-		s++;
-	}
-	return s1;
-}
-
-inline char *Q_strupr( char *s1 )
-{
-	char	*s;
-
-	s = s1;
-	while ( *s ) {
-		*s = toupper(*s);
-		s++;
-	}
-	return s1;
-}
-#endif
-inline char *Q_strrchr( char* str, int c ) { return strrchr(str, c); }
-
-// buffer size safe library replacements
-void	Q_strncpyz( char *dest, const char *src, int destsize, qboolean bBarfIfTooLong=qfalse );
-void	Q_strcat( char *dest, int size, const char *src );
-
-// strlen that discounts Quake color sequences
-int Q_PrintStrlen( const char *string );
-// removes color sequences from string
-char *Q_CleanStr( char *string );
-
-//=============================================
-
-#ifdef _M_IX86
-//
-// optimised stuff for Intel, since most of our data is in that format anyway...
-//
-short	BigShort(short l);
-int		BigLong (int l);
-float	BigFloat (float l);
-#define LittleShort(l) l
-#define LittleLong(l)  l
-#define LittleFloat(l) l
-//
-#else
-//
-// standard smart-swap code...
-//
-short	BigShort(short l);
-short	LittleShort(short l);
-int		BigLong (int l);
-int		LittleLong (int l);
-float	BigFloat (float l);
-float	LittleFloat (float l);
-//
-#endif
-
-
-void	Swap_Init (void);
-char	* QDECL va(const char *format, ...);
-
-//=============================================
-
-//
-// key / value info strings
-//
-char *Info_ValueForKey( const char *s, const char *key );
-void Info_RemoveKey( char *s, const char *key );
-void Info_SetValueForKey( char *s, const char *key, const char *value );
-qboolean Info_Validate( const char *s );
-void Info_NextPair( const char **s, char key[MAX_INFO_KEY], char value[MAX_INFO_VALUE] );
-
-// this is only here so the functions in q_shared.c and bg_*.c can link
-void	QDECL Com_Error( int level, const char *error, ... );
-void	QDECL Com_Printf( const char *msg, ... );
 
 
 /*
@@ -2685,9 +1869,6 @@ typedef struct stringID_table_s
 	int		id;
 } stringID_table_t;
 
-int GetIDForString ( const stringID_table_t *table, const char *string );
-const char *GetStringForID( const stringID_table_t *table, int id );
-
 // savegame screenshot size stuff...
 //
 //#define SG_SCR_WIDTH			512	//256
@@ -2726,10 +1907,6 @@ typedef struct parseData_s
 	const char	*bufferCurrent;					// Where data is currently being parsed from buffer
 } parseData_t;
 
-//JFLCALLOUT include
-//changed to array
-extern parseData_t  parseData[];
-extern int parseDataCount;
 
 
 // cinematic states
@@ -2766,8 +1943,5 @@ typedef enum
 
 #include "../game/genericparser2.h"
 
-#ifdef _IMMERSION
-#include "../ff/ff_public.h"
-#endif // _IMMERSION
 
 #endif	// __Q_SHARED_H
