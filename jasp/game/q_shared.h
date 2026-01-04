@@ -501,10 +501,10 @@ struct cplane_s;
 
 
 //returns a float between 0 and 1.0
-#define random()	((rand () & 0x7fff) / ((float)0x7fff))
+//#define random()	((rand () & 0x7fff) / ((float)0x7fff))
 
 //returns a float between -1 and 1.0
-#define crandom()	(2.0F * (random() - 0.5F))
+//#define crandom()	(2.0F * (random() - 0.5F))
 
 // mode parm for FS_FOpenFile
 typedef enum {

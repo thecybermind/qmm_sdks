@@ -4,7 +4,7 @@
 
 #define _HAS_STD_BYTE 0
 #include <assert.h>
-
+#include <cstddef>
 
 /*
 Ghoul2 Insert Start
