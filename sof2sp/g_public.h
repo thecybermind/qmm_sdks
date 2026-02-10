@@ -1,3 +1,12 @@
+#ifndef SOF2SP_G_PUBLIC_H
+#define SOF2SP_G_PUBLIC_H
+
+#if defined(_HAS_STD_BYTE)
+#undef _HAS_STD_BYTE
+#endif
+#define _HAS_STD_BYTE 0
+#include <cstdint>
+
 #define	MAX_STRING_CHARS	1024
 #define	MAX_TOKEN_CHARS		1024
 #define	MAX_INFO_STRING		1024
@@ -917,6 +926,7 @@ struct game_import_t {
     intptr_t(*unknown52)(intptr_t arg0, intptr_t arg1, intptr_t arg2, intptr_t arg3, intptr_t arg4, intptr_t arg5, intptr_t arg6, intptr_t arg7, intptr_t arg8, intptr_t arg9, intptr_t arg10, intptr_t arg11, intptr_t arg12, intptr_t arg13, intptr_t arg14, intptr_t arg15, intptr_t arg16);
     intptr_t(*unknown53)(intptr_t arg0, intptr_t arg1, intptr_t arg2, intptr_t arg3, intptr_t arg4, intptr_t arg5, intptr_t arg6, intptr_t arg7, intptr_t arg8, intptr_t arg9, intptr_t arg10, intptr_t arg11, intptr_t arg12, intptr_t arg13, intptr_t arg14, intptr_t arg15, intptr_t arg16);
     void(*LocateGameData)(gentity_t* gEnts, int numGEntities, int sizeofGEntity_t, playerState_t* clients, int sizeofGameClient);
+    //void(*LocateGameData)(void* Quake3Game, int numGEntities, int sizeofQuake3Game, gentity_t* gEnts, int sizeofGEntity_t);
     intptr_t(*unknown55)(intptr_t arg0, intptr_t arg1, intptr_t arg2, intptr_t arg3, intptr_t arg4, intptr_t arg5, intptr_t arg6, intptr_t arg7, intptr_t arg8, intptr_t arg9, intptr_t arg10, intptr_t arg11, intptr_t arg12, intptr_t arg13, intptr_t arg14, intptr_t arg15, intptr_t arg16);
     intptr_t(*unknown56)(intptr_t arg0, intptr_t arg1, intptr_t arg2, intptr_t arg3, intptr_t arg4, intptr_t arg5, intptr_t arg6, intptr_t arg7, intptr_t arg8, intptr_t arg9, intptr_t arg10, intptr_t arg11, intptr_t arg12, intptr_t arg13, intptr_t arg14, intptr_t arg15, intptr_t arg16);
     intptr_t(*unknown57)(intptr_t arg0, intptr_t arg1, intptr_t arg2, intptr_t arg3, intptr_t arg4, intptr_t arg5, intptr_t arg6, intptr_t arg7, intptr_t arg8, intptr_t arg9, intptr_t arg10, intptr_t arg11, intptr_t arg12, intptr_t arg13, intptr_t arg14, intptr_t arg15, intptr_t arg16);
@@ -1005,3 +1015,5 @@ struct game_export_t {
     intptr_t(*unknown24)(...);
     intptr_t(*unknown25)(...);
 };
+
+#endif // SOF2SP_G_PUBLIC_H
