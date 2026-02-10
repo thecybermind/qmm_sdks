@@ -163,7 +163,7 @@ typedef enum {
 	G_SET_BRUSH_MODEL,	// ( gentity_t *ent, const char *name );
 	// sets mins and maxs based on the brushmodel name
 
-	G_SET_ACTIVE_SUBBSP,	// int index
+	G_SET_ACTIVE_SUBBSP,	// (int index)
 
 	G_TRACE,	// ( trace_t *results, const vec3_t start, const vec3_t mins, const vec3_t maxs, const vec3_t end, int passEntityNum, int contentmask );
 	// collision detection against all linked entities
