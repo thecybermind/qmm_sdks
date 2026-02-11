@@ -11,9 +11,9 @@
 #pragma warning(disable : 4786)	//identifier was truncated 
 
 #include <list>
-#include <vector>
+//#include <vector>
 #include <map>
-using namespace std;
+//using namespace std;
 
 //Defines
 
@@ -62,9 +62,9 @@ class ICARUS_Instance;
 
 class CSequencer
 {
-	typedef	map < int, CSequence * >			sequenceID_m;
-	typedef list < CSequence * >				sequence_l;
-	typedef map < CTaskGroup *, CSequence * >	taskSequence_m;
+	typedef	std::map < int, CSequence * >			sequenceID_m;
+	typedef std::list < CSequence * >				sequence_l;
+	typedef std::map < CTaskGroup *, CSequence * >	taskSequence_m;
 
 public:
 

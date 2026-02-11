@@ -9,6 +9,10 @@
 #pragma warning( disable : 4786 )	// identifier was truncated 
 #pragma warning (push, 3)			// go back down to 3 for the stl include
 #pragma warning (disable:4503)		// decorated name length xceeded, name was truncated
+#if defined(_HAS_STD_BYTE)
+#undef _HAS_STD_BYTE
+#endif
+#define _HAS_STD_BYTE 0
 #include <string>
 #include <vector>
 #include <map>
@@ -16,7 +20,7 @@
 #include <algorithm>
 #pragma warning (pop)
 #pragma warning (disable:4503)		// decorated name length xceeded, name was truncated
-using namespace std;
+//using namespace std;
 
 
 class CSequence;
@@ -45,15 +49,15 @@ protected:
 
 	int						m_GUID;
 
-	typedef list< CSequence * >				sequence_l;
-	typedef list< CSequencer * >			sequencer_l;
-	typedef map < int, CSequencer* >		sequencer_m;
+	typedef std::list< CSequence * >				sequence_l;
+	typedef std::list< CSequencer * >			sequencer_l;
+	typedef std::map < int, CSequencer* >		sequencer_m;
 
 	sequence_l				m_sequences;
 	sequencer_l				m_sequencers;
 	sequencer_m				m_sequencerMap;
 
-	typedef map < string, unsigned char >	signal_m;
+	typedef std::map < std::string, unsigned char >	signal_m;
 	signal_m				m_signals;
 
 	static double ICARUS_VERSION;

@@ -6,10 +6,10 @@
 
 #pragma warning( disable : 4786 )  // identifier was truncated 
 
-#include <string>
-#include <vector>
+//#include <string>
+//#include <vector>
 #include <map>
-using namespace std;
+//using namespace std;
 
 #ifdef WIN32
 #include <windows.h>
@@ -274,7 +274,7 @@ protected:
 	char*			m_symbolName;
 };
 
-typedef map<LPCTSTR, CSymbol*, lessstr> symbolmap_t;
+typedef std::map<LPCTSTR, CSymbol*, lessstr> symbolmap_t;
 
 class CDirectiveSymbol : public CSymbol
 {

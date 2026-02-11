@@ -8,13 +8,13 @@
 
 #pragma warning (push, 3)			// go back down to 3 for the stl include
 #pragma warning (disable:4503)		// decorated name length xceeded, name was truncated
-#include <string>
-#include <vector>
+//#include <string>
+//#include <vector>
 #include <map>
 #pragma warning (pop)
 #pragma warning (disable:4503)		// decorated name length xceeded, name was truncated
 
-using namespace std;
+//using namespace std;
 
 #ifdef WIN32
 #include <windows.h>
@@ -279,7 +279,7 @@ protected:
 	char*			m_symbolName;
 };
 
-typedef map<LPCTSTR, CSymbol*, lessstr> symbolmap_t;
+typedef std::map<LPCTSTR, CSymbol*, lessstr> symbolmap_t;
 
 class CDirectiveSymbol : public CSymbol
 {

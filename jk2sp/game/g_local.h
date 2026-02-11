@@ -11,6 +11,11 @@
 #include "anims.h"
 //#include "dmstates.h"
 
+#include <list>
+#include <algorithm>
+#include <map>
+#include <string>
+
 //==================================================================
 
 // the "gameversion" client command will print this plus compile date
@@ -549,8 +554,8 @@ typedef struct pscript_s
 	long	length;
 } pscript_t;
 
-typedef	map < string, int, less<string>, allocator<int> >		entlist_t;
-typedef map < string, pscript_t*, less<string>, allocator<pscript_t*> >	bufferlist_t;
+typedef	std::map < std::string, int, std::less<std::string>, std::allocator<int> >		entlist_t;
+typedef std::map < std::string, pscript_t*, std::less<std::string>, std::allocator<pscript_t*> >	bufferlist_t;
 
 
 extern char *G_NewString( const char *string );

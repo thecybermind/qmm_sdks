@@ -9,10 +9,10 @@
 #include <stdio.h>
 
 #pragma warning (push, 3)	//go back down to 3 for the stl include
-#include <list>
+//#include <list>
 #include <vector>
 #pragma warning (pop)
-using namespace std;
+//using namespace std;
 
 #define	IBI_EXT			".IBI"	//(I)nterpreted (B)lock (I)nstructions
 #define IBI_HEADER_ID	"IBI"
@@ -97,7 +97,7 @@ protected:
 
 class CBlock
 {
-	typedef vector< CBlockMember * >	blockMember_v;
+	typedef std::vector< CBlockMember * >	blockMember_v;
 
 public:
 

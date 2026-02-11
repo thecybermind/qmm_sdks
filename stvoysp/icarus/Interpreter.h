@@ -8,6 +8,10 @@
 #define MAX_STRING_SIZE	256
 #define	MAX_VAR_NAME	64
 
+#include <string>
+#include <map>
+#include <vector>
+
 typedef float	vector_t[3];
 
 //Token defines
@@ -117,8 +121,8 @@ typedef struct variable_s
 	void	*data;
 } variable_t;
 
-typedef map< string, variable_t * >	variable_m;
-typedef vector < variable_t * > variable_v;
+typedef std::map< std::string, variable_t * >	variable_m;
+typedef std::vector < variable_t * > variable_v;
 
 //CInterpreter
 
@@ -207,8 +211,8 @@ protected:
 	variable_v	m_vars;
 	variable_m	m_varMap;
 
-	string	m_sCurrentLine;				// used in IBIze error reporting for more clarity
-	string	m_sCurrentFile;				// full-pathed name of .TXT file (needed because of above, which affects parsestreams)
+	std::string	m_sCurrentLine;				// used in IBIze error reporting for more clarity
+	std::string	m_sCurrentFile;				// full-pathed name of .TXT file (needed because of above, which affects parsestreams)
 	int		m_iCurrentLine;				// also needed now because of 'm_sCurrentLine'
 	int		m_iBadCBlockNumber;			// used for final app return code (NZ = err)
 
