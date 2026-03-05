@@ -925,7 +925,7 @@ typedef struct
 typedef struct gameImport_s {
 	// misc
 	void		(*Print)								( const char *msg, ... );
-	void (*Error)( int level, const char *fmt, ... );
+	void		(*Error)								( int level, const char *fmt, ... );
 	int			(*Milliseconds)							( void );
 	void		(*PrecisionTimerStart)					( void **timer );
 	int			(*PrecisionTimerEnd)					( void *timer );
@@ -1258,7 +1258,7 @@ typedef struct gameImport_s {
 	void		(*G2API_CleanEntAttachments)			( void );
 	qboolean	(*G2API_OverrideServer)					( void *serverInstance );
 	void		(*G2API_GetSurfaceName)					( void *ghoul2, int surfNumber, int modelIndex, char *fillBuf );
-} gameImport_t;
+} game_import_t;
 
 typedef struct gameExport_s {
 	void		(*InitGame)							( int levelTime, int randomSeed, int restart );
@@ -1301,6 +1301,6 @@ typedef struct gameExport_s {
 	qboolean	(*NAV_EntIsRemovableUsable)			( int entNum );
 	void		(*NAV_FindCombatPointWaypoints)		( void );
 	int			(*BG_GetItemIndexByTag)				( int tag, int type );
-} gameExport_t;
+} game_export_t;
 
 #endif //G_PUBLIC_H
