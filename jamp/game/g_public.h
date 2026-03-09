@@ -8,7 +8,10 @@
 
 #define Q3_INFINITE			16777216 
 
-#define	GAME_API_VERSION	8
+// #define	GAME_API_VERSION	8
+
+// take value from OpenJK since we may actually need to use it
+#define	GAME_API_VERSION	1
 
 // entity->svFlags
 // the server does not know how to interpret most of the values
