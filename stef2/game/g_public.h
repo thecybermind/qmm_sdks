@@ -306,8 +306,10 @@ typedef struct
    // TAG SPECIFIC STUFF
 	int				(*Tag_NumForName)( int modelindex, const char * name );
    const char *   (*Tag_NameForNum)( int modelindex, int num );
-   orientation_t  (*Tag_Orientation)( int modelindex, int anim, int frame, int num, float scale, int *bone_tag, vec4_t *bone_quat );
-   orientation_t  (*Tag_OrientationEx)( int modelindex, int anim, int frame, int num, float scale, int *bone_tag, vec4_t *bone_quat,
+//   orientation_t  (*Tag_Orientation)( int modelindex, int anim, int frame, int num, float scale, int *bone_tag, vec4_t *bone_quat );
+//   orientation_t  (*Tag_OrientationEx)( int modelindex, int anim, int frame, int num, float scale, int *bone_tag, vec4_t *bone_quat,
+   orientation_t*  (*Tag_Orientation)( orientation_t* ret, int modelindex, int anim, int frame, int num, float scale, int *bone_tag, vec4_t *bone_quat );
+   orientation_t*  (*Tag_OrientationEx)( orientation_t* ret, int modelindex, int anim, int frame, int num, float scale, int *bone_tag, vec4_t *bone_quat,
       int crossblend_anim, int crossblend_frame, float crossblend_lerp, qboolean uselegs, qboolean usetorso, int torso_anim, int torso_frame,
       int torso_crossblend_anim, int torso_crossblend_frame, float torso_crossblend_lerp );
 	int			   (*Bone_GetParentNum)( int modelindex, int bonenum );

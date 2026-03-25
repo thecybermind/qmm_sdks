@@ -344,7 +344,8 @@ typedef struct
 	trace_t	(*trace) (vec3_t start, vec3_t mins, vec3_t maxs, vec3_t end, edict_t *passent, int contentmask);
 
 	// for full ray intersection tests against a-model polys and world
-	trace_t	(*fulltrace) (vec3_t start, vec3_t mins, vec3_t maxs, vec3_t end, float radius, edict_t *passent, int contentmask);
+	// trace_t	(*fulltrace) (vec3_t start, vec3_t mins, vec3_t maxs, vec3_t end, float radius, edict_t *passent, int contentmask);
+	trace_t*	(*fulltrace) (trace_t* ret, vec3_t start, vec3_t mins, vec3_t maxs, vec3_t end, float radius, edict_t *passent, int contentmask);
 
 	int		(*pointcontents) (vec3_t point);
 	qboolean	(*inPVS) (vec3_t p1, vec3_t p2);

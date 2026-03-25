@@ -407,7 +407,8 @@ typedef struct gameImport_s {
     const char *(*Surface_NumToName)(dtiki_t *tiki, int surfacenum);
     int (*Tag_NumForName)(dtiki_t *pmdl, const char *name);
     const char *(*Tag_NameForNum)(dtiki_t *pmdl, int tagNum);
-    orientation_t (*TIKI_OrientationInternal)(dtiki_t *tiki, int entNum, int tagNum, float scale);
+    // orientation_t (*TIKI_OrientationInternal)(dtiki_t *tiki, int entNum, int tagNum, float scale);
+    orientation_t* (*TIKI_OrientationInternal)(orientation_t* ret, dtiki_t *tiki, int entNum, int tagNum, float scale);
     void *(*TIKI_TransformInternal)(dtiki_t *tiki, int entNum, int tagNum);
     qboolean (*TIKI_IsOnGroundInternal)(dtiki_t *tiki, int entNum, int num, float threshold);
     void (*TIKI_SetPoseInternal)(
