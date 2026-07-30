@@ -11,6 +11,7 @@
 // #define	GAME_API_VERSION	8
 
 // take value from OpenJK since we may actually need to use it
+// (QMM is loaded by original Jedi Academy engine but the user wants to load the OpenJK gamedll)
 #define	GAME_API_VERSION	1
 
 // entity->svFlags
