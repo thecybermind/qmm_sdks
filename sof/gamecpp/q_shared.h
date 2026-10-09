@@ -253,7 +253,7 @@ extern cvar_t *cpu_amd3d;	//
 // Quick version of float to long (trunc/round undefined)
 
 #pragma warning (disable:4035)
-/*_inline __declspec( naked ) long Q_ftol( float f )
+inline __declspec( naked ) long Q_ftol( float f )
 {
 	static int tmp;
 	__asm fld dword ptr [esp+4]
@@ -262,7 +262,7 @@ extern cvar_t *cpu_amd3d;	//
 	__asm ret
 }
 
-_inline float Clamp(float src, float min, float max)
+inline float Clamp(float src, float min, float max)
 {
 	if(src > max)
 	{
@@ -275,7 +275,7 @@ _inline float Clamp(float src, float min, float max)
 	return(src);
 }
 
-_inline int ClampI(int src, int min, int max)
+inline int ClampI(int src, int min, int max)
 {
 	if(src > max)
 	{
@@ -287,7 +287,6 @@ _inline int ClampI(int src, int min, int max)
 	}
 	return(src);
 }
-*/
 
 /*
 ==========================================================

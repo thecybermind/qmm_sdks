@@ -17,21 +17,21 @@
 
 #include "fx_effects.h"
 #include "q_sh_fx.h"
-#include "..\ghoul\ighoul.h"
+#include "../ghoul/ighoul.h"
 #include "g_ghoul.h"
 #include "dm.h"
 #include "g_obj.h"
 
-#include "w_public.h"
-#include "w_types.h"
-#include "player.h"
+#include "../player/w_public.h"
+#include "../qcommon/w_types.h"
+#include "../player/player.h"
 
 #include "CWeaponInfo.h"
 
 #include "ai_public.h"
 
 //#include "g_econ.h"
-#include "fields.h"
+#include "../qcommon/fields.h"
 #include "g_skilllevels.h"
 
 // #include "..\server\ipath.h"
@@ -637,7 +637,7 @@ extern cvar_t	*stealth;			// show/hide stealth meter
 #define MD_TANK_SIZE		5		
 #define MD_SNOWCAT_SIZE		3
 
-void EnumerateFields(struct unsigned chard_s *fields, unsigned char *data, unsigned long chid, int len);
+void EnumerateFields(struct /*unsigned*/ chard_s* fields, unsigned char* data, unsigned long chid, int len);
 void EvaluateFields(struct field_s *fields, unsigned char *data, unsigned long chid, int len);
 IGhoulInst *LoadGhoulInst(IGhoulObj *obj, const char *name);
 void SaveGhoulInst(IGhoulInst *inst, const char *name);

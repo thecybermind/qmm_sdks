@@ -163,7 +163,7 @@ typedef struct bsplumps
 	char		*lumpname;
 	int			insize;
 	int			outsize;
-	void		(*Process)(void *in, void *oout, int count, void (*callback)(void *cm_out, void *cm_in) = NULL);
+	void		(*Process)(void *in, void *oout, int count, void (*callback)(void *cm_out, void *cm_in)/* = NULL*/);
 	bool		checksummed;
 	unsigned char		checksum;
 } bsplumps_t;

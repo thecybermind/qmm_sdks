@@ -2,6 +2,7 @@
 #define __W_WEAPONS_H
 
 #include "w_public.h"
+#include "../ghoul/ighoul.h"
 
 #define MASK_PROJ	(CONTENTS_SOLID|CONTENTS_MONSTER|CONTENTS_DEADMONSTER|CONTENTS_SHOT)
 #define MASK_PROJ2	(MASK_PROJ|CONTENTS_WINDOW)
@@ -125,7 +126,7 @@ public:
 	virtual char			*getPutAwaySeq(sharedEdict_t &ent){return NULL;}
 	virtual char			*getDryfireSeq(sharedEdict_t &ent){return NULL;}
 
-	virtual char			*getName(void){return "";}
+	virtual char			*getName(void){return (char*)"";}
 	virtual GhoulSpeed		getFireSpeed(void){return gsOne;}
 
 	virtual void			shutdownWeapon(sharedEdict_t &ent){};
@@ -693,7 +694,7 @@ public:
 	char	*getTakeOutSeq(sharedEdict_t &ent);
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "Knife";}
+	char	*getName(void){return (char*)"Knife";}
 
 	int		useAmmo1(sharedEdict_t &ent, int *skipIdle = 0){return 1;}
 	int		useAmmo2(sharedEdict_t &ent, int *skipIdle = 0);
@@ -735,7 +736,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "Desert Eagle";}
+	char	*getName(void){return (char*)"Desert Eagle";}
 
 	int		testInput(sharedEdict_t &ent);
 
@@ -760,7 +761,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "Glock 9mm";}
+	char	*getName(void){return (char*)"Glock 9mm";}
 
 	int		handleEOS(sharedEdict_t &ent);
 	void	handleAltfireLoop(sharedEdict_t &ent);
@@ -787,7 +788,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "Ingram m11";}
+	char	*getName(void){return (char*)"Ingram m11";}
 
 	int		handleEOS(sharedEdict_t &ent);
 	void	handleFireLoop(sharedEdict_t &ent);
@@ -816,7 +817,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "HK53";}
+	char	*getName(void){return (char*)"HK53";}
 
 	int		getType(void){return SFW_ASSAULTRIFLE;}
 
@@ -850,7 +851,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "Sig2000G";}
+	char	*getName(void){return (char*)"Sig2000G";}
 
 	int		handleEOS(sharedEdict_t &ent);
 	void	handleFireLoop(sharedEdict_t &ent);
@@ -880,7 +881,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "Jackhammer";}
+	char	*getName(void){return (char*)"Jackhammer";}
 	GhoulSpeed	getFireSpeed(void){return gsOne;}
 
 	int		useAmmo2(sharedEdict_t &ent, int *skipIdle = 0);
@@ -909,7 +910,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "Spas15";}
+	char	*getName(void){return (char*)"Spas15";}
 	int		useAmmo1(sharedEdict_t &ent, int *skipIdle =0);
 
 	int		isSingleReload(void){return 1;}
@@ -937,7 +938,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "Minimi";}
+	char	*getName(void){return (char*)"Minimi";}
 	GhoulSpeed	getFireSpeed(void){return gsOne;}
 
 	int		handleEOS(sharedEdict_t &ent);
@@ -975,7 +976,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "M202A2";}
+	char	*getName(void){return (char*)"M202A2";}
 
 	int		getType(void){return SFW_ROCKET;}
 
@@ -1002,7 +1003,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "Microwave Pulse";}
+	char	*getName(void){return (char*)"Microwave Pulse";}
 
 	int		getType(void){return SFW_MICROWAVEPULSE;}
 
@@ -1036,7 +1037,7 @@ public:
 	char	*getPutAwaySeq(sharedEdict_t &ent);
 	char	*getDryfireSeq(sharedEdict_t &ent);
 
-	char	*getName(void){return "Flamethrower";}
+	char	*getName(void){return (char*)"Flamethrower";}
 
 	int		useAmmo1(sharedEdict_t &ent, int *skipIdle = 0);
 	int		useAmmo2(sharedEdict_t &ent, int *skipIdle = 0);
@@ -1068,7 +1069,7 @@ public:
 
 	char	*getIdleSeq(sharedEdict_t &ent);
 	char	*getTakeOutSeq(sharedEdict_t &ent);
-	char	*getName(void){return "Hurthand";}
+	char	*getName(void){return (char*)"Hurthand";}
 	int		getType(void){return SFW_HURTHAND;}
 	int		handleEOS(sharedEdict_t &ent);
 };
@@ -1082,7 +1083,7 @@ public:
 
 	char	*getIdleSeq(sharedEdict_t &ent);
 	char	*getTakeOutSeq(sharedEdict_t &ent);
-	char	*getName(void){return "Throwhand";}
+	char	*getName(void){return (char*)"Throwhand";}
 	int		getType(void){return SFW_THROWHAND;}
 	int		handleEOS(sharedEdict_t &ent);
 };

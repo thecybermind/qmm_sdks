@@ -1,8 +1,8 @@
 #ifndef __PLAYER_H
 #define __PLAYER_H
 
-#include "GSQFile.h"
-#include "qcommon.h"
+#include "../qcommon/GSQFile.h"
+#include "../qcommon/qcommon.h"
 
 #define	PLAYER_API_VERSION		1
 
@@ -60,7 +60,7 @@ typedef struct
 { 
 	// Cvar stuff.
 
-	cvar_t	*(*Cvar_Get)(const char *name, const char *value, int flags, cvarcommand_t command = NULL);
+	cvar_t	*(*Cvar_Get)(const char *name, const char *value, int flags, cvarcommand_t command/* = NULL*/);
 	cvar_t	*(*Cvar_Set)(const char *name, const char *value );
 	void	(*Cvar_SetValue)(const char *name, float value );
 
@@ -78,7 +78,7 @@ typedef struct
 
 	// File handling.
 
-	int		(*FS_LoadFile) (char *name, void **buf, bool OverridePak = false);
+	int		(*FS_LoadFile) (char *name, void **buf, bool OverridePak/*= false */);
 	void	(*FS_FreeFile) (void *buf);
 	
 	// Misc
@@ -222,7 +222,7 @@ typedef struct
 	// Savegame stuff
 
 	qboolean	(*AppendToSavegame)(unsigned long chid, void *data, int length);
-	int			(*ReadFromSavegame)(unsigned long chid, void *address, int length, void **addressptr = NULL);
+	int			(*ReadFromSavegame)(unsigned long chid, void *address, int length, void **addressptr/* = NULL*/);
 } player_sv_import_t;
 
 //

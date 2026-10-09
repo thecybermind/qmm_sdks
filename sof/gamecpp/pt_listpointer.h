@@ -34,7 +34,7 @@ private:
 public:
 	int		GetIndexFromPointer(T *thing)
 			{
-				map<T *,int>::iterator	f;
+				typename map<T *,int>::iterator	f;
 
 				if (!thing)
 				{
@@ -49,7 +49,7 @@ public:
 			}
 	T		*GetPointerFromIndex(int index)
 			{
-				map<int,T *>::iterator	f;
+				typename map<int,T *>::iterator	f;
 
 				if (!index)
 				{
@@ -64,7 +64,7 @@ public:
 			}
 	void	AddElement(T *thing)
 			{
-				map<T *,int>::iterator	f;
+				typename map<T *,int>::iterator	f;
 				int						idx;
 
 				if (!thing)
@@ -81,8 +81,8 @@ public:
 			}
 	void	RemoveElement(T *thing)
 			{
-				map<T *,int>::iterator	f;
-				map<int,T *>::iterator	ff;
+				typename map<T *,int>::iterator	f;
+				typename map<int,T *>::iterator	ff;
 
 				if (!thing)
 				{

@@ -1,5 +1,5 @@
-#ifndef __W_TYPES_H
-#define __W_TYPES_H
+#ifndef __QC_W_TYPES_H
+#define __QC_W_TYPES_H
 
 // 12/27/99 kef -- enum objType_t (OBJ_NONE...MAX_ITM_OBJS) can be used as indices into the
 //array of items known as thePickupList which represents every item the player can pick up...armor,
@@ -137,4 +137,4 @@ typedef enum
 	SFH_LARGE_HEALTH,
 } health_t;
 
-#endif // __W_TYPES_H
+#endif // __QC_W_TYPES_H

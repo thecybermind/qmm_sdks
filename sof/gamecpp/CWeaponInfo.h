@@ -1,9 +1,9 @@
 #ifndef __CWEAPONINFO_H_
 #define __CWEAPONINFO_H_
 
-#include "matrix4.h"
-#include "..\ghoul\ighoul.h"
-#include "w_types.h"
+#include "../qcommon/matrix4.h"
+#include "../ghoul/ighoul.h"
+#include "../qcommon/w_types.h"
 
 //---------------------------------------------------------------------------------------
 

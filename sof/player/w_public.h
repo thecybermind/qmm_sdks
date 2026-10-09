@@ -96,7 +96,7 @@ public:
 	virtual void		rulesSetWeaponReloadAutomatic(int reloadAutomatic){}
 	virtual int			rulesDoReloadEmptiesWeapon(void){return 0;}
 	virtual void		rulesSetReloadEmptiesWeapon(int reloadEmptiesWeapon){}
-	virtual char		*rulesGetBestWeaponMode(void){return "";}
+	virtual char		*rulesGetBestWeaponMode(void){return (char*)"";}
 	virtual void		rulesSetBestWeaponMode(char *bestWeaponMode){}
 	virtual	int			rulesCanDropInvenOnDeath(void){return 0;}
 	virtual	void		rulesSetDropInvenOnDeath(int dropInvenOnDeath){}
