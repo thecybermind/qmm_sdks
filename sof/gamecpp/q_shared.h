@@ -253,6 +253,11 @@ extern cvar_t *cpu_amd3d;	//
 // Quick version of float to long (trunc/round undefined)
 
 #pragma warning (disable:4035)
+inline long Q_ftol(float f)
+{
+	return (long)f;
+}
+/*
 inline __declspec( naked ) long Q_ftol( float f )
 {
 	static int tmp;
@@ -261,6 +266,7 @@ inline __declspec( naked ) long Q_ftol( float f )
 	__asm mov eax, tmp
 	__asm ret
 }
+*/
 
 inline float Clamp(float src, float min, float max)
 {
