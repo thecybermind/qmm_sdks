@@ -122,7 +122,7 @@ public:
 	virtual int		isDM(void){return(1);}
 	virtual void	preLevelInit(void){}
 	virtual void	levelInit(void){}
-	virtual char	*getGameName(void){return("");}
+	virtual char	*getGameName(void){return((char*)"");}
 	virtual int		checkItemSpawn(edict_t *ent,Pickup **pickup){return(0);}
 	virtual int		checkItemAfterSpawn(edict_t *ent,Pickup *pickup){return(0);}
 	virtual void	checkEvents(void){};
@@ -198,7 +198,7 @@ public:
 
 	int		isDM(void){return 0;}
 	void	levelInit(void){gi.SP_Register("singleplr");}
-	char	*getGameName(void){return("single player");}
+	char	*getGameName(void){return((char*)"single player");}
 	int		checkItemSpawn(edict_t *ent,Pickup **pickup){return(-1);}
 	int		getMaxEncumbrance(void);
 
@@ -267,7 +267,7 @@ class dmassassin_c:public gamerules_c
 public:
 
 	void	levelInit(void);
-	char	*getGameName(void){return("assassin DM");}
+	char	*getGameName(void){return((char*)"assassin DM");}
 	int		checkItemSpawn(edict_t *ent,Pickup **pickup);
 
 	int		dmRule_NO_HEALTH(void);
@@ -317,7 +317,7 @@ class dmarsenal_c:public gamerules_c
 public:
 
 	void	levelInit(void);
-	char	*getGameName(void){return("arsenal DM");}
+	char	*getGameName(void){return((char*)"arsenal DM");}
 	int		checkItemSpawn(edict_t *ent,Pickup **pickup);
 	void	checkEvents(void);
 
@@ -366,7 +366,7 @@ public:
 
 	void	preLevelInit(void);
 	void	levelInit(void);
-	char	*getGameName(void){return("real DM");}
+	char	*getGameName(void){return((char*)"real DM");}
 	int		checkItemSpawn(edict_t *ent,Pickup **pickup);
 	int		checkItemAfterSpawn(edict_t *ent,Pickup *pickup);
 	void	respawnUntouchedItem(edict_t *ent);
@@ -418,7 +418,7 @@ private:
 
 public:
 
-	char	*getGameName(void){return("CTF DM");}
+	char	*getGameName(void){return((char*)"CTF DM");}
 	int		checkItemSpawn(edict_t *ent,Pickup **pickup);
 	void	levelInit(void);
 	void	AssignTeam(edict_t *ent, char *userinfo);
@@ -461,8 +461,8 @@ gamemode_c
 
 class gamemode_c:public gamemode_ic
 {
-private:
-	
+//private:
+public:
 	int			gametype;
 	gamerules_c	*rules;
 

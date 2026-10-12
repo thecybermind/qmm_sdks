@@ -180,8 +180,8 @@ public:
 
 class weapon_c
 {
-private:
-
+// private:
+public:
 	int				curClip;
 	int				type;
 	int				cannotFire;
@@ -209,7 +209,8 @@ public:
 
 class itemSlot_c
 {
-private:
+//private:
+public:
 
 	int itemType;
 	int	ammo;
@@ -243,7 +244,8 @@ public:
 
 class item_c
 {
-private:
+// private:
+public:
 	
 	int			curSlotNum;
 	int			nextCommand;
@@ -280,8 +282,8 @@ public:
 
 class wAnim_c
 {
-private:
-
+//private:
+public:
 	int			handsOnWeapon;
 	int			weaponLifted;
 	int			justTransitioned;
@@ -347,7 +349,8 @@ public:
 
 class inven_c:public invPub_c
 {
-private:
+// private:
+public:
 
 	clientRICBuf	*clientRICBuffer;
 	serverRICBuf	*serverRICBuffer;
