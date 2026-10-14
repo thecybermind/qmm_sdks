@@ -1,7 +1,7 @@
 #ifndef __FXEFFECTS_H_
 #define __FXEFFECTS_H_
 
-#include "..\ghoul\ighoul.h"
+#include "../ghoul/ighoul.h"
 #include "q_shared.h"
 #include "q_sh_fx.h"
 #include "game.h"

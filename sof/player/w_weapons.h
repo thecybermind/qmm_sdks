@@ -1120,12 +1120,12 @@ struct sharedEdict_s
 //
 //------------------------------------------------------------------------
 
-_inline inven_c *inven(sharedEdict_t &ent)
+inline inven_c *inven(sharedEdict_t &ent)
 {
 	return ent.inv;
 }
 
-_inline wAnim_c *wAnim(sharedEdict_t &ent)
+inline wAnim_c *wAnim(sharedEdict_t &ent)
 {
 	return inven(ent)->getAnimInfo();
 }

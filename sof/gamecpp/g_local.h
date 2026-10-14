@@ -4,7 +4,7 @@
 #pragma once
 
 #include "q_shared.h"
-#include "..\qcommon\mathlib.h"
+#include "../qcommon/mathlib.h"
 
 // define GAME_INCLUDE so that game.h does not define the
 // short, server-visible gclient_t and edict_t structures,
@@ -34,7 +34,7 @@
 #include "../qcommon/fields.h"
 #include "g_skilllevels.h"
 
-// #include "..\server\ipath.h"
+// #include "../server/ipath.h"
 
 // the "gameversion" client command will print this plus compile date
 #define	GAMEVERSION	"base"

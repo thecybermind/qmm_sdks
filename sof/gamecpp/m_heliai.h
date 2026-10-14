@@ -153,7 +153,7 @@
 
 // ensure angle is in range -179..0..180
 //
-_inline float angle2posneg (float _angle)
+inline float angle2posneg (float _angle)
 {
 	_angle = anglemod(_angle);	// ensure known-range
 	if (_angle>180)

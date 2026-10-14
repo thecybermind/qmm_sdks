@@ -3,7 +3,7 @@
 #ifndef _Q_SH_FX_
 #define _Q_SH_FX_
 
-#include "..\ghoul\ighoul.h"
+#include "../ghoul/ighoul.h"
 
 typedef enum
 {
